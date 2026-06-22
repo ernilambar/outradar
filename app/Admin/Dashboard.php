@@ -110,7 +110,19 @@ class Dashboard {
 			</div><!-- .outpulse-widgets -->
 
 			<div class="outpulse-chart-section">
-				<h2><?php esc_html_e( 'Requests — Last 7 Days', 'outpulse' ); ?></h2>
+				<div class="outpulse-chart-header">
+					<h2><?php esc_html_e( 'Requests by Context', 'outpulse' ); ?></h2>
+					<div class="outpulse-chart-controls">
+						<button class="button outpulse-range-btn active" data-range="7"><?php esc_html_e( '7 Days', 'outpulse' ); ?></button>
+						<button class="button outpulse-range-btn" data-range="30"><?php esc_html_e( '30 Days', 'outpulse' ); ?></button>
+					</div>
+				</div>
+				<div class="outpulse-chart-legend">
+					<span class="outpulse-legend-item" data-ctx="cron"><?php esc_html_e( 'Cron', 'outpulse' ); ?></span>
+					<span class="outpulse-legend-item" data-ctx="frontend"><?php esc_html_e( 'Frontend', 'outpulse' ); ?></span>
+					<span class="outpulse-legend-item" data-ctx="admin"><?php esc_html_e( 'Admin', 'outpulse' ); ?></span>
+					<span class="outpulse-legend-item" data-ctx="cli"><?php esc_html_e( 'CLI', 'outpulse' ); ?></span>
+				</div>
 				<canvas id="outpulse-chart" width="800" height="220"></canvas>
 			</div>
 
@@ -184,25 +196,34 @@ class Dashboard {
 	}
 
 	/**
-	 * Return chart data for the last 7 days (passed to JS via wp_localize_script).
+	 * Return stacked chart data for the last N days (passed to JS via wp_localize_script).
 	 *
-	 * @since 1.2.0
+	 * @since 1.3.0
 	 *
+	 * @param int $days Number of days to look back.
 	 * @return array<string, mixed>
 	 */
-	public static function get_chart_data(): array {
-		$raw    = DB::get_requests_by_day( 7 );
+	public static function get_chart_data( int $days = 7 ): array {
+		$raw    = DB::get_requests_by_day_context( $days );
 		$labels = array();
-		$values = array();
+		$series = array(
+			'cron'     => array(),
+			'frontend' => array(),
+			'admin'    => array(),
+			'cli'      => array(),
+		);
 
-		foreach ( $raw as $date => $count ) {
-			$labels[] = $date;
-			$values[] = $count;
+		foreach ( $raw as $date => $counts ) {
+			$labels[]             = $date;
+			$series['cron'][]     = $counts['cron'];
+			$series['frontend'][] = $counts['frontend'];
+			$series['admin'][]    = $counts['admin'];
+			$series['cli'][]      = $counts['cli'];
 		}
 
 		return array(
 			'labels' => $labels,
-			'values' => $values,
+			'series' => $series,
 		);
 	}
 }
