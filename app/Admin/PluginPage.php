@@ -34,7 +34,7 @@ class PluginPage {
 			<h1><?php esc_html_e( 'Source Activity', 'outwatch' ); ?></h1>
 
 			<?php if ( empty( $rows ) ) : ?>
-				<p><?php esc_html_e( 'No plugin data yet.', 'outwatch' ); ?></p>
+				<p><?php esc_html_e( 'No source data yet.', 'outwatch' ); ?></p>
 			<?php else : ?>
 
 			<table class="wp-list-table widefat fixed striped">

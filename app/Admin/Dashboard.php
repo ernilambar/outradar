@@ -89,7 +89,7 @@ class Dashboard {
 
 				<?php if ( ! empty( $top_plugins ) ) : ?>
 				<div class="outwatch-widget">
-					<h3><?php esc_html_e( 'Top Plugins', 'outwatch' ); ?></h3>
+					<h3><?php esc_html_e( 'Top Sources', 'outwatch' ); ?></h3>
 					<table class="outwatch-kv-table">
 						<?php foreach ( $top_plugins as $row ) : ?>
 						<tr>

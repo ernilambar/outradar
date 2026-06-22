@@ -44,7 +44,7 @@ class DomainPage {
 						<th><?php esc_html_e( 'First Seen', 'outwatch' ); ?></th>
 						<th><?php esc_html_e( 'Last Seen', 'outwatch' ); ?></th>
 						<th><?php esc_html_e( 'Requests', 'outwatch' ); ?></th>
-						<th><?php esc_html_e( 'Plugins', 'outwatch' ); ?></th>
+						<th><?php esc_html_e( 'Sources', 'outwatch' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>

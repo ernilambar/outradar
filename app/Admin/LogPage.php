@@ -53,7 +53,7 @@ class LogPage {
 				/>
 
 				<select name="plugin">
-					<option value=""><?php esc_html_e( 'All plugins', 'outwatch' ); ?></option>
+					<option value=""><?php esc_html_e( 'All sources', 'outwatch' ); ?></option>
 					<?php foreach ( $plugins as $plugin ) : ?>
 					<option value="<?php echo esc_attr( $plugin ); ?>" <?php selected( $filters['plugin'] ?? '', $plugin ); ?>>
 						<?php echo esc_html( $plugin ); ?>
@@ -126,7 +126,7 @@ class LogPage {
 							<th><?php esc_html_e( 'Domain', 'outwatch' ); ?></th>
 							<th><?php esc_html_e( 'Method', 'outwatch' ); ?></th>
 							<th><?php esc_html_e( 'Status', 'outwatch' ); ?></th>
-							<th><?php esc_html_e( 'Source Plugin', 'outwatch' ); ?></th>
+							<th><?php esc_html_e( 'Source', 'outwatch' ); ?></th>
 							<th><?php esc_html_e( 'Context', 'outwatch' ); ?></th>
 							<th><?php esc_html_e( 'Flags', 'outwatch' ); ?></th>
 						</tr>
