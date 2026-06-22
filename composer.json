@@ -1,0 +1,36 @@
+{
+	"name": "nilambar/outwatch",
+	"description": "WordPress Outbound HTTP Request Tracker & Analyzer.",
+	"license": "GPL-2.0-or-later",
+	"type": "wordpress-plugin",
+	"require": {
+		"php": ">=8.0"
+	},
+	"require-dev": {
+		"ernilambar/coding-standard": "^1",
+		"slevomat/coding-standard": "^8",
+		"wp-coding-standards/wpcs": "^3.3"
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"autoload": {
+		"psr-4": {
+			"Nilambar\\Outwatch\\": "app/"
+		}
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		},
+		"optimize-autoloader": true,
+		"platform": {
+			"php": "8.0"
+		},
+		"sort-packages": true
+	},
+	"scripts": {
+		"format": "@php ./vendor/bin/phpcbf --report-full --report-summary",
+		"lint": "@phpcs",
+		"phpcs": "@php ./vendor/bin/phpcs --report-full --report-summary"
+	}
+}
