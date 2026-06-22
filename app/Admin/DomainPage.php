@@ -63,7 +63,6 @@ class DomainPage {
 						<th><?php esc_html_e( 'Last Seen', 'outwatch' ); ?></th>
 						<th><?php esc_html_e( 'Requests', 'outwatch' ); ?></th>
 						<th><?php esc_html_e( 'Plugins', 'outwatch' ); ?></th>
-						<th><?php esc_html_e( 'Risk Flags', 'outwatch' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -95,13 +94,6 @@ class DomainPage {
 						<td><?php echo esc_html( number_format_i18n( (int) $row->total ) ); ?></td>
 						<td class="outwatch-truncate" title="<?php echo esc_attr( (string) $row->plugins ); ?>">
 							<?php echo esc_html( (string) $row->plugins ); ?>
-						</td>
-						<td>
-							<?php if ( (int) $row->flagged > 0 ) : ?>
-								<span class="outwatch-risk"><?php echo esc_html( number_format_i18n( (int) $row->flagged ) ); ?></span>
-							<?php else : ?>
-								0
-							<?php endif; ?>
 						</td>
 					</tr>
 					<?php endforeach; ?>

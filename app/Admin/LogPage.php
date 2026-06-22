@@ -93,11 +93,6 @@ class LogPage {
 					value="<?php echo esc_attr( $filters['date_to'] ?? '' ); ?>"
 				/>
 
-				<label class="outwatch-checkbox-label">
-					<input type="checkbox" name="flagged" value="1" <?php checked( ! empty( $filters['flagged'] ) ); ?> />
-					<?php esc_html_e( 'Flagged only', 'outwatch' ); ?>
-				</label>
-
 				<button type="submit" class="button"><?php esc_html_e( 'Filter', 'outwatch' ); ?></button>
 				<a href="<?php echo esc_url( admin_url( 'admin.php?page=outwatch-log' ) ); ?>" class="button"><?php esc_html_e( 'Reset', 'outwatch' ); ?></a>
 			</form>
@@ -176,9 +171,6 @@ class LogPage {
 							</td>
 							<td><span class="outwatch-context outwatch-context--<?php echo esc_attr( (string) $row->context ); ?>"><?php echo esc_html( (string) $row->context ); ?></span></td>
 							<td>
-								<?php if ( ! empty( $row->risk_flags ) ) : ?>
-									<span class="outwatch-flag outwatch-flag--risk" title="<?php echo esc_attr( (string) $row->risk_flags ); ?>">&#9888;</span>
-								<?php endif; ?>
 								<?php if ( ! empty( $row->is_recurring ) ) : ?>
 									<span class="outwatch-flag outwatch-flag--recurring" title="<?php esc_attr_e( 'Recurring request', 'outwatch' ); ?>">&#8635;</span>
 								<?php endif; ?>
@@ -209,9 +201,6 @@ class LogPage {
 										<summary><?php esc_html_e( 'Request Body', 'outwatch' ); ?></summary>
 										<pre><?php echo esc_html( (string) $row->request_body ); ?></pre>
 									</details>
-									<?php endif; ?>
-									<?php if ( ! empty( $row->risk_flags ) ) : ?>
-									<p><strong><?php esc_html_e( 'Risk Flags:', 'outwatch' ); ?></strong> <code><?php echo esc_html( (string) $row->risk_flags ); ?></code></p>
 									<?php endif; ?>
 									<?php if ( ! empty( $row->cron_hook ) ) : ?>
 									<p><strong><?php esc_html_e( 'Cron Hook:', 'outwatch' ); ?></strong> <code><?php echo esc_html( (string) $row->cron_hook ); ?></code></p>
@@ -286,7 +275,6 @@ class LogPage {
 			'context'   => isset( $_GET['context'] ) ? sanitize_text_field( wp_unslash( $_GET['context'] ) ) : '',
 			'date_from' => isset( $_GET['date_from'] ) ? sanitize_text_field( wp_unslash( $_GET['date_from'] ) ) : '',
 			'date_to'   => isset( $_GET['date_to'] ) ? sanitize_text_field( wp_unslash( $_GET['date_to'] ) ) : '',
-			'flagged'   => ! empty( $_GET['flagged'] ),
 		);
 		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 	}

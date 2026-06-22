@@ -40,7 +40,6 @@ class Exporter {
 			'context'   => isset( $_REQUEST['context'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['context'] ) ) : '',
 			'date_from' => isset( $_REQUEST['date_from'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['date_from'] ) ) : '',
 			'date_to'   => isset( $_REQUEST['date_to'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['date_to'] ) ) : '',
-			'flagged'   => ! empty( $_REQUEST['flagged'] ),
 		);
 		$format  = isset( $_REQUEST['format'] ) && 'json' === $_REQUEST['format'] ? 'json' : 'csv';
 		// phpcs:enable WordPress.Security.NonceVerification.Recommended
@@ -83,7 +82,6 @@ class Exporter {
 			'source_line',
 			'context',
 			'page_url',
-			'risk_flags',
 			'is_recurring',
 			'recurrence_count',
 			'cron_hook',

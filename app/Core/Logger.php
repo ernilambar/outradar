@@ -46,7 +46,6 @@ class Logger {
 
 		$body_hash = md5( $url . strtoupper( $method ) . $request_body );
 
-		$risk_flags   = Analyzer::analyze( $method, $request_body );
 		$cron_hook    = CronTracker::get_current_hook();
 		$recurrence   = DB::check_recurring( $domain, $source['source_plugin'] );
 		$duplicate_of = DB::find_duplicate( $body_hash );
@@ -69,7 +68,6 @@ class Logger {
 				'source_line'      => $source['source_line'],
 				'page_url'         => $page_url,
 				'context'          => self::detect_context(),
-				'risk_flags'       => ! empty( $risk_flags ) ? wp_json_encode( $risk_flags ) : null,
 				'is_recurring'     => $recurrence['is_recurring'],
 				'recurrence_count' => $recurrence['count'],
 				'cron_hook'        => $cron_hook,
@@ -77,39 +75,6 @@ class Logger {
 				'body_hash'        => $body_hash,
 			)
 		);
-
-		if ( ! empty( $risk_flags ) ) {
-			self::maybe_send_risk_notification( $url, $source['source_plugin'], $risk_flags );
-		}
-	}
-
-	/**
-	 * Send a notification email when risk flags are detected, if an email is configured.
-	 *
-	 * @since 1.2.0
-	 *
-	 * @param string               $url           Request URL.
-	 * @param string               $source_plugin Attributed plugin.
-	 * @param array<string, mixed> $risk_flags    Detected flags.
-	 * @return void
-	 */
-	private static function maybe_send_risk_notification( string $url, string $source_plugin, array $risk_flags ): void {
-		$email = (string) get_option( 'outwatch_notification_email', '' );
-
-		if ( '' === $email || ! is_email( $email ) ) {
-			return;
-		}
-
-		$flags   = implode( ', ', array_keys( $risk_flags ) );
-		$subject = sprintf( '[OutWatch] Risk flags detected: %s', $flags );
-		$body    = sprintf(
-			"OutWatch detected risk flags in an outbound request.\n\nPlugin: %s\nURL: %s\nFlags: %s\n",
-			$source_plugin,
-			$url,
-			$flags
-		);
-
-		wp_mail( $email, $subject, $body );
 	}
 
 	/**

@@ -43,7 +43,6 @@ class PluginPage {
 						<th><?php esc_html_e( 'Plugin / Source', 'outwatch' ); ?></th>
 						<th><?php esc_html_e( 'Total Requests', 'outwatch' ); ?></th>
 						<th><?php esc_html_e( 'Unique Domains', 'outwatch' ); ?></th>
-						<th><?php esc_html_e( 'Risk-Flagged', 'outwatch' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -56,13 +55,6 @@ class PluginPage {
 						</td>
 						<td><?php echo esc_html( number_format_i18n( (int) $row->total ) ); ?></td>
 						<td><?php echo esc_html( number_format_i18n( (int) $row->unique_domains ) ); ?></td>
-						<td>
-							<?php if ( (int) $row->flagged > 0 ) : ?>
-								<span class="outwatch-risk"><?php echo esc_html( number_format_i18n( (int) $row->flagged ) ); ?></span>
-							<?php else : ?>
-								0
-							<?php endif; ?>
-						</td>
 					</tr>
 					<?php endforeach; ?>
 				</tbody>

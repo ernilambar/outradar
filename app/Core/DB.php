@@ -44,7 +44,6 @@ class DB {
 			source_line INT,
 			page_url TEXT,
 			context VARCHAR(50) NOT NULL DEFAULT 'frontend',
-			risk_flags LONGTEXT,
 			is_recurring TINYINT(1) NOT NULL DEFAULT 0,
 			recurrence_count INT NOT NULL DEFAULT 0,
 			cron_hook VARCHAR(255),
@@ -170,7 +169,6 @@ class DB {
 				SUM(CASE WHEN DATE(timestamp) = CURDATE() THEN 1 ELSE 0 END) AS today,
 				SUM(CASE WHEN timestamp >= DATE_SUB(NOW(), INTERVAL 7 DAY) THEN 1 ELSE 0 END) AS week,
 				COUNT(DISTINCT domain) AS unique_domains,
-				SUM(CASE WHEN risk_flags IS NOT NULL THEN 1 ELSE 0 END) AS flagged,
 				SUM(CASE WHEN context = 'frontend' THEN 1 ELSE 0 END) AS ctx_frontend,
 				SUM(CASE WHEN context = 'admin' THEN 1 ELSE 0 END) AS ctx_admin,
 				SUM(CASE WHEN context = 'cron' THEN 1 ELSE 0 END) AS ctx_cron,
@@ -180,7 +178,7 @@ class DB {
 		);
 
 		if ( ! is_array( $row ) ) {
-			return array_fill_keys( array( 'total', 'today', 'week', 'unique_domains', 'flagged', 'ctx_frontend', 'ctx_admin', 'ctx_cron', 'ctx_cli' ), 0 );
+			return array_fill_keys( array( 'total', 'today', 'week', 'unique_domains', 'ctx_frontend', 'ctx_admin', 'ctx_cron', 'ctx_cli' ), 0 );
 		}
 
 		return array_map( 'intval', $row );
@@ -283,10 +281,6 @@ class DB {
 			$where .= $wpdb->prepare( ' AND DATE(timestamp) <= %s', $filters['date_to'] );
 		}
 
-		if ( ! empty( $filters['flagged'] ) ) {
-			$where .= ' AND risk_flags IS NOT NULL';
-		}
-
 		return $where;
 	}
 
@@ -352,7 +346,6 @@ class DB {
 				MIN(timestamp) AS first_seen,
 				MAX(timestamp) AS last_seen,
 				COUNT(*) AS total,
-				COUNT(CASE WHEN risk_flags IS NOT NULL THEN 1 END) AS flagged,
 				GROUP_CONCAT(DISTINCT source_plugin ORDER BY source_plugin SEPARATOR ', ') AS plugins
 			FROM {$table}
 			WHERE domain != ''
@@ -380,8 +373,7 @@ class DB {
 			"SELECT
 				source_plugin,
 				COUNT(*) AS total,
-				COUNT(DISTINCT domain) AS unique_domains,
-				COUNT(CASE WHEN risk_flags IS NOT NULL THEN 1 END) AS flagged
+				COUNT(DISTINCT domain) AS unique_domains
 			FROM {$table}
 			WHERE source_plugin IS NOT NULL AND source_plugin != ''
 			GROUP BY source_plugin

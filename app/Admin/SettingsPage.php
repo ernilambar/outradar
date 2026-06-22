@@ -41,11 +41,10 @@ class SettingsPage {
 			}
 		}
 
-		$logging_enabled    = get_option( 'outwatch_logging_enabled', '1' );
-		$retention_days     = (int) get_option( 'outwatch_retention_days', 30 );
-		$safe_domains       = (string) get_option( 'outwatch_safe_domains', '' );
-		$excluded_plugins   = (string) get_option( 'outwatch_excluded_plugins', '' );
-		$notification_email = (string) get_option( 'outwatch_notification_email', '' );
+		$logging_enabled  = get_option( 'outwatch_logging_enabled', '1' );
+		$retention_days   = (int) get_option( 'outwatch_retention_days', 30 );
+		$safe_domains     = (string) get_option( 'outwatch_safe_domains', '' );
+		$excluded_plugins = (string) get_option( 'outwatch_excluded_plugins', '' );
 		?>
 		<div class="wrap outwatch-wrap">
 			<h1><?php esc_html_e( 'OutWatch Settings', 'outwatch' ); ?></h1>
@@ -110,14 +109,7 @@ class SettingsPage {
 						</td>
 					</tr>
 
-					<tr>
-						<th scope="row"><?php esc_html_e( 'Notification Email', 'outwatch' ); ?></th>
-						<td>
-							<input type="email" name="outwatch_notification_email" value="<?php echo esc_attr( $notification_email ); ?>" class="regular-text" />
-							<p class="description"><?php esc_html_e( 'Receive an email when risk flags are detected. Leave blank to disable.', 'outwatch' ); ?></p>
-						</td>
-					</tr>
-				</table>
+			</table>
 
 				<p class="submit">
 					<button type="submit" name="save_settings" class="button button-primary"><?php esc_html_e( 'Save Settings', 'outwatch' ); ?></button>
@@ -152,8 +144,5 @@ class SettingsPage {
 		update_option( 'outwatch_retention_days', absint( $_POST['outwatch_retention_days'] ?? 30 ) );
 		update_option( 'outwatch_safe_domains', sanitize_textarea_field( wp_unslash( (string) ( $_POST['outwatch_safe_domains'] ?? '' ) ) ) );
 		update_option( 'outwatch_excluded_plugins', sanitize_textarea_field( wp_unslash( (string) ( $_POST['outwatch_excluded_plugins'] ?? '' ) ) ) );
-
-		$email = sanitize_email( wp_unslash( (string) ( $_POST['outwatch_notification_email'] ?? '' ) ) );
-		update_option( 'outwatch_notification_email', is_email( $email ) ? $email : '' );
 	}
 }

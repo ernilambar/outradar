@@ -61,16 +61,7 @@ class Dashboard {
 							<td><?php esc_html_e( 'Unique Domains', 'outwatch' ); ?></td>
 							<td><strong><?php echo esc_html( number_format_i18n( $stats['unique_domains'] ) ); ?></strong></td>
 						</tr>
-						<tr>
-							<td><?php esc_html_e( 'Risk-Flagged', 'outwatch' ); ?></td>
-							<td>
-								<?php if ( $stats['flagged'] > 0 ) : ?>
-									<strong class="outwatch-risk"><?php echo esc_html( number_format_i18n( $stats['flagged'] ) ); ?></strong>
-								<?php else : ?>
-									<strong>0</strong>
-								<?php endif; ?>
-							</td>
-						</tr>
+
 					</table>
 				</div>
 
