@@ -38,12 +38,12 @@ msgid "https://github.com/ernilambar"
 msgstr ""
 
 #: app/Admin/Admin.php:48
-msgid "Dashboard"
+#: app/Admin/LogPage.php:43
+msgid "Request Log"
 msgstr ""
 
 #: app/Admin/Admin.php:49
-#: app/Admin/LogPage.php:43
-msgid "Request Log"
+msgid "Dashboard"
 msgstr ""
 
 #: app/Admin/Admin.php:50

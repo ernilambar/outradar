@@ -94,7 +94,7 @@ class Dashboard {
 						<?php foreach ( $top_plugins as $row ) : ?>
 						<tr>
 							<td>
-								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse-log&plugin=' . rawurlencode( (string) $row['source_plugin'] ) ) ); ?>">
+								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse&plugin=' . rawurlencode( (string) $row['source_plugin'] ) ) ); ?>">
 									<?php echo esc_html( (string) $row['source_plugin'] ); ?>
 								</a>
 							</td>

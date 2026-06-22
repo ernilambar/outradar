@@ -40,13 +40,13 @@ class Admin {
 			__( 'OutPulse', 'outpulse' ),
 			'manage_options',
 			'outpulse',
-			array( Dashboard::class, 'render' ),
+			array( LogPage::class, 'render' ),
 			'dashicons-shield',
 			80
 		);
 
-		add_submenu_page( 'outpulse', __( 'Dashboard', 'outpulse' ), __( 'Dashboard', 'outpulse' ), 'manage_options', 'outpulse', array( Dashboard::class, 'render' ) );
-		add_submenu_page( 'outpulse', __( 'Request Log', 'outpulse' ), __( 'Request Log', 'outpulse' ), 'manage_options', 'outpulse-log', array( LogPage::class, 'render' ) );
+		add_submenu_page( 'outpulse', __( 'Request Log', 'outpulse' ), __( 'Request Log', 'outpulse' ), 'manage_options', 'outpulse', array( LogPage::class, 'render' ) );
+		add_submenu_page( 'outpulse', __( 'Dashboard', 'outpulse' ), __( 'Dashboard', 'outpulse' ), 'manage_options', 'outpulse-dashboard', array( Dashboard::class, 'render' ) );
 		add_submenu_page( 'outpulse', __( 'Domains', 'outpulse' ), __( 'Domains', 'outpulse' ), 'manage_options', 'outpulse-domains', array( DomainPage::class, 'render' ) );
 		add_submenu_page( 'outpulse', __( 'Sources', 'outpulse' ), __( 'Sources', 'outpulse' ), 'manage_options', 'outpulse-sources', array( PluginPage::class, 'render' ) );
 		add_submenu_page( 'outpulse', __( 'Settings', 'outpulse' ), __( 'Settings', 'outpulse' ), 'manage_options', 'outpulse-settings', array( SettingsPage::class, 'render' ) );
@@ -63,7 +63,7 @@ class Admin {
 	public function enqueue_assets( string $hook ): void {
 		$outpulse_hooks = array(
 			'toplevel_page_outpulse',
-			'outpulse_page_outpulse-log',
+			'outpulse_page_outpulse-dashboard',
 			'outpulse_page_outpulse-domains',
 			'outpulse_page_outpulse-sources',
 			'outpulse_page_outpulse-settings',

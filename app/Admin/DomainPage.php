@@ -52,7 +52,7 @@ class DomainPage {
 						<?php $domain = (string) $row->domain; ?>
 					<tr>
 						<td>
-							<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse-log&domain=' . rawurlencode( $domain ) ) ); ?>">
+							<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse&domain=' . rawurlencode( $domain ) ) ); ?>">
 								<?php echo esc_html( $domain ); ?>
 							</a>
 						</td>

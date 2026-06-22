@@ -43,7 +43,7 @@ class LogPage {
 			<h1><?php esc_html_e( 'Request Log', 'outpulse' ); ?></h1>
 
 			<form method="get" class="outpulse-filter-form">
-				<input type="hidden" name="page" value="outpulse-log" />
+				<input type="hidden" name="page" value="outpulse" />
 
 				<input
 					type="text"
@@ -94,7 +94,7 @@ class LogPage {
 				/>
 
 				<button type="submit" class="button"><?php esc_html_e( 'Filter', 'outpulse' ); ?></button>
-				<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse-log' ) ); ?>" class="button"><?php esc_html_e( 'Reset', 'outpulse' ); ?></a>
+				<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse' ) ); ?>" class="button"><?php esc_html_e( 'Reset', 'outpulse' ); ?></a>
 			</form>
 
 			<form method="post" id="outpulse-log-form">
@@ -147,7 +147,7 @@ class LogPage {
 								</button>
 							</td>
 							<td>
-								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse-log&domain=' . rawurlencode( (string) $row->domain ) ) ); ?>">
+								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse&domain=' . rawurlencode( (string) $row->domain ) ) ); ?>">
 									<?php echo esc_html( (string) $row->domain ); ?>
 								</a>
 							</td>
@@ -161,7 +161,7 @@ class LogPage {
 							</td>
 							<td>
 								<?php if ( ! empty( $row->source_plugin ) ) : ?>
-								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse-log&plugin=' . rawurlencode( (string) $row->source_plugin ) ) ); ?>">
+								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse&plugin=' . rawurlencode( (string) $row->source_plugin ) ) ); ?>">
 									<?php echo esc_html( (string) $row->source_plugin ); ?>
 								</a>
 								<?php else : ?>
@@ -252,7 +252,7 @@ class LogPage {
 			DB::delete_by_ids( $ids );
 		}
 
-		wp_safe_redirect( admin_url( 'admin.php?page=outpulse-log' ) );
+		wp_safe_redirect( admin_url( 'admin.php?page=outpulse' ) );
 		exit;
 	}
 
@@ -316,7 +316,7 @@ class LogPage {
 
 		$base_url            = admin_url( 'admin.php' );
 		$base_params         = array_filter( $filters, static fn( $v ) => '' !== $v && false !== $v );
-		$base_params['page'] = 'outpulse-log';
+		$base_params['page'] = 'outpulse';
 
 		echo '<div class="tablenav-pages">';
 		printf(
