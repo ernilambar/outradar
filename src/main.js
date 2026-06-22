@@ -1,12 +1,13 @@
-/* OutPulse Admin JS */
+import './main.css';
+
 ( function () {
 	'use strict';
 
 	// ── Row expand ───────────────────────────────────────────────
 	document.querySelectorAll( '.outpulse-row-toggle' ).forEach( function ( btn ) {
 		btn.addEventListener( 'click', function () {
-			var id  = btn.getAttribute( 'data-id' );
-			var row = document.getElementById( 'outpulse-detail-' + id );
+			const id = btn.getAttribute( 'data-id' );
+			const row = document.getElementById( 'outpulse-detail-' + id );
 			if ( row ) {
 				row.style.display = 'none' === row.style.display ? '' : 'none';
 			}
@@ -14,7 +15,7 @@
 	} );
 
 	// ── Select all checkbox ──────────────────────────────────────
-	var selectAll = document.getElementById( 'outpulse-select-all' );
+	const selectAll = document.getElementById( 'outpulse-select-all' );
 	if ( selectAll ) {
 		selectAll.addEventListener( 'change', function () {
 			document.querySelectorAll( '.outpulse-row-check' ).forEach( function ( cb ) {
@@ -24,13 +25,19 @@
 	}
 
 	// ── Bulk delete confirmation ─────────────────────────────────
-	var bulkSubmit = document.getElementById( 'outpulse-bulk-submit' );
+	const bulkSubmit = document.getElementById( 'outpulse-bulk-submit' );
 	if ( bulkSubmit ) {
 		bulkSubmit.addEventListener( 'click', function ( e ) {
-			var select = bulkSubmit.closest( 'form' ).querySelector( '[name="bulk_action"]' );
+			const select = bulkSubmit.closest( 'form' ).querySelector( '[name="bulk_action"]' );
 			if ( select && 'delete' === select.value ) {
-				var checked = document.querySelectorAll( '.outpulse-row-check:checked' ).length;
-				if ( checked > 0 && ! window.confirm( ( window.outpulseData && window.outpulseData.confirmDelete ) || 'Delete selected items?' ) ) {
+				const checked = document.querySelectorAll( '.outpulse-row-check:checked' ).length;
+				if (
+					checked > 0 &&
+					! window.confirm(
+						( window.outpulseData && window.outpulseData.confirmDelete ) ||
+							'Delete selected items?'
+					)
+				) {
 					e.preventDefault();
 				}
 			}
@@ -38,51 +45,56 @@
 	}
 
 	// ── Purge all confirmation ───────────────────────────────────
-	var purgeBtn = document.getElementById( 'outpulse-purge-btn' );
+	const purgeBtn = document.getElementById( 'outpulse-purge-btn' );
 	if ( purgeBtn ) {
 		purgeBtn.addEventListener( 'click', function ( e ) {
-			if ( ! window.confirm( ( window.outpulseData && window.outpulseData.confirmPurge ) || 'Delete all logs?' ) ) {
+			if (
+				! window.confirm(
+					( window.outpulseData && window.outpulseData.confirmPurge ) ||
+						'Delete all logs?'
+				)
+			) {
 				e.preventDefault();
 			}
 		} );
 	}
 
 	// ── 7-day bar chart ──────────────────────────────────────────
-	var canvas = document.getElementById( 'outpulse-chart' );
+	const canvas = document.getElementById( 'outpulse-chart' );
 	if ( canvas && window.outpulseData && window.outpulseData.chartData ) {
 		drawBarChart( canvas, window.outpulseData.chartData );
 	}
 
 	function drawBarChart( canvas, data ) {
-		var labels = data.labels || [];
-		var values = data.values || [];
+		const labels = data.labels || [];
+		const values = data.values || [];
 		if ( ! labels.length ) {
 			return;
 		}
 
-		var dpr    = window.devicePixelRatio || 1;
-		var width  = canvas.offsetWidth || 800;
-		var height = 220;
+		const dpr = window.devicePixelRatio || 1;
+		const width = canvas.offsetWidth || 800;
+		const height = 220;
 
-		canvas.width  = width * dpr;
+		canvas.width = width * dpr;
 		canvas.height = height * dpr;
-		canvas.style.width  = width + 'px';
+		canvas.style.width = width + 'px';
 		canvas.style.height = height + 'px';
 
-		var ctx = canvas.getContext( '2d' );
+		const ctx = canvas.getContext( '2d' );
 		ctx.scale( dpr, dpr );
 
-		var padTop    = 20;
-		var padBottom = 40;
-		var padLeft   = 48;
-		var padRight  = 16;
+		const padTop = 20;
+		const padBottom = 40;
+		const padLeft = 48;
+		const padRight = 16;
 
-		var chartW = width - padLeft - padRight;
-		var chartH = height - padTop - padBottom;
+		const chartW = width - padLeft - padRight;
+		const chartH = height - padTop - padBottom;
 
-		var max = Math.max.apply( null, values.concat( [ 1 ] ) );
-		var barW = Math.floor( chartW / labels.length * 0.6 );
-		var gap  = Math.floor( chartW / labels.length );
+		const max = Math.max.apply( null, values.concat( [ 1 ] ) );
+		const barW = Math.floor( ( chartW / labels.length ) * 0.6 );
+		const gap = Math.floor( chartW / labels.length );
 
 		// Background
 		ctx.fillStyle = '#ffffff';
@@ -90,50 +102,51 @@
 
 		// Grid lines
 		ctx.strokeStyle = '#f0f0f1';
-		ctx.lineWidth   = 1;
-		var gridLines = 4;
-		for ( var g = 0; g <= gridLines; g++ ) {
-			var gy = padTop + chartH - ( g / gridLines ) * chartH;
+		ctx.lineWidth = 1;
+		const gridLines = 4;
+		for ( let g = 0; g <= gridLines; g++ ) {
+			const gy = padTop + chartH - ( g / gridLines ) * chartH;
 			ctx.beginPath();
 			ctx.moveTo( padLeft, gy );
 			ctx.lineTo( padLeft + chartW, gy );
 			ctx.stroke();
 
 			// Y-axis label
-			ctx.fillStyle  = '#646970';
-			ctx.font       = '11px sans-serif';
-			ctx.textAlign  = 'right';
+			ctx.fillStyle = '#646970';
+			ctx.font = '11px sans-serif';
+			ctx.textAlign = 'right';
 			ctx.textBaseline = 'middle';
 			ctx.fillText( String( Math.round( ( g / gridLines ) * max ) ), padLeft - 6, gy );
 		}
 
 		// Bars
-		for ( var i = 0; i < labels.length; i++ ) {
-			var x    = padLeft + i * gap + Math.floor( ( gap - barW ) / 2 );
-			var val  = values[ i ] || 0;
-			var barH = Math.max( 1, ( val / max ) * chartH );
-			var y    = padTop + chartH - barH;
+		for ( let i = 0; i < labels.length; i++ ) {
+			const x = padLeft + i * gap + Math.floor( ( gap - barW ) / 2 );
+			const val = values[ i ] || 0;
+			const barH = Math.max( 1, ( val / max ) * chartH );
+			const y = padTop + chartH - barH;
 
 			ctx.fillStyle = val > 0 ? '#2271b1' : '#dcdcde';
 			ctx.fillRect( x, y, barW, barH );
 
 			// Value label above bar
 			if ( val > 0 ) {
-				ctx.fillStyle    = '#1d2327';
-				ctx.font         = '11px sans-serif';
-				ctx.textAlign    = 'center';
+				ctx.fillStyle = '#1d2327';
+				ctx.font = '11px sans-serif';
+				ctx.textAlign = 'center';
 				ctx.textBaseline = 'bottom';
 				ctx.fillText( String( val ), x + barW / 2, y - 2 );
 			}
 
 			// X-axis label
-			var labelParts = labels[ i ] ? labels[ i ].split( '-' ) : [];
-			var labelText  = labelParts.length === 3 ? labelParts[ 1 ] + '/' + labelParts[ 2 ] : labels[ i ];
-			ctx.fillStyle    = '#646970';
-			ctx.font         = '11px sans-serif';
-			ctx.textAlign    = 'center';
+			const labelParts = labels[ i ] ? labels[ i ].split( '-' ) : [];
+			const labelText =
+				labelParts.length === 3 ? labelParts[ 1 ] + '/' + labelParts[ 2 ] : labels[ i ];
+			ctx.fillStyle = '#646970';
+			ctx.font = '11px sans-serif';
+			ctx.textAlign = 'center';
 			ctx.textBaseline = 'top';
 			ctx.fillText( labelText, x + barW / 2, padTop + chartH + 6 );
 		}
 	}
-}() );
+} )();

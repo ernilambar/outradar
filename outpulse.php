@@ -2,12 +2,13 @@
 /**
  * Plugin Name:       OutPulse
  * Description:       Intercept, log, and analyze all outbound HTTP requests made by WordPress core, plugins, and themes.
- * Version:           1.0.0
+ * Version: 1.0.0
  * Author:            Nilambar Sharma
  * Author URI:        https://github.com/ernilambar
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       outpulse
+ * Domain Path:       /languages
  * Requires PHP:      8.0
  * Requires at least: 7.0
  *
