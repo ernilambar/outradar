@@ -1,4 +1,4 @@
-=== OutPulse ===
+=== OutPulse — Monitor Outbound HTTP Requests ===
 Contributors: nilambar
 Tags: http, logging, requests, monitoring, debug
 Requires at least: 7.0
@@ -8,7 +8,7 @@ Requires PHP: 8.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Intercept, log, and analyze all outbound HTTP requests made by WordPress core, plugins, and themes.
+Log outbound HTTP requests from WordPress plugins, themes, and core.
 
 == Description ==
 

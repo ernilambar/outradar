@@ -21,18 +21,23 @@ msgstr ""
 msgid "OutPulse"
 msgstr ""
 
-#. Description of the plugin
+#. Plugin URI of the plugin
 #: outpulse.php:4
-msgid "Intercept, log, and analyze all outbound HTTP requests made by WordPress core, plugins, and themes."
+msgid "https://github.com/ernilambar/outpulse"
+msgstr ""
+
+#. Description of the plugin
+#: outpulse.php:5
+msgid "Log outbound HTTP requests."
 msgstr ""
 
 #. Author of the plugin
-#: outpulse.php:6
+#: outpulse.php:7
 msgid "Nilambar Sharma"
 msgstr ""
 
 #. Author URI of the plugin
-#: outpulse.php:7
+#: outpulse.php:8
 msgid "https://github.com/ernilambar"
 msgstr ""
 

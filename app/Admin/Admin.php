@@ -43,8 +43,8 @@ class Admin {
 	 */
 	public function register_menu(): void {
 		add_menu_page(
-			__( 'OutPulse', 'outpulse' ),
-			__( 'OutPulse', 'outpulse' ),
+			_x( 'OutPulse', 'page title', 'outpulse' ),
+			_x( 'OutPulse', 'menu title', 'outpulse' ),
 			'manage_options',
 			'outpulse',
 			array( LogPage::class, 'render' ),

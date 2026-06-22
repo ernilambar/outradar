@@ -1,7 +1,7 @@
 {
 	"name": "outpulse",
 	"version": "1.0.0",
-	"description": "Intercept, log, and analyze all outbound HTTP requests made by WordPress core, plugins, and themes.",
+	"description": "Log outbound HTTP requests.",
 	"keywords": [
 		"wordpress",
 		"wordpress-plugin"
