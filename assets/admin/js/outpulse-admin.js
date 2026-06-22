@@ -1,12 +1,12 @@
-/* OutWatch Admin JS */
+/* OutPulse Admin JS */
 ( function () {
 	'use strict';
 
 	// ── Row expand ───────────────────────────────────────────────
-	document.querySelectorAll( '.outwatch-row-toggle' ).forEach( function ( btn ) {
+	document.querySelectorAll( '.outpulse-row-toggle' ).forEach( function ( btn ) {
 		btn.addEventListener( 'click', function () {
 			var id  = btn.getAttribute( 'data-id' );
-			var row = document.getElementById( 'outwatch-detail-' + id );
+			var row = document.getElementById( 'outpulse-detail-' + id );
 			if ( row ) {
 				row.style.display = 'none' === row.style.display ? '' : 'none';
 			}
@@ -14,23 +14,23 @@
 	} );
 
 	// ── Select all checkbox ──────────────────────────────────────
-	var selectAll = document.getElementById( 'outwatch-select-all' );
+	var selectAll = document.getElementById( 'outpulse-select-all' );
 	if ( selectAll ) {
 		selectAll.addEventListener( 'change', function () {
-			document.querySelectorAll( '.outwatch-row-check' ).forEach( function ( cb ) {
+			document.querySelectorAll( '.outpulse-row-check' ).forEach( function ( cb ) {
 				cb.checked = selectAll.checked;
 			} );
 		} );
 	}
 
 	// ── Bulk delete confirmation ─────────────────────────────────
-	var bulkSubmit = document.getElementById( 'outwatch-bulk-submit' );
+	var bulkSubmit = document.getElementById( 'outpulse-bulk-submit' );
 	if ( bulkSubmit ) {
 		bulkSubmit.addEventListener( 'click', function ( e ) {
 			var select = bulkSubmit.closest( 'form' ).querySelector( '[name="bulk_action"]' );
 			if ( select && 'delete' === select.value ) {
-				var checked = document.querySelectorAll( '.outwatch-row-check:checked' ).length;
-				if ( checked > 0 && ! window.confirm( ( window.outwatchData && window.outwatchData.confirmDelete ) || 'Delete selected items?' ) ) {
+				var checked = document.querySelectorAll( '.outpulse-row-check:checked' ).length;
+				if ( checked > 0 && ! window.confirm( ( window.outpulseData && window.outpulseData.confirmDelete ) || 'Delete selected items?' ) ) {
 					e.preventDefault();
 				}
 			}
@@ -38,19 +38,19 @@
 	}
 
 	// ── Purge all confirmation ───────────────────────────────────
-	var purgeBtn = document.getElementById( 'outwatch-purge-btn' );
+	var purgeBtn = document.getElementById( 'outpulse-purge-btn' );
 	if ( purgeBtn ) {
 		purgeBtn.addEventListener( 'click', function ( e ) {
-			if ( ! window.confirm( ( window.outwatchData && window.outwatchData.confirmPurge ) || 'Delete all logs?' ) ) {
+			if ( ! window.confirm( ( window.outpulseData && window.outpulseData.confirmPurge ) || 'Delete all logs?' ) ) {
 				e.preventDefault();
 			}
 		} );
 	}
 
 	// ── 7-day bar chart ──────────────────────────────────────────
-	var canvas = document.getElementById( 'outwatch-chart' );
-	if ( canvas && window.outwatchData && window.outwatchData.chartData ) {
-		drawBarChart( canvas, window.outwatchData.chartData );
+	var canvas = document.getElementById( 'outpulse-chart' );
+	if ( canvas && window.outpulseData && window.outpulseData.chartData ) {
+		drawBarChart( canvas, window.outpulseData.chartData );
 	}
 
 	function drawBarChart( canvas, data ) {

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="OutWatch">
-	<description>Coding standards for the OutWatch plugin.</description>
+<ruleset name="OutPulse">
+	<description>Coding standards for the OutPulse plugin.</description>
 
 	<!-- What to scan -->
 	<file>.</file>
@@ -46,7 +46,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="outwatch"/>
+				<element value="outpulse"/>
 			</property>
 		</properties>
 	</rule>

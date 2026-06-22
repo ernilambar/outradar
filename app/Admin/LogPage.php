@@ -2,12 +2,12 @@
 /**
  * LogPage.
  *
- * @package Nilambar\Outwatch
+ * @package Nilambar\Outpulse
  */
 
-namespace Nilambar\Outwatch\Admin;
+namespace Nilambar\Outpulse\Admin;
 
-use Nilambar\Outwatch\Core\DB;
+use Nilambar\Outpulse\Core\DB;
 
 /**
  * Renders the paginated, filterable Request Log admin page.
@@ -25,7 +25,7 @@ class LogPage {
 	 */
 	public static function render(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'outwatch' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'outpulse' ) );
 		}
 
 		self::handle_bulk_action();
@@ -39,21 +39,21 @@ class LogPage {
 		$per_page    = 50;
 		$total_pages = (int) ceil( $total / $per_page );
 		?>
-		<div class="wrap outwatch-wrap">
-			<h1><?php esc_html_e( 'Request Log', 'outwatch' ); ?></h1>
+		<div class="wrap outpulse-wrap">
+			<h1><?php esc_html_e( 'Request Log', 'outpulse' ); ?></h1>
 
-			<form method="get" class="outwatch-filter-form">
-				<input type="hidden" name="page" value="outwatch-log" />
+			<form method="get" class="outpulse-filter-form">
+				<input type="hidden" name="page" value="outpulse-log" />
 
 				<input
 					type="text"
 					name="domain"
-					placeholder="<?php esc_attr_e( 'Domain', 'outwatch' ); ?>"
+					placeholder="<?php esc_attr_e( 'Domain', 'outpulse' ); ?>"
 					value="<?php echo esc_attr( $filters['domain'] ?? '' ); ?>"
 				/>
 
 				<select name="plugin">
-					<option value=""><?php esc_html_e( 'All sources', 'outwatch' ); ?></option>
+					<option value=""><?php esc_html_e( 'All sources', 'outpulse' ); ?></option>
 					<?php foreach ( $plugins as $plugin ) : ?>
 					<option value="<?php echo esc_attr( $plugin ); ?>" <?php selected( $filters['plugin'] ?? '', $plugin ); ?>>
 						<?php echo esc_html( $plugin ); ?>
@@ -62,7 +62,7 @@ class LogPage {
 				</select>
 
 				<select name="method">
-					<option value=""><?php esc_html_e( 'All methods', 'outwatch' ); ?></option>
+					<option value=""><?php esc_html_e( 'All methods', 'outpulse' ); ?></option>
 					<?php foreach ( array( 'GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD' ) as $method ) : ?>
 					<option value="<?php echo esc_attr( $method ); ?>" <?php selected( $filters['method'] ?? '', $method ); ?>>
 						<?php echo esc_html( $method ); ?>
@@ -71,7 +71,7 @@ class LogPage {
 				</select>
 
 				<select name="context">
-					<option value=""><?php esc_html_e( 'All contexts', 'outwatch' ); ?></option>
+					<option value=""><?php esc_html_e( 'All contexts', 'outpulse' ); ?></option>
 					<?php foreach ( array( 'frontend', 'admin', 'cron', 'cli' ) as $ctx ) : ?>
 					<option value="<?php echo esc_attr( $ctx ); ?>" <?php selected( $filters['context'] ?? '', $ctx ); ?>>
 						<?php echo esc_html( $ctx ); ?>
@@ -82,72 +82,72 @@ class LogPage {
 				<input
 					type="date"
 					name="date_from"
-					title="<?php esc_attr_e( 'From', 'outwatch' ); ?>"
+					title="<?php esc_attr_e( 'From', 'outpulse' ); ?>"
 					value="<?php echo esc_attr( $filters['date_from'] ?? '' ); ?>"
 				/>
 
 				<input
 					type="date"
 					name="date_to"
-					title="<?php esc_attr_e( 'To', 'outwatch' ); ?>"
+					title="<?php esc_attr_e( 'To', 'outpulse' ); ?>"
 					value="<?php echo esc_attr( $filters['date_to'] ?? '' ); ?>"
 				/>
 
-				<button type="submit" class="button"><?php esc_html_e( 'Filter', 'outwatch' ); ?></button>
-				<a href="<?php echo esc_url( admin_url( 'admin.php?page=outwatch-log' ) ); ?>" class="button"><?php esc_html_e( 'Reset', 'outwatch' ); ?></a>
+				<button type="submit" class="button"><?php esc_html_e( 'Filter', 'outpulse' ); ?></button>
+				<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse-log' ) ); ?>" class="button"><?php esc_html_e( 'Reset', 'outpulse' ); ?></a>
 			</form>
 
-			<form method="post" id="outwatch-log-form">
-				<?php wp_nonce_field( 'outwatch_bulk', 'outwatch_nonce' ); ?>
+			<form method="post" id="outpulse-log-form">
+				<?php wp_nonce_field( 'outpulse_bulk', 'outpulse_nonce' ); ?>
 
 				<div class="tablenav top">
 					<div class="alignleft actions bulkactions">
 						<select name="bulk_action">
-							<option value=""><?php esc_html_e( 'Bulk actions', 'outwatch' ); ?></option>
-							<option value="delete"><?php esc_html_e( 'Delete selected', 'outwatch' ); ?></option>
+							<option value=""><?php esc_html_e( 'Bulk actions', 'outpulse' ); ?></option>
+							<option value="delete"><?php esc_html_e( 'Delete selected', 'outpulse' ); ?></option>
 						</select>
-						<button type="submit" class="button action" id="outwatch-bulk-submit"><?php esc_html_e( 'Apply', 'outwatch' ); ?></button>
+						<button type="submit" class="button action" id="outpulse-bulk-submit"><?php esc_html_e( 'Apply', 'outpulse' ); ?></button>
 					</div>
 
 					<div class="alignleft actions">
-						<a href="<?php echo esc_url( self::export_url( $filters, 'csv' ) ); ?>" class="button"><?php esc_html_e( 'Export CSV', 'outwatch' ); ?></a>
-						<a href="<?php echo esc_url( self::export_url( $filters, 'json' ) ); ?>" class="button"><?php esc_html_e( 'Export JSON', 'outwatch' ); ?></a>
+						<a href="<?php echo esc_url( self::export_url( $filters, 'csv' ) ); ?>" class="button"><?php esc_html_e( 'Export CSV', 'outpulse' ); ?></a>
+						<a href="<?php echo esc_url( self::export_url( $filters, 'json' ) ); ?>" class="button"><?php esc_html_e( 'Export JSON', 'outpulse' ); ?></a>
 					</div>
 
 					<?php self::render_pagination( $page, $total_pages, $total, $filters ); ?>
 				</div>
 
-				<table class="wp-list-table widefat fixed striped outwatch-log-table">
+				<table class="wp-list-table widefat fixed striped outpulse-log-table">
 					<thead>
 						<tr>
-							<td class="check-column"><input type="checkbox" id="outwatch-select-all" /></td>
-							<th><?php esc_html_e( 'Timestamp', 'outwatch' ); ?></th>
-							<th><?php esc_html_e( 'Domain', 'outwatch' ); ?></th>
-							<th><?php esc_html_e( 'Method', 'outwatch' ); ?></th>
-							<th><?php esc_html_e( 'Status', 'outwatch' ); ?></th>
-							<th><?php esc_html_e( 'Source', 'outwatch' ); ?></th>
-							<th><?php esc_html_e( 'Context', 'outwatch' ); ?></th>
-							<th><?php esc_html_e( 'Flags', 'outwatch' ); ?></th>
+							<td class="check-column"><input type="checkbox" id="outpulse-select-all" /></td>
+							<th><?php esc_html_e( 'Timestamp', 'outpulse' ); ?></th>
+							<th><?php esc_html_e( 'Domain', 'outpulse' ); ?></th>
+							<th><?php esc_html_e( 'Method', 'outpulse' ); ?></th>
+							<th><?php esc_html_e( 'Status', 'outpulse' ); ?></th>
+							<th><?php esc_html_e( 'Source', 'outpulse' ); ?></th>
+							<th><?php esc_html_e( 'Context', 'outpulse' ); ?></th>
+							<th><?php esc_html_e( 'Flags', 'outpulse' ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php if ( empty( $rows ) ) : ?>
 						<tr>
-							<td colspan="8"><?php esc_html_e( 'No requests found.', 'outwatch' ); ?></td>
+							<td colspan="8"><?php esc_html_e( 'No requests found.', 'outpulse' ); ?></td>
 						</tr>
 						<?php else : ?>
 							<?php foreach ( $rows as $row ) : ?>
-						<tr class="outwatch-log-row">
+						<tr class="outpulse-log-row">
 							<td class="check-column">
-								<input type="checkbox" name="row_ids[]" value="<?php echo esc_attr( (string) $row->id ); ?>" class="outwatch-row-check" />
+								<input type="checkbox" name="row_ids[]" value="<?php echo esc_attr( (string) $row->id ); ?>" class="outpulse-row-check" />
 							</td>
 							<td>
-								<button type="button" class="outwatch-row-toggle button-link" data-id="<?php echo esc_attr( (string) $row->id ); ?>">
+								<button type="button" class="outpulse-row-toggle button-link" data-id="<?php echo esc_attr( (string) $row->id ); ?>">
 									<?php echo esc_html( (string) $row->timestamp ); ?>
 								</button>
 							</td>
 							<td>
-								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outwatch-log&domain=' . rawurlencode( (string) $row->domain ) ) ); ?>">
+								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse-log&domain=' . rawurlencode( (string) $row->domain ) ) ); ?>">
 									<?php echo esc_html( (string) $row->domain ); ?>
 								</a>
 							</td>
@@ -155,35 +155,35 @@ class LogPage {
 							<td>
 								<?php
 								$code  = (int) $row->response_code;
-								$class = $code >= 400 ? 'outwatch-status-error' : ( $code >= 300 ? 'outwatch-status-redirect' : 'outwatch-status-ok' );
+								$class = $code >= 400 ? 'outpulse-status-error' : ( $code >= 300 ? 'outpulse-status-redirect' : 'outpulse-status-ok' );
 								?>
-								<span class="outwatch-status <?php echo esc_attr( $class ); ?>"><?php echo esc_html( (string) $row->response_code ); ?></span>
+								<span class="outpulse-status <?php echo esc_attr( $class ); ?>"><?php echo esc_html( (string) $row->response_code ); ?></span>
 							</td>
 							<td>
 								<?php if ( ! empty( $row->source_plugin ) ) : ?>
-								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outwatch-log&plugin=' . rawurlencode( (string) $row->source_plugin ) ) ); ?>">
+								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse-log&plugin=' . rawurlencode( (string) $row->source_plugin ) ) ); ?>">
 									<?php echo esc_html( (string) $row->source_plugin ); ?>
 								</a>
 								<?php else : ?>
 								&mdash;
 								<?php endif; ?>
 							</td>
-							<td><span class="outwatch-context outwatch-context--<?php echo esc_attr( (string) $row->context ); ?>"><?php echo esc_html( (string) $row->context ); ?></span></td>
+							<td><span class="outpulse-context outpulse-context--<?php echo esc_attr( (string) $row->context ); ?>"><?php echo esc_html( (string) $row->context ); ?></span></td>
 							<td>
 								<?php if ( ! empty( $row->is_recurring ) ) : ?>
-									<span class="outwatch-flag outwatch-flag--recurring" title="<?php esc_attr_e( 'Recurring request', 'outwatch' ); ?>">&#8635;</span>
+									<span class="outpulse-flag outpulse-flag--recurring" title="<?php esc_attr_e( 'Recurring request', 'outpulse' ); ?>">&#8635;</span>
 								<?php endif; ?>
 								<?php if ( ! empty( $row->duplicate_of ) ) : ?>
-									<span class="outwatch-flag outwatch-flag--duplicate" title="<?php esc_attr_e( 'Duplicate request', 'outwatch' ); ?>">&#8645;</span>
+									<span class="outpulse-flag outpulse-flag--duplicate" title="<?php esc_attr_e( 'Duplicate request', 'outpulse' ); ?>">&#8645;</span>
 								<?php endif; ?>
 							</td>
 						</tr>
-						<tr class="outwatch-detail-row" id="outwatch-detail-<?php echo esc_attr( (string) $row->id ); ?>" style="display:none;">
+						<tr class="outpulse-detail-row" id="outpulse-detail-<?php echo esc_attr( (string) $row->id ); ?>" style="display:none;">
 							<td colspan="8">
-								<div class="outwatch-detail-inner">
-									<p><strong><?php esc_html_e( 'URL:', 'outwatch' ); ?></strong> <code><?php echo esc_html( (string) $row->url ); ?></code></p>
+								<div class="outpulse-detail-inner">
+									<p><strong><?php esc_html_e( 'URL:', 'outpulse' ); ?></strong> <code><?php echo esc_html( (string) $row->url ); ?></code></p>
 									<p>
-										<strong><?php esc_html_e( 'Source:', 'outwatch' ); ?></strong>
+										<strong><?php esc_html_e( 'Source:', 'outpulse' ); ?></strong>
 										<?php echo esc_html( (string) $row->source_file ); ?>
 										<?php if ( ! empty( $row->source_line ) ) : ?>
 											<?php echo esc_html( sprintf( ':%d', (int) $row->source_line ) ); ?>
@@ -191,18 +191,18 @@ class LogPage {
 									</p>
 									<?php if ( ! empty( $row->request_headers ) ) : ?>
 									<details>
-										<summary><?php esc_html_e( 'Request Headers', 'outwatch' ); ?></summary>
+										<summary><?php esc_html_e( 'Request Headers', 'outpulse' ); ?></summary>
 										<pre><?php echo esc_html( (string) $row->request_headers ); ?></pre>
 									</details>
 									<?php endif; ?>
 									<?php if ( ! empty( $row->request_body ) ) : ?>
 									<details>
-										<summary><?php esc_html_e( 'Request Body', 'outwatch' ); ?></summary>
+										<summary><?php esc_html_e( 'Request Body', 'outpulse' ); ?></summary>
 										<pre><?php echo esc_html( (string) $row->request_body ); ?></pre>
 									</details>
 									<?php endif; ?>
 									<?php if ( ! empty( $row->cron_hook ) ) : ?>
-									<p><strong><?php esc_html_e( 'Cron Hook:', 'outwatch' ); ?></strong> <code><?php echo esc_html( (string) $row->cron_hook ); ?></code></p>
+									<p><strong><?php esc_html_e( 'Cron Hook:', 'outpulse' ); ?></strong> <code><?php echo esc_html( (string) $row->cron_hook ); ?></code></p>
 									<?php endif; ?>
 								</div>
 							</td>
@@ -217,7 +217,7 @@ class LogPage {
 				</div>
 
 			</form>
-		</div><!-- .outwatch-wrap -->
+		</div><!-- .outpulse-wrap -->
 		<?php
 	}
 
@@ -229,12 +229,12 @@ class LogPage {
 	 * @return void
 	 */
 	private static function handle_bulk_action(): void {
-		if ( empty( $_POST['outwatch_nonce'] ) ) {
+		if ( empty( $_POST['outpulse_nonce'] ) ) {
 			return;
 		}
 
-		if ( ! wp_verify_nonce( sanitize_key( $_POST['outwatch_nonce'] ), 'outwatch_bulk' ) ) {
-			wp_die( esc_html__( 'Security check failed.', 'outwatch' ) );
+		if ( ! wp_verify_nonce( sanitize_key( $_POST['outpulse_nonce'] ), 'outpulse_bulk' ) ) {
+			wp_die( esc_html__( 'Security check failed.', 'outpulse' ) );
 		}
 
 		if ( ! current_user_can( 'manage_options' ) ) {
@@ -252,7 +252,7 @@ class LogPage {
 			DB::delete_by_ids( $ids );
 		}
 
-		wp_safe_redirect( admin_url( 'admin.php?page=outwatch-log' ) );
+		wp_safe_redirect( admin_url( 'admin.php?page=outpulse-log' ) );
 		exit;
 	}
 
@@ -289,9 +289,9 @@ class LogPage {
 		$params = array_merge(
 			array_filter( $filters, static fn( $v ) => '' !== $v && false !== $v ),
 			array(
-				'action'   => 'outwatch_export',
+				'action'   => 'outpulse_export',
 				'format'   => $format,
-				'_wpnonce' => wp_create_nonce( 'outwatch_export' ),
+				'_wpnonce' => wp_create_nonce( 'outpulse_export' ),
 			)
 		);
 
@@ -316,7 +316,7 @@ class LogPage {
 
 		$base_url            = admin_url( 'admin.php' );
 		$base_params         = array_filter( $filters, static fn( $v ) => '' !== $v && false !== $v );
-		$base_params['page'] = 'outwatch-log';
+		$base_params['page'] = 'outpulse-log';
 
 		echo '<div class="tablenav-pages">';
 		printf(
@@ -324,7 +324,7 @@ class LogPage {
 			esc_html(
 				sprintf(
 					/* translators: %d: number of items */
-					_n( '%d item', '%d items', $total_rows, 'outwatch' ),
+					_n( '%d item', '%d items', $total_rows, 'outpulse' ),
 					number_format_i18n( $total_rows )
 				)
 			)

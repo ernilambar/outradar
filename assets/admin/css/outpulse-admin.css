@@ -1,19 +1,19 @@
-/* OutWatch Admin Styles */
+/* OutPulse Admin Styles */
 
-.outwatch-wrap h1 {
+.outpulse-wrap h1 {
 	margin-bottom: 16px;
 }
 
 /* ── Widgets ─────────────────────────────────────────────── */
 
-.outwatch-widgets {
+.outpulse-widgets {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 16px;
 	margin-bottom: 24px;
 }
 
-.outwatch-widget {
+.outpulse-widget {
 	background: #fff;
 	border: 1px solid #c3c4c7;
 	border-radius: 4px;
@@ -22,7 +22,7 @@
 	flex: 1 1 200px;
 }
 
-.outwatch-widget h3 {
+.outpulse-widget h3 {
 	margin: 0 0 12px;
 	font-size: 13px;
 	text-transform: uppercase;
@@ -30,47 +30,47 @@
 	letter-spacing: 0.04em;
 }
 
-.outwatch-stat-group {
+.outpulse-stat-group {
 	display: flex;
 	gap: 24px;
 }
 
-.outwatch-stat {
+.outpulse-stat {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-.outwatch-stat-number {
+.outpulse-stat-number {
 	font-size: 28px;
 	font-weight: 600;
 	line-height: 1.1;
 	color: #1d2327;
 }
 
-.outwatch-stat-label {
+.outpulse-stat-label {
 	font-size: 11px;
 	color: #646970;
 	margin-top: 2px;
 }
 
-.outwatch-kv-table {
+.outpulse-kv-table {
 	border-collapse: collapse;
 	width: 100%;
 }
 
-.outwatch-kv-table td {
+.outpulse-kv-table td {
 	padding: 4px 0;
 	font-size: 13px;
 }
 
-.outwatch-kv-table td:last-child {
+.outpulse-kv-table td:last-child {
 	text-align: right;
 }
 
 /* ── Chart ───────────────────────────────────────────────── */
 
-.outwatch-chart-section {
+.outpulse-chart-section {
 	background: #fff;
 	border: 1px solid #c3c4c7;
 	border-radius: 4px;
@@ -78,19 +78,19 @@
 	margin-bottom: 24px;
 }
 
-.outwatch-chart-section h2 {
+.outpulse-chart-section h2 {
 	margin-top: 0;
 	font-size: 14px;
 }
 
-#outwatch-chart {
+#outpulse-chart {
 	display: block;
 	max-width: 100%;
 }
 
 /* ── Filter form ─────────────────────────────────────────── */
 
-.outwatch-filter-form {
+.outpulse-filter-form {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;
@@ -98,15 +98,15 @@
 	margin-bottom: 12px;
 }
 
-.outwatch-filter-form input[type="text"],
-.outwatch-filter-form input[type="date"],
-.outwatch-filter-form select {
+.outpulse-filter-form input[type="text"],
+.outpulse-filter-form input[type="date"],
+.outpulse-filter-form select {
 	height: 30px;
 	line-height: 28px;
 	font-size: 13px;
 }
 
-.outwatch-checkbox-label {
+.outpulse-checkbox-label {
 	display: flex;
 	align-items: center;
 	gap: 4px;
@@ -115,12 +115,12 @@
 
 /* ── Log table ───────────────────────────────────────────── */
 
-.outwatch-log-table td,
-.outwatch-log-table th {
+.outpulse-log-table td,
+.outpulse-log-table th {
 	vertical-align: middle;
 }
 
-.outwatch-row-toggle {
+.outpulse-row-toggle {
 	background: none;
 	border: none;
 	padding: 0;
@@ -130,21 +130,21 @@
 	font-size: 13px;
 }
 
-.outwatch-row-toggle:hover {
+.outpulse-row-toggle:hover {
 	text-decoration: underline;
 }
 
-.outwatch-detail-row td {
+.outpulse-detail-row td {
 	background: #f6f7f7;
 	padding: 12px 16px;
 }
 
-.outwatch-detail-inner p {
+.outpulse-detail-inner p {
 	margin: 4px 0;
 	font-size: 13px;
 }
 
-.outwatch-detail-inner pre {
+.outpulse-detail-inner pre {
 	background: #fff;
 	border: 1px solid #dcdcde;
 	padding: 8px;
@@ -157,20 +157,20 @@
 	margin: 4px 0;
 }
 
-.outwatch-detail-inner details summary {
+.outpulse-detail-inner details summary {
 	cursor: pointer;
 	font-weight: 600;
 	font-size: 13px;
 	margin: 6px 0 2px;
 }
 
-.outwatch-reviewed td {
+.outpulse-reviewed td {
 	opacity: 0.6;
 }
 
 /* ── Status badges ───────────────────────────────────────── */
 
-.outwatch-status {
+.outpulse-status {
 	display: inline-block;
 	padding: 1px 6px;
 	border-radius: 3px;
@@ -178,11 +178,11 @@
 	font-weight: 600;
 }
 
-.outwatch-status-ok { background: #d1e7dd; color: #0a3622; }
-.outwatch-status-redirect { background: #fff3cd; color: #664d03; }
-.outwatch-status-error { background: #f8d7da; color: #58151c; }
+.outpulse-status-ok { background: #d1e7dd; color: #0a3622; }
+.outpulse-status-redirect { background: #fff3cd; color: #664d03; }
+.outpulse-status-error { background: #f8d7da; color: #58151c; }
 
-.outwatch-context {
+.outpulse-context {
 	display: inline-block;
 	padding: 1px 6px;
 	border-radius: 3px;
@@ -191,42 +191,42 @@
 	color: #1d2327;
 }
 
-.outwatch-context--admin    { background: #dce8f5; color: #04347c; }
-.outwatch-context--cron     { background: #e9d8f5; color: #3c0063; }
-.outwatch-context--cli      { background: #d9f5e3; color: #014421; }
-.outwatch-context--frontend { background: #f0f0f1; color: #1d2327; }
+.outpulse-context--admin    { background: #dce8f5; color: #04347c; }
+.outpulse-context--cron     { background: #e9d8f5; color: #3c0063; }
+.outpulse-context--cli      { background: #d9f5e3; color: #014421; }
+.outpulse-context--frontend { background: #f0f0f1; color: #1d2327; }
 
 /* ── Flag icons ──────────────────────────────────────────── */
 
-.outwatch-flag {
+.outpulse-flag {
 	font-size: 16px;
 	margin-right: 2px;
 	cursor: default;
 }
 
-.outwatch-flag--risk      { color: #d63638; }
-.outwatch-flag--recurring { color: #dba617; }
-.outwatch-flag--duplicate { color: #646970; }
+.outpulse-flag--risk      { color: #d63638; }
+.outpulse-flag--recurring { color: #dba617; }
+.outpulse-flag--duplicate { color: #646970; }
 
-.outwatch-risk {
+.outpulse-risk {
 	color: #d63638;
 	font-weight: 600;
 }
 
 /* ── Domain table ────────────────────────────────────────── */
 
-.outwatch-domain-unknown td:first-child {
+.outpulse-domain-unknown td:first-child {
 	font-weight: 600;
 }
 
-.outwatch-truncate {
+.outpulse-truncate {
 	max-width: 240px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
 
-.outwatch-badge {
+.outpulse-badge {
 	display: inline-block;
 	width: 16px;
 	height: 16px;
@@ -239,7 +239,7 @@
 	vertical-align: middle;
 }
 
-.outwatch-badge--warn {
+.outpulse-badge--warn {
 	background: #dba617;
 	color: #fff;
 }

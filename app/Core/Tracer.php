@@ -2,10 +2,10 @@
 /**
  * Tracer.
  *
- * @package Nilambar\Outwatch
+ * @package Nilambar\Outpulse
  */
 
-namespace Nilambar\Outwatch\Core;
+namespace Nilambar\Outpulse\Core;
 
 /**
  * Attributes an HTTP request to its source plugin, theme, or WordPress core via stack trace.
@@ -15,7 +15,7 @@ namespace Nilambar\Outwatch\Core;
 class Tracer {
 
 	/**
-	 * Walk the call stack and return the first non-OutWatch, non-core frame.
+	 * Walk the call stack and return the first non-OutPulse, non-core frame.
 	 *
 	 * @since 1.0.0
 	 *
@@ -28,7 +28,7 @@ class Tracer {
 		$mu_plugins_dir = wp_normalize_path( WPMU_PLUGIN_DIR );
 		$themes_dir     = wp_normalize_path( get_theme_root() );
 		$wp_includes    = wp_normalize_path( ABSPATH . 'wp-includes/' );
-		$outwatch_dir   = wp_normalize_path( OUTWATCH_DIR );
+		$outpulse_dir   = wp_normalize_path( OUTPULSE_DIR );
 
 		$first_core_frame = null;
 
@@ -39,7 +39,7 @@ class Tracer {
 
 			$file = wp_normalize_path( $frame['file'] );
 
-			if ( str_starts_with( $file, $outwatch_dir ) ) {
+			if ( str_starts_with( $file, $outpulse_dir ) ) {
 				continue;
 			}
 
