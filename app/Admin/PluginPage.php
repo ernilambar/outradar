@@ -2,12 +2,12 @@
 /**
  * PluginPage.
  *
- * @package Nilambar\Outwatch
+ * @package Nilambar\Outpulse
  */
 
-namespace Nilambar\Outwatch\Admin;
+namespace Nilambar\Outpulse\Admin;
 
-use Nilambar\Outwatch\Core\DB;
+use Nilambar\Outpulse\Core\DB;
 
 /**
  * Renders the per-plugin breakdown admin page.
@@ -25,31 +25,31 @@ class PluginPage {
 	 */
 	public static function render(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'outwatch' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'outpulse' ) );
 		}
 
 		$rows = DB::get_plugin_summary();
 		?>
-		<div class="wrap outwatch-wrap">
-			<h1><?php esc_html_e( 'Source Activity', 'outwatch' ); ?></h1>
+		<div class="wrap outpulse-wrap">
+			<h1><?php esc_html_e( 'Source Activity', 'outpulse' ); ?></h1>
 
 			<?php if ( empty( $rows ) ) : ?>
-				<p><?php esc_html_e( 'No source data yet.', 'outwatch' ); ?></p>
+				<p><?php esc_html_e( 'No source data yet.', 'outpulse' ); ?></p>
 			<?php else : ?>
 
 			<table class="wp-list-table widefat fixed striped">
 				<thead>
 					<tr>
-						<th><?php esc_html_e( 'Source', 'outwatch' ); ?></th>
-						<th><?php esc_html_e( 'Total Requests', 'outwatch' ); ?></th>
-						<th><?php esc_html_e( 'Unique Domains', 'outwatch' ); ?></th>
+						<th><?php esc_html_e( 'Source', 'outpulse' ); ?></th>
+						<th><?php esc_html_e( 'Total Requests', 'outpulse' ); ?></th>
+						<th><?php esc_html_e( 'Unique Domains', 'outpulse' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php foreach ( $rows as $row ) : ?>
 					<tr>
 						<td>
-							<a href="<?php echo esc_url( admin_url( 'admin.php?page=outwatch-log&plugin=' . rawurlencode( (string) $row->source_plugin ) ) ); ?>">
+							<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse-log&plugin=' . rawurlencode( (string) $row->source_plugin ) ) ); ?>">
 								<?php echo esc_html( (string) $row->source_plugin ); ?>
 							</a>
 						</td>
@@ -61,7 +61,7 @@ class PluginPage {
 			</table>
 
 			<?php endif; ?>
-		</div><!-- .outwatch-wrap -->
+		</div><!-- .outpulse-wrap -->
 		<?php
 	}
 }

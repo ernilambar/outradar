@@ -2,10 +2,10 @@
 /**
  * Interceptor.
  *
- * @package Nilambar\Outwatch
+ * @package Nilambar\Outpulse
  */
 
-namespace Nilambar\Outwatch\Core;
+namespace Nilambar\Outpulse\Core;
 
 use WP_Error;
 

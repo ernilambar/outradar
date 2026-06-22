@@ -2,12 +2,12 @@
 /**
  * Exporter.
  *
- * @package Nilambar\Outwatch
+ * @package Nilambar\Outpulse
  */
 
-namespace Nilambar\Outwatch\Admin;
+namespace Nilambar\Outpulse\Admin;
 
-use Nilambar\Outwatch\Core\DB;
+use Nilambar\Outpulse\Core\DB;
 
 /**
  * Handles CSV and JSON export of log data via admin-post.php.
@@ -17,7 +17,7 @@ use Nilambar\Outwatch\Core\DB;
 class Exporter {
 
 	/**
-	 * Handle the outwatch_export admin-post action.
+	 * Handle the outpulse_export admin-post action.
 	 *
 	 * @since 1.2.0
 	 *
@@ -25,11 +25,11 @@ class Exporter {
 	 */
 	public static function handle(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'outwatch' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'outpulse' ) );
 		}
 
-		if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_REQUEST['_wpnonce'] ), 'outwatch_export' ) ) {
-			wp_die( esc_html__( 'Security check failed.', 'outwatch' ) );
+		if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_REQUEST['_wpnonce'] ), 'outpulse_export' ) ) {
+			wp_die( esc_html__( 'Security check failed.', 'outpulse' ) );
 		}
 
 		// phpcs:disable WordPress.Security.NonceVerification.Recommended
@@ -62,7 +62,7 @@ class Exporter {
 	 * @return void
 	 */
 	private static function output_csv( array $rows ): void {
-		$filename = 'outwatch-export-' . gmdate( 'Y-m-d' ) . '.csv';
+		$filename = 'outpulse-export-' . gmdate( 'Y-m-d' ) . '.csv';
 
 		header( 'Content-Type: text/csv; charset=UTF-8' );
 		header( 'Content-Disposition: attachment; filename="' . $filename . '"' );
@@ -117,7 +117,7 @@ class Exporter {
 	 * @return void
 	 */
 	private static function output_json( array $rows ): void {
-		$filename = 'outwatch-export-' . gmdate( 'Y-m-d' ) . '.json';
+		$filename = 'outpulse-export-' . gmdate( 'Y-m-d' ) . '.json';
 
 		header( 'Content-Type: application/json; charset=UTF-8' );
 		header( 'Content-Disposition: attachment; filename="' . $filename . '"' );

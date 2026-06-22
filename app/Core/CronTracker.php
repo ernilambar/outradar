@@ -2,10 +2,10 @@
 /**
  * CronTracker.
  *
- * @package Nilambar\Outwatch
+ * @package Nilambar\Outpulse
  */
 
-namespace Nilambar\Outwatch\Core;
+namespace Nilambar\Outpulse\Core;
 
 /**
  * Identifies the scheduled event hook that triggered the current HTTP request.

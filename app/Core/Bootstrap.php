@@ -2,12 +2,12 @@
 /**
  * Bootstrap.
  *
- * @package Nilambar\Outwatch
+ * @package Nilambar\Outpulse
  */
 
-namespace Nilambar\Outwatch\Core;
+namespace Nilambar\Outpulse\Core;
 
-use Nilambar\Outwatch\Admin\Admin;
+use Nilambar\Outpulse\Admin\Admin;
 
 /**
  * Plugin bootstrap class.
@@ -25,7 +25,7 @@ class Bootstrap {
 	 */
 	public function run(): void {
 		add_action( 'plugins_loaded', array( $this, 'boot' ) );
-		add_action( 'outwatch_daily_purge', array( $this, 'run_purge' ) );
+		add_action( 'outpulse_daily_purge', array( $this, 'run_purge' ) );
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Bootstrap {
 	 * @return void
 	 */
 	public function boot(): void {
-		if ( '1' === get_option( 'outwatch_logging_enabled', '1' ) ) {
+		if ( '1' === get_option( 'outpulse_logging_enabled', '1' ) ) {
 			Interceptor::init();
 		}
 
@@ -51,8 +51,8 @@ class Bootstrap {
 	 * @return void
 	 */
 	public static function activate(): void {
-		if ( ! wp_next_scheduled( 'outwatch_daily_purge' ) ) {
-			wp_schedule_event( time(), 'daily', 'outwatch_daily_purge' );
+		if ( ! wp_next_scheduled( 'outpulse_daily_purge' ) ) {
+			wp_schedule_event( time(), 'daily', 'outpulse_daily_purge' );
 		}
 	}
 
@@ -64,7 +64,7 @@ class Bootstrap {
 	 * @return void
 	 */
 	public static function deactivate(): void {
-		wp_clear_scheduled_hook( 'outwatch_daily_purge' );
+		wp_clear_scheduled_hook( 'outpulse_daily_purge' );
 	}
 
 	/**
@@ -75,7 +75,7 @@ class Bootstrap {
 	 * @return void
 	 */
 	public function run_purge(): void {
-		$days = (int) get_option( 'outwatch_retention_days', 30 );
+		$days = (int) get_option( 'outpulse_retention_days', 30 );
 
 		if ( $days > 0 ) {
 			DB::purge_old_logs( $days );
