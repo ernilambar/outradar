@@ -25,7 +25,7 @@ class SettingsPage {
 	 */
 	public static function render(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'outpulse' ) );
+			wp_die( esc_html__( 'You do not have permission.', 'outpulse' ) );
 		}
 
 		$saved  = false;
@@ -65,7 +65,7 @@ class SettingsPage {
 						<td>
 							<label>
 								<input type="checkbox" name="outpulse_logging_enabled" value="1" <?php checked( '1', $logging_enabled ); ?> />
-								<?php esc_html_e( 'Log all outbound HTTP requests', 'outpulse' ); ?>
+								<?php esc_html_e( 'Log outbound HTTP requests', 'outpulse' ); ?>
 							</label>
 						</td>
 					</tr>
@@ -88,7 +88,7 @@ class SettingsPage {
 								</option>
 								<?php endforeach; ?>
 							</select>
-							<p class="description"><?php esc_html_e( 'Logs older than this are deleted automatically each day.', 'outpulse' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Older logs are auto-deleted daily.', 'outpulse' ); ?></p>
 						</td>
 					</tr>
 
@@ -96,7 +96,7 @@ class SettingsPage {
 						<th scope="row"><?php esc_html_e( 'Exclude Sources', 'outpulse' ); ?></th>
 						<td>
 							<textarea name="outpulse_excluded_plugins" rows="6" class="large-text code"><?php echo esc_textarea( $excluded_plugins ); ?></textarea>
-							<p class="description"><?php esc_html_e( 'One source per line. Requests attributed to these sources will not be logged.', 'outpulse' ); ?></p>
+							<p class="description"><?php esc_html_e( 'One per line. Matching requests will not be logged.', 'outpulse' ); ?></p>
 						</td>
 					</tr>
 
@@ -112,7 +112,7 @@ class SettingsPage {
 			<h2><?php esc_html_e( 'Danger Zone', 'outpulse' ); ?></h2>
 			<form method="post">
 				<?php wp_nonce_field( 'outpulse_settings', 'outpulse_settings_nonce' ); ?>
-				<p><?php esc_html_e( 'Permanently delete all log entries. This cannot be undone.', 'outpulse' ); ?></p>
+				<p><?php esc_html_e( 'Permanently delete all logs. This cannot be undone.', 'outpulse' ); ?></p>
 				<p>
 					<button type="submit" name="purge_all" class="button button-secondary outpulse-purge-btn" id="outpulse-purge-btn">
 						<?php esc_html_e( 'Purge All Logs', 'outpulse' ); ?>

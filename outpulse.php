@@ -1,6 +1,7 @@
 <?php
 /**
  * Plugin Name:       OutPulse
+ * Plugin URI: https://github.com/ernilambar/outpulse
  * Description:       Intercept, log, and analyze all outbound HTTP requests made by WordPress core, plugins, and themes.
  * Version: 1.0.0
  * Author:            Nilambar Sharma

@@ -25,7 +25,7 @@ class Dashboard {
 	 */
 	public static function render(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'outpulse' ) );
+			wp_die( esc_html__( 'You do not have permission.', 'outpulse' ) );
 		}
 
 		$stats       = DB::get_summary();
@@ -47,7 +47,7 @@ class Dashboard {
 						</div>
 						<div class="outpulse-stat">
 							<span class="outpulse-stat-number"><?php echo esc_html( number_format_i18n( $stats['week'] ) ); ?></span>
-							<span class="outpulse-stat-label"><?php esc_html_e( '7 Days', 'outpulse' ); ?></span>
+							<span class="outpulse-stat-label"><?php esc_html_e( '7 days', 'outpulse' ); ?></span>
 						</div>
 						<div class="outpulse-stat">
 							<span class="outpulse-stat-number"><?php echo esc_html( number_format_i18n( $stats['total'] ) ); ?></span>
@@ -113,8 +113,8 @@ class Dashboard {
 				<div class="outpulse-chart-header">
 					<h2><?php esc_html_e( 'Requests by Context', 'outpulse' ); ?></h2>
 					<div class="outpulse-chart-controls">
-						<button class="button outpulse-range-btn active" data-range="7"><?php esc_html_e( '7 Days', 'outpulse' ); ?></button>
-						<button class="button outpulse-range-btn" data-range="30"><?php esc_html_e( '30 Days', 'outpulse' ); ?></button>
+						<button class="button outpulse-range-btn active" data-range="7"><?php esc_html_e( '7 days', 'outpulse' ); ?></button>
+						<button class="button outpulse-range-btn" data-range="30"><?php esc_html_e( '30 days', 'outpulse' ); ?></button>
 					</div>
 				</div>
 				<div class="outpulse-chart-legend">
@@ -129,7 +129,7 @@ class Dashboard {
 			<h2><?php esc_html_e( 'Domains', 'outpulse' ); ?></h2>
 
 			<?php if ( empty( $domain_rows ) ) : ?>
-				<p><?php esc_html_e( 'No domain data yet.', 'outpulse' ); ?></p>
+				<p><?php esc_html_e( 'No data yet.', 'outpulse' ); ?></p>
 			<?php else : ?>
 			<table class="wp-list-table widefat fixed striped outpulse-domain-table">
 				<thead>
@@ -165,7 +165,7 @@ class Dashboard {
 			<h2><?php esc_html_e( 'Sources', 'outpulse' ); ?></h2>
 
 			<?php if ( empty( $source_rows ) ) : ?>
-				<p><?php esc_html_e( 'No source data yet.', 'outpulse' ); ?></p>
+				<p><?php esc_html_e( 'No data yet.', 'outpulse' ); ?></p>
 			<?php else : ?>
 			<table class="wp-list-table widefat fixed striped">
 				<thead>

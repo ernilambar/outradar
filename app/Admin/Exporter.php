@@ -25,7 +25,7 @@ class Exporter {
 	 */
 	public static function handle(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'outpulse' ) );
+			wp_die( esc_html__( 'You do not have permission.', 'outpulse' ) );
 		}
 
 		if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_REQUEST['_wpnonce'] ), 'outpulse_export' ) ) {

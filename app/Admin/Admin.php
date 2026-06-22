@@ -15,6 +15,13 @@ namespace Nilambar\Outpulse\Admin;
 class Admin {
 
 	/**
+	 * Hook suffixes for OutPulse submenu pages.
+	 *
+	 * @var string[]
+	 */
+	private array $hooks = array();
+
+	/**
 	 * Wire up admin hooks.
 	 *
 	 * @since 1.2.0
@@ -46,8 +53,8 @@ class Admin {
 		);
 
 		add_submenu_page( 'outpulse', __( 'Request Log', 'outpulse' ), __( 'Request Log', 'outpulse' ), 'manage_options', 'outpulse', array( LogPage::class, 'render' ) );
-		add_submenu_page( 'outpulse', __( 'Dashboard', 'outpulse' ), __( 'Dashboard', 'outpulse' ), 'manage_options', 'outpulse-dashboard', array( Dashboard::class, 'render' ) );
-		add_submenu_page( 'outpulse', __( 'Settings', 'outpulse' ), __( 'Settings', 'outpulse' ), 'manage_options', 'outpulse-settings', array( SettingsPage::class, 'render' ) );
+		$this->hooks[] = (string) add_submenu_page( 'outpulse', __( 'Dashboard', 'outpulse' ), __( 'Dashboard', 'outpulse' ), 'manage_options', 'outpulse-dashboard', array( Dashboard::class, 'render' ) );
+		$this->hooks[] = (string) add_submenu_page( 'outpulse', __( 'Settings', 'outpulse' ), __( 'Settings', 'outpulse' ), 'manage_options', 'outpulse-settings', array( SettingsPage::class, 'render' ) );
 	}
 
 	/**
@@ -59,13 +66,7 @@ class Admin {
 	 * @return void
 	 */
 	public function enqueue_assets( string $hook ): void {
-		$outpulse_hooks = array(
-			'toplevel_page_outpulse',
-			'outpulse_page_outpulse-dashboard',
-			'outpulse_page_outpulse-settings',
-		);
-
-		if ( ! in_array( $hook, $outpulse_hooks, true ) ) {
+		if ( 'toplevel_page_outpulse' !== $hook && ! in_array( $hook, $this->hooks, true ) ) {
 			return;
 		}
 
@@ -88,8 +89,8 @@ class Admin {
 			'outpulse-admin',
 			'outpulseData',
 			array(
-				'confirmPurge'  => __( 'Delete all log entries? This cannot be undone.', 'outpulse' ),
-				'confirmDelete' => __( 'Delete the selected log entries?', 'outpulse' ),
+				'confirmPurge'  => __( 'Delete all logs? This cannot be undone.', 'outpulse' ),
+				'confirmDelete' => __( 'Delete selected entries?', 'outpulse' ),
 				'chartData7'    => Dashboard::get_chart_data( 7 ),
 				'chartData30'   => Dashboard::get_chart_data( 30 ),
 				'nonce'         => wp_create_nonce( 'outpulse_admin' ),
