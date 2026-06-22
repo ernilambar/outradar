@@ -49,7 +49,6 @@ class DB {
 			cron_hook VARCHAR(255),
 			duplicate_of BIGINT UNSIGNED,
 			body_hash VARCHAR(32),
-			reviewed TINYINT(1) NOT NULL DEFAULT 0,
 			PRIMARY KEY (id),
 			KEY domain (domain),
 			KEY source_plugin (source_plugin(191)),
@@ -480,29 +479,5 @@ class DB {
 		);
 
 		return is_int( $result ) ? $result : 0;
-	}
-
-	/**
-	 * Mark log rows as reviewed by a list of IDs.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param int[] $ids Row IDs to mark as reviewed.
-	 * @return void
-	 */
-	public static function mark_reviewed_by_ids( array $ids ): void {
-		if ( empty( $ids ) ) {
-			return;
-		}
-
-		global $wpdb;
-
-		$table        = $wpdb->prefix . OUTWATCH_TABLE;
-		$ids          = array_map( 'intval', $ids );
-		$placeholders = implode( ', ', array_fill( 0, count( $ids ), '%d' ) );
-
-		$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-			$wpdb->prepare( "UPDATE {$table} SET reviewed = 1 WHERE id IN ({$placeholders})", ...$ids ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-		);
 	}
 }

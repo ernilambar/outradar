@@ -105,7 +105,6 @@ class LogPage {
 						<select name="bulk_action">
 							<option value=""><?php esc_html_e( 'Bulk actions', 'outwatch' ); ?></option>
 							<option value="delete"><?php esc_html_e( 'Delete selected', 'outwatch' ); ?></option>
-							<option value="reviewed"><?php esc_html_e( 'Mark as reviewed', 'outwatch' ); ?></option>
 						</select>
 						<button type="submit" class="button action" id="outwatch-bulk-submit"><?php esc_html_e( 'Apply', 'outwatch' ); ?></button>
 					</div>
@@ -138,7 +137,7 @@ class LogPage {
 						</tr>
 						<?php else : ?>
 							<?php foreach ( $rows as $row ) : ?>
-						<tr class="outwatch-log-row<?php echo ( ! empty( $row->reviewed ) ? ' outwatch-reviewed' : '' ); ?>">
+						<tr class="outwatch-log-row">
 							<td class="check-column">
 								<input type="checkbox" name="row_ids[]" value="<?php echo esc_attr( (string) $row->id ); ?>" class="outwatch-row-check" />
 							</td>
@@ -251,8 +250,6 @@ class LogPage {
 
 		if ( 'delete' === $action ) {
 			DB::delete_by_ids( $ids );
-		} elseif ( 'reviewed' === $action ) {
-			DB::mark_reviewed_by_ids( $ids );
 		}
 
 		wp_safe_redirect( admin_url( 'admin.php?page=outwatch-log' ) );

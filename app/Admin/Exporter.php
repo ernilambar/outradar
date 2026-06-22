@@ -86,7 +86,6 @@ class Exporter {
 			'recurrence_count',
 			'cron_hook',
 			'duplicate_of',
-			'reviewed',
 		);
 
 		$out = fopen( 'php://output', 'w' );
