@@ -18,7 +18,6 @@ msgstr ""
 #: outpulse.php:3
 #: app/Admin/Admin.php:39
 #: app/Admin/Admin.php:40
-#: app/Admin/Dashboard.php:35
 msgid "OutPulse"
 msgstr ""
 
@@ -38,7 +37,6 @@ msgid "https://github.com/ernilambar"
 msgstr ""
 
 #: app/Admin/Admin.php:48
-#: app/Admin/LogPage.php:43
 msgid "Request Log"
 msgstr ""
 
@@ -47,113 +45,116 @@ msgid "Dashboard"
 msgstr ""
 
 #: app/Admin/Admin.php:50
-msgid "Domains"
-msgstr ""
-
-#: app/Admin/Admin.php:51
-#: app/Admin/DomainPage.php:47
-msgid "Sources"
-msgstr ""
-
-#: app/Admin/Admin.php:52
 msgid "Settings"
 msgstr ""
 
-#: app/Admin/Admin.php:95
+#: app/Admin/Admin.php:91
 msgid "Delete all log entries? This cannot be undone."
 msgstr ""
 
-#: app/Admin/Admin.php:96
+#: app/Admin/Admin.php:92
 msgid "Delete the selected log entries?"
 msgstr ""
 
 #: app/Admin/Dashboard.php:28
-#: app/Admin/DomainPage.php:28
 #: app/Admin/Exporter.php:28
 #: app/Admin/LogPage.php:28
-#: app/Admin/PluginPage.php:28
 #: app/Admin/SettingsPage.php:28
 msgid "You do not have permission to access this page."
 msgstr ""
 
-#: app/Admin/Dashboard.php:40
-#: app/Admin/PluginPage.php:44
+#: app/Admin/Dashboard.php:42
+#: app/Admin/Dashboard.php:162
 msgid "Total Requests"
 msgstr ""
 
-#: app/Admin/Dashboard.php:44
+#: app/Admin/Dashboard.php:46
 msgid "Today"
 msgstr ""
 
-#: app/Admin/Dashboard.php:48
+#: app/Admin/Dashboard.php:50
 msgid "7 Days"
 msgstr ""
 
-#: app/Admin/Dashboard.php:52
+#: app/Admin/Dashboard.php:54
 msgid "All Time"
 msgstr ""
 
-#: app/Admin/Dashboard.php:58
+#: app/Admin/Dashboard.php:60
 msgid "Overview"
 msgstr ""
 
-#: app/Admin/Dashboard.php:61
-#: app/Admin/PluginPage.php:45
+#: app/Admin/Dashboard.php:63
+#: app/Admin/Dashboard.php:163
 msgid "Unique Domains"
 msgstr ""
 
-#: app/Admin/Dashboard.php:69
+#: app/Admin/Dashboard.php:71
 msgid "By Context"
 msgstr ""
 
-#: app/Admin/Dashboard.php:72
+#: app/Admin/Dashboard.php:74
 msgid "Frontend"
 msgstr ""
 
-#: app/Admin/Dashboard.php:76
+#: app/Admin/Dashboard.php:78
 msgid "Admin"
 msgstr ""
 
-#: app/Admin/Dashboard.php:80
+#: app/Admin/Dashboard.php:82
 msgid "Cron"
 msgstr ""
 
-#: app/Admin/Dashboard.php:84
+#: app/Admin/Dashboard.php:86
 msgid "CLI"
 msgstr ""
 
-#: app/Admin/Dashboard.php:92
+#: app/Admin/Dashboard.php:94
 msgid "Top Sources"
 msgstr ""
 
-#: app/Admin/Dashboard.php:111
+#: app/Admin/Dashboard.php:113
 msgid "Requests — Last 7 Days"
 msgstr ""
 
-#: app/Admin/DomainPage.php:34
-msgid "Domain Analysis"
+#: app/Admin/Dashboard.php:117
+msgid "Domains"
 msgstr ""
 
-#: app/Admin/DomainPage.php:37
+#: app/Admin/Dashboard.php:120
 msgid "No domain data yet."
 msgstr ""
 
-#: app/Admin/DomainPage.php:43
+#: app/Admin/Dashboard.php:125
 #: app/Admin/LogPage.php:51
 #: app/Admin/LogPage.php:125
 msgid "Domain"
 msgstr ""
 
-#: app/Admin/DomainPage.php:44
+#: app/Admin/Dashboard.php:126
 msgid "First Seen"
 msgstr ""
 
-#: app/Admin/DomainPage.php:45
+#: app/Admin/Dashboard.php:127
 msgid "Last Seen"
 msgstr ""
 
-#: app/Admin/DomainPage.php:46
+#: app/Admin/Dashboard.php:128
 msgid "Requests"
+msgstr ""
+
+#: app/Admin/Dashboard.php:129
+#: app/Admin/Dashboard.php:153
+msgid "Sources"
+msgstr ""
+
+#: app/Admin/Dashboard.php:156
+msgid "No source data yet."
+msgstr ""
+
+#: app/Admin/Dashboard.php:161
+#: app/Admin/LogPage.php:128
+msgid "Source"
 msgstr ""
 
 #: app/Admin/Exporter.php:32
@@ -221,11 +222,6 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: app/Admin/LogPage.php:128
-#: app/Admin/PluginPage.php:43
-msgid "Source"
-msgstr ""
-
 #: app/Admin/LogPage.php:129
 msgid "Context"
 msgstr ""
@@ -273,18 +269,6 @@ msgid "%d item"
 msgid_plural "%d items"
 msgstr[0] ""
 msgstr[1] ""
-
-#: app/Admin/PluginPage.php:34
-msgid "Source Activity"
-msgstr ""
-
-#: app/Admin/PluginPage.php:37
-msgid "No source data yet."
-msgstr ""
-
-#: app/Admin/SettingsPage.php:49
-msgid "OutPulse Settings"
-msgstr ""
 
 #: app/Admin/SettingsPage.php:52
 msgid "Settings saved."

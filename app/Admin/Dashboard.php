@@ -30,9 +30,11 @@ class Dashboard {
 
 		$stats       = DB::get_summary();
 		$top_plugins = DB::get_top_plugins( 5 );
+		$domain_rows = DB::get_domain_summary();
+		$source_rows = DB::get_plugin_summary();
 		?>
 		<div class="wrap outpulse-wrap">
-			<h1><?php esc_html_e( 'OutPulse', 'outpulse' ); ?></h1>
+			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 
 			<div class="outpulse-widgets">
 
@@ -111,6 +113,71 @@ class Dashboard {
 				<h2><?php esc_html_e( 'Requests — Last 7 Days', 'outpulse' ); ?></h2>
 				<canvas id="outpulse-chart" width="800" height="220"></canvas>
 			</div>
+
+			<h2><?php esc_html_e( 'Domains', 'outpulse' ); ?></h2>
+
+			<?php if ( empty( $domain_rows ) ) : ?>
+				<p><?php esc_html_e( 'No domain data yet.', 'outpulse' ); ?></p>
+			<?php else : ?>
+			<table class="wp-list-table widefat fixed striped outpulse-domain-table">
+				<thead>
+					<tr>
+						<th><?php esc_html_e( 'Domain', 'outpulse' ); ?></th>
+						<th><?php esc_html_e( 'First Seen', 'outpulse' ); ?></th>
+						<th><?php esc_html_e( 'Last Seen', 'outpulse' ); ?></th>
+						<th><?php esc_html_e( 'Requests', 'outpulse' ); ?></th>
+						<th><?php esc_html_e( 'Sources', 'outpulse' ); ?></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach ( $domain_rows as $row ) : ?>
+						<?php $domain = (string) $row->domain; ?>
+					<tr>
+						<td>
+							<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse&domain=' . rawurlencode( $domain ) ) ); ?>">
+								<?php echo esc_html( $domain ); ?>
+							</a>
+						</td>
+						<td><?php echo esc_html( (string) $row->first_seen ); ?></td>
+						<td><?php echo esc_html( (string) $row->last_seen ); ?></td>
+						<td><?php echo esc_html( number_format_i18n( (int) $row->total ) ); ?></td>
+						<td class="outpulse-truncate" title="<?php echo esc_attr( (string) $row->plugins ); ?>">
+							<?php echo esc_html( (string) $row->plugins ); ?>
+						</td>
+					</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+			<?php endif; ?>
+
+			<h2><?php esc_html_e( 'Sources', 'outpulse' ); ?></h2>
+
+			<?php if ( empty( $source_rows ) ) : ?>
+				<p><?php esc_html_e( 'No source data yet.', 'outpulse' ); ?></p>
+			<?php else : ?>
+			<table class="wp-list-table widefat fixed striped">
+				<thead>
+					<tr>
+						<th><?php esc_html_e( 'Source', 'outpulse' ); ?></th>
+						<th><?php esc_html_e( 'Total Requests', 'outpulse' ); ?></th>
+						<th><?php esc_html_e( 'Unique Domains', 'outpulse' ); ?></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach ( $source_rows as $row ) : ?>
+					<tr>
+						<td>
+							<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse&plugin=' . rawurlencode( (string) $row->source_plugin ) ) ); ?>">
+								<?php echo esc_html( (string) $row->source_plugin ); ?>
+							</a>
+						</td>
+						<td><?php echo esc_html( number_format_i18n( (int) $row->total ) ); ?></td>
+						<td><?php echo esc_html( number_format_i18n( (int) $row->unique_domains ) ); ?></td>
+					</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+			<?php endif; ?>
 
 		</div><!-- .outpulse-wrap -->
 		<?php

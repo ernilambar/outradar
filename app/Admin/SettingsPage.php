@@ -46,7 +46,7 @@ class SettingsPage {
 		$excluded_plugins = (string) get_option( 'outpulse_excluded_plugins', '' );
 		?>
 		<div class="wrap outpulse-wrap">
-			<h1><?php esc_html_e( 'OutPulse Settings', 'outpulse' ); ?></h1>
+			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 
 			<?php if ( $saved ) : ?>
 			<div class="notice notice-success is-dismissible"><p><?php esc_html_e( 'Settings saved.', 'outpulse' ); ?></p></div>

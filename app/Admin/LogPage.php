@@ -40,7 +40,7 @@ class LogPage {
 		$total_pages = (int) ceil( $total / $per_page );
 		?>
 		<div class="wrap outpulse-wrap">
-			<h1><?php esc_html_e( 'Request Log', 'outpulse' ); ?></h1>
+			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 
 			<form method="get" class="outpulse-filter-form">
 				<input type="hidden" name="page" value="outpulse" />
