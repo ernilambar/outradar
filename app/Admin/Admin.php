@@ -90,7 +90,8 @@ class Admin {
 			array(
 				'confirmPurge'  => __( 'Delete all log entries? This cannot be undone.', 'outpulse' ),
 				'confirmDelete' => __( 'Delete the selected log entries?', 'outpulse' ),
-				'chartData'     => Dashboard::get_chart_data(),
+				'chartData7'    => Dashboard::get_chart_data( 7 ),
+				'chartData30'   => Dashboard::get_chart_data( 30 ),
 				'nonce'         => wp_create_nonce( 'outpulse_admin' ),
 			)
 		);

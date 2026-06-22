@@ -244,6 +244,48 @@ class DB {
 	}
 
 	/**
+	 * Return daily request counts broken down by context for the last N days (filling gaps with 0).
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param int $days Number of days to look back.
+	 * @return array<string, array<string, int>> Keyed by date (Y-m-d), value is context => count.
+	 */
+	public static function get_requests_by_day_context( int $days = 7 ): array {
+		global $wpdb;
+
+		$table = $wpdb->prefix . OUTPULSE_TABLE;
+
+		$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$wpdb->prepare(
+				"SELECT DATE(timestamp) AS day, context, COUNT(*) AS total FROM {$table} WHERE timestamp >= DATE_SUB(CURDATE(), INTERVAL %d DAY) GROUP BY DATE(timestamp), context ORDER BY day ASC", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				$days
+			),
+			ARRAY_A
+		);
+
+		$contexts = array( 'frontend', 'admin', 'cron', 'cli' );
+
+		$result = array();
+		for ( $i = $days - 1; $i >= 0; $i-- ) {
+			$date            = gmdate( 'Y-m-d', strtotime( "-{$i} days" ) );
+			$result[ $date ] = array_fill_keys( $contexts, 0 );
+		}
+
+		if ( is_array( $rows ) ) {
+			foreach ( $rows as $row ) {
+				$day = $row['day'];
+				$ctx = $row['context'];
+				if ( isset( $result[ $day ] ) && in_array( $ctx, $contexts, true ) ) {
+					$result[ $day ][ $ctx ] = (int) $row['total'];
+				}
+			}
+		}
+
+		return $result;
+	}
+
+	/**
 	 * Build a safe WHERE fragment from filter params (each clause already prepared).
 	 *
 	 * @since 1.0.0

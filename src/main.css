@@ -78,10 +78,71 @@
 	border-radius: 4px;
 	padding: 16px 20px;
 	margin-bottom: 24px;
+}
+
+.outpulse-chart-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 12px;
 
 	h2 {
-		margin-top: 0;
+		margin: 0;
 		font-size: 14px;
+	}
+}
+
+.outpulse-chart-controls {
+	display: flex;
+	gap: 4px;
+}
+
+.outpulse-range-btn {
+	&.active {
+		background: #2271b1;
+		border-color: #2271b1;
+		color: #fff;
+
+		&:hover {
+			background: #135e96;
+			border-color: #135e96;
+		}
+	}
+}
+
+.outpulse-chart-legend {
+	display: flex;
+	gap: 16px;
+	margin-bottom: 12px;
+	flex-wrap: wrap;
+}
+
+.outpulse-legend-item {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 12px;
+	color: #1d2327;
+
+	&::before {
+		content: "";
+		display: inline-block;
+		width: 12px;
+		height: 12px;
+		border-radius: 2px;
+	}
+
+	&[data-ctx="cron"]::before {
+		background: #8c5fb8;
+	}
+	&[data-ctx="frontend"]::before {
+		background: #2271b1;
+	}
+	&[data-ctx="admin"]::before {
+		background: #d63638;
+	}
+	&[data-ctx="cli"]::before {
+		background: #00a32a;
 	}
 }
 

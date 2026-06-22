@@ -64,7 +64,7 @@ msgid "You do not have permission to access this page."
 msgstr ""
 
 #: app/Admin/Dashboard.php:42
-#: app/Admin/Dashboard.php:162
+#: app/Admin/Dashboard.php:174
 msgid "Total Requests"
 msgstr ""
 
@@ -73,6 +73,7 @@ msgid "Today"
 msgstr ""
 
 #: app/Admin/Dashboard.php:50
+#: app/Admin/Dashboard.php:116
 msgid "7 Days"
 msgstr ""
 
@@ -85,7 +86,7 @@ msgid "Overview"
 msgstr ""
 
 #: app/Admin/Dashboard.php:63
-#: app/Admin/Dashboard.php:163
+#: app/Admin/Dashboard.php:175
 msgid "Unique Domains"
 msgstr ""
 
@@ -94,18 +95,22 @@ msgid "By Context"
 msgstr ""
 
 #: app/Admin/Dashboard.php:74
+#: app/Admin/Dashboard.php:122
 msgid "Frontend"
 msgstr ""
 
 #: app/Admin/Dashboard.php:78
+#: app/Admin/Dashboard.php:123
 msgid "Admin"
 msgstr ""
 
 #: app/Admin/Dashboard.php:82
+#: app/Admin/Dashboard.php:121
 msgid "Cron"
 msgstr ""
 
 #: app/Admin/Dashboard.php:86
+#: app/Admin/Dashboard.php:124
 msgid "CLI"
 msgstr ""
 
@@ -113,46 +118,50 @@ msgstr ""
 msgid "Top Sources"
 msgstr ""
 
-#: app/Admin/Dashboard.php:113
-msgid "Requests — Last 7 Days"
+#: app/Admin/Dashboard.php:114
+msgid "Requests by Context"
 msgstr ""
 
 #: app/Admin/Dashboard.php:117
+msgid "30 Days"
+msgstr ""
+
+#: app/Admin/Dashboard.php:129
 msgid "Domains"
 msgstr ""
 
-#: app/Admin/Dashboard.php:120
+#: app/Admin/Dashboard.php:132
 msgid "No domain data yet."
 msgstr ""
 
-#: app/Admin/Dashboard.php:125
+#: app/Admin/Dashboard.php:137
 #: app/Admin/LogPage.php:51
 #: app/Admin/LogPage.php:125
 msgid "Domain"
 msgstr ""
 
-#: app/Admin/Dashboard.php:126
+#: app/Admin/Dashboard.php:138
 msgid "First Seen"
 msgstr ""
 
-#: app/Admin/Dashboard.php:127
+#: app/Admin/Dashboard.php:139
 msgid "Last Seen"
 msgstr ""
 
-#: app/Admin/Dashboard.php:128
+#: app/Admin/Dashboard.php:140
 msgid "Requests"
 msgstr ""
 
-#: app/Admin/Dashboard.php:129
-#: app/Admin/Dashboard.php:153
+#: app/Admin/Dashboard.php:141
+#: app/Admin/Dashboard.php:165
 msgid "Sources"
 msgstr ""
 
-#: app/Admin/Dashboard.php:156
+#: app/Admin/Dashboard.php:168
 msgid "No source data yet."
 msgstr ""
 
-#: app/Admin/Dashboard.php:161
+#: app/Admin/Dashboard.php:173
 #: app/Admin/LogPage.php:128
 msgid "Source"
 msgstr ""

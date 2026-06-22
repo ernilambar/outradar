@@ -59,15 +59,43 @@ import './main.css';
 		} );
 	}
 
-	// ── 7-day bar chart ──────────────────────────────────────────
+	// ── Stacked context bar chart ────────────────────────────────
+	const CTX_COLORS = {
+		cron: '#8c5fb8',
+		frontend: '#2271b1',
+		admin: '#d63638',
+		cli: '#00a32a',
+	};
+	const CTX_ORDER = [ 'cron', 'frontend', 'admin', 'cli' ];
+
 	const canvas = document.getElementById( 'outpulse-chart' );
-	if ( canvas && window.outpulseData && window.outpulseData.chartData ) {
-		drawBarChart( canvas, window.outpulseData.chartData );
+	if ( canvas && window.outpulseData ) {
+		const datasets = {
+			7: window.outpulseData.chartData7,
+			30: window.outpulseData.chartData30,
+		};
+
+		if ( datasets[ 7 ] ) {
+			drawStackedChart( canvas, datasets[ 7 ] );
+		}
+
+		document.querySelectorAll( '.outpulse-range-btn' ).forEach( function ( btn ) {
+			btn.addEventListener( 'click', function () {
+				document.querySelectorAll( '.outpulse-range-btn' ).forEach( function ( b ) {
+					b.classList.remove( 'active' );
+				} );
+				btn.classList.add( 'active' );
+				const data = datasets[ btn.getAttribute( 'data-range' ) ];
+				if ( data ) {
+					drawStackedChart( canvas, data );
+				}
+			} );
+		} );
 	}
 
-	function drawBarChart( canvas, data ) {
+	function drawStackedChart( canvas, data ) {
 		const labels = data.labels || [];
-		const values = data.values || [];
+		const series = data.series || {};
 		if ( ! labels.length ) {
 			return;
 		}
@@ -88,65 +116,82 @@ import './main.css';
 		const padBottom = 40;
 		const padLeft = 48;
 		const padRight = 16;
-
 		const chartW = width - padLeft - padRight;
 		const chartH = height - padTop - padBottom;
 
-		const max = Math.max.apply( null, values.concat( [ 1 ] ) );
-		const barW = Math.floor( ( chartW / labels.length ) * 0.6 );
-		const gap = Math.floor( chartW / labels.length );
+		let max = 1;
+		labels.forEach( function ( _, i ) {
+			let total = 0;
+			CTX_ORDER.forEach( function ( key ) {
+				total += ( series[ key ] ? series[ key ][ i ] : 0 ) || 0;
+			} );
+			if ( total > max ) {
+				max = total;
+			}
+		} );
 
-		// Background
+		const barW = Math.floor( ( chartW / labels.length ) * 0.6 );
+		const gap = chartW / labels.length;
+
 		ctx.fillStyle = '#ffffff';
 		ctx.fillRect( 0, 0, width, height );
 
-		// Grid lines
 		ctx.strokeStyle = '#f0f0f1';
 		ctx.lineWidth = 1;
-		const gridLines = 4;
-		for ( let g = 0; g <= gridLines; g++ ) {
-			const gy = padTop + chartH - ( g / gridLines ) * chartH;
+		for ( let g = 0; g <= 4; g++ ) {
+			const gy = padTop + chartH - ( g / 4 ) * chartH;
 			ctx.beginPath();
 			ctx.moveTo( padLeft, gy );
 			ctx.lineTo( padLeft + chartW, gy );
 			ctx.stroke();
-
-			// Y-axis label
 			ctx.fillStyle = '#646970';
 			ctx.font = '11px sans-serif';
 			ctx.textAlign = 'right';
 			ctx.textBaseline = 'middle';
-			ctx.fillText( String( Math.round( ( g / gridLines ) * max ) ), padLeft - 6, gy );
+			ctx.fillText( String( Math.round( ( g / 4 ) * max ) ), padLeft - 6, gy );
 		}
 
-		// Bars
-		for ( let i = 0; i < labels.length; i++ ) {
+		const showTotals = labels.length <= 14;
+		const labelStep = labels.length > 14 ? Math.ceil( labels.length / 10 ) : 1;
+
+		labels.forEach( function ( label, i ) {
 			const x = padLeft + i * gap + Math.floor( ( gap - barW ) / 2 );
-			const val = values[ i ] || 0;
-			const barH = Math.max( 1, ( val / max ) * chartH );
-			const y = padTop + chartH - barH;
+			let baseY = padTop + chartH;
+			let dayTotal = 0;
 
-			ctx.fillStyle = val > 0 ? '#2271b1' : '#dcdcde';
-			ctx.fillRect( x, y, barW, barH );
+			CTX_ORDER.forEach( function ( key ) {
+				const val = ( series[ key ] ? series[ key ][ i ] : 0 ) || 0;
+				dayTotal += val;
+				if ( val === 0 ) {
+					return;
+				}
+				const segH = ( val / max ) * chartH;
+				ctx.fillStyle = CTX_COLORS[ key ];
+				ctx.fillRect( x, baseY - segH, barW, segH );
+				baseY -= segH;
+			} );
 
-			// Value label above bar
-			if ( val > 0 ) {
+			if ( showTotals && dayTotal > 0 ) {
 				ctx.fillStyle = '#1d2327';
 				ctx.font = '11px sans-serif';
 				ctx.textAlign = 'center';
 				ctx.textBaseline = 'bottom';
-				ctx.fillText( String( val ), x + barW / 2, y - 2 );
+				ctx.fillText(
+					String( dayTotal ),
+					x + barW / 2,
+					padTop + chartH - ( dayTotal / max ) * chartH - 2
+				);
 			}
 
-			// X-axis label
-			const labelParts = labels[ i ] ? labels[ i ].split( '-' ) : [];
-			const labelText =
-				labelParts.length === 3 ? labelParts[ 1 ] + '/' + labelParts[ 2 ] : labels[ i ];
-			ctx.fillStyle = '#646970';
-			ctx.font = '11px sans-serif';
-			ctx.textAlign = 'center';
-			ctx.textBaseline = 'top';
-			ctx.fillText( labelText, x + barW / 2, padTop + chartH + 6 );
-		}
+			if ( i % labelStep === 0 ) {
+				const parts = label ? label.split( '-' ) : [];
+				const labelText = parts.length === 3 ? parts[ 1 ] + '/' + parts[ 2 ] : label;
+				ctx.fillStyle = '#646970';
+				ctx.font = '11px sans-serif';
+				ctx.textAlign = 'center';
+				ctx.textBaseline = 'top';
+				ctx.fillText( labelText, x + barW / 2, padTop + chartH + 6 );
+			}
+		} );
 	}
 } )();
