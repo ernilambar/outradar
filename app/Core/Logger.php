@@ -60,7 +60,7 @@ class Logger {
 				'url'              => $url,
 				'domain'           => $domain,
 				'method'           => $method,
-				'request_headers'  => wp_json_encode( $request['request_headers'] ?? array() ),
+				'request_headers'  => wp_json_encode( self::redact_headers( $request['request_headers'] ?? array() ) ),
 				'request_body'     => $request_body,
 				'response_code'    => $request['response_code'] ?? null,
 				'response_size'    => $request['response_size'] ?? null,
@@ -110,6 +110,33 @@ class Logger {
 		);
 
 		wp_mail( $email, $subject, $body );
+	}
+
+	/**
+	 * Replace values of sensitive headers with a redaction marker.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param mixed $headers Raw headers (array or string).
+	 * @return mixed Redacted copy.
+	 */
+	private static function redact_headers( mixed $headers ): mixed {
+		if ( ! is_array( $headers ) ) {
+			return $headers;
+		}
+
+		$sensitive = array( 'authorization', 'cookie', 'x-auth-token', 'x-api-key', 'x-wp-nonce' );
+
+		$redacted = array();
+		foreach ( $headers as $name => $value ) {
+			if ( in_array( strtolower( (string) $name ), $sensitive, true ) ) {
+				$redacted[ $name ] = '[redacted]';
+			} else {
+				$redacted[ $name ] = $value;
+			}
+		}
+
+		return $redacted;
 	}
 
 	/**
