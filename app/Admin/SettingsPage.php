@@ -43,7 +43,6 @@ class SettingsPage {
 
 		$logging_enabled  = get_option( 'outwatch_logging_enabled', '1' );
 		$retention_days   = (int) get_option( 'outwatch_retention_days', 30 );
-		$safe_domains     = (string) get_option( 'outwatch_safe_domains', '' );
 		$excluded_plugins = (string) get_option( 'outwatch_excluded_plugins', '' );
 		?>
 		<div class="wrap outwatch-wrap">
@@ -94,14 +93,6 @@ class SettingsPage {
 					</tr>
 
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Safe Domains', 'outwatch' ); ?></th>
-						<td>
-							<textarea name="outwatch_safe_domains" rows="6" class="large-text code"><?php echo esc_textarea( $safe_domains ); ?></textarea>
-							<p class="description"><?php esc_html_e( 'One domain per line. These are not highlighted on the Domain Analysis page.', 'outwatch' ); ?></p>
-						</td>
-					</tr>
-
-					<tr>
 						<th scope="row"><?php esc_html_e( 'Exclude Plugins', 'outwatch' ); ?></th>
 						<td>
 							<textarea name="outwatch_excluded_plugins" rows="6" class="large-text code"><?php echo esc_textarea( $excluded_plugins ); ?></textarea>
@@ -142,7 +133,6 @@ class SettingsPage {
 	private static function save(): void {
 		update_option( 'outwatch_logging_enabled', ! empty( $_POST['outwatch_logging_enabled'] ) ? '1' : '0' );
 		update_option( 'outwatch_retention_days', absint( $_POST['outwatch_retention_days'] ?? 30 ) );
-		update_option( 'outwatch_safe_domains', sanitize_textarea_field( wp_unslash( (string) ( $_POST['outwatch_safe_domains'] ?? '' ) ) ) );
 		update_option( 'outwatch_excluded_plugins', sanitize_textarea_field( wp_unslash( (string) ( $_POST['outwatch_excluded_plugins'] ?? '' ) ) ) );
 	}
 }

@@ -17,21 +17,6 @@ use Nilambar\Outwatch\Core\DB;
 class DomainPage {
 
 	/**
-	 * Known-safe domains that should not be highlighted.
-	 *
-	 * @var string[]
-	 */
-	private static array $default_safe = array(
-		'wordpress.org',
-		'api.wordpress.org',
-		'downloads.wordpress.org',
-		'plugins.svn.wordpress.org',
-		'themes.svn.wordpress.org',
-		'googleapis.com',
-		'gravatar.com',
-	);
-
-	/**
 	 * Render the domain analysis page.
 	 *
 	 * @since 1.2.0
@@ -43,10 +28,7 @@ class DomainPage {
 			wp_die( esc_html__( 'You do not have permission to access this page.', 'outwatch' ) );
 		}
 
-		$rows      = DB::get_domain_summary();
-		$safe_raw  = (string) get_option( 'outwatch_safe_domains', '' );
-		$safe_list = array_filter( array_map( 'trim', explode( "\n", $safe_raw ) ) );
-		$safe_list = array_merge( self::$default_safe, $safe_list );
+		$rows = DB::get_domain_summary();
 		?>
 		<div class="wrap outwatch-wrap">
 			<h1><?php esc_html_e( 'Domain Analysis', 'outwatch' ); ?></h1>
@@ -67,27 +49,12 @@ class DomainPage {
 				</thead>
 				<tbody>
 					<?php foreach ( $rows as $row ) : ?>
-						<?php
-						$domain  = (string) $row->domain;
-						$is_safe = false;
-						foreach ( $safe_list as $safe ) {
-							if ( '' === $safe ) {
-								continue;
-							}
-							if ( $domain === $safe || str_ends_with( $domain, '.' . $safe ) ) {
-								$is_safe = true;
-								break;
-							}
-						}
-						?>
-					<tr class="<?php echo ! $is_safe ? 'outwatch-domain-unknown' : ''; ?>">
+						<?php $domain = (string) $row->domain; ?>
+					<tr>
 						<td>
 							<a href="<?php echo esc_url( admin_url( 'admin.php?page=outwatch-log&domain=' . rawurlencode( $domain ) ) ); ?>">
 								<?php echo esc_html( $domain ); ?>
 							</a>
-							<?php if ( ! $is_safe ) : ?>
-								<span class="outwatch-badge outwatch-badge--warn" title="<?php esc_attr_e( 'Not on safe domains list', 'outwatch' ); ?>">?</span>
-							<?php endif; ?>
 						</td>
 						<td><?php echo esc_html( (string) $row->first_seen ); ?></td>
 						<td><?php echo esc_html( (string) $row->last_seen ); ?></td>
