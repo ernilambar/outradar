@@ -48,7 +48,7 @@ class Admin {
 		add_submenu_page( 'outwatch', __( 'Dashboard', 'outwatch' ), __( 'Dashboard', 'outwatch' ), 'manage_options', 'outwatch', array( Dashboard::class, 'render' ) );
 		add_submenu_page( 'outwatch', __( 'Request Log', 'outwatch' ), __( 'Request Log', 'outwatch' ), 'manage_options', 'outwatch-log', array( LogPage::class, 'render' ) );
 		add_submenu_page( 'outwatch', __( 'Domains', 'outwatch' ), __( 'Domains', 'outwatch' ), 'manage_options', 'outwatch-domains', array( DomainPage::class, 'render' ) );
-		add_submenu_page( 'outwatch', __( 'Plugins', 'outwatch' ), __( 'Plugins', 'outwatch' ), 'manage_options', 'outwatch-plugins', array( PluginPage::class, 'render' ) );
+		add_submenu_page( 'outwatch', __( 'Sources', 'outwatch' ), __( 'Sources', 'outwatch' ), 'manage_options', 'outwatch-sources', array( PluginPage::class, 'render' ) );
 		add_submenu_page( 'outwatch', __( 'Settings', 'outwatch' ), __( 'Settings', 'outwatch' ), 'manage_options', 'outwatch-settings', array( SettingsPage::class, 'render' ) );
 	}
 
@@ -65,7 +65,7 @@ class Admin {
 			'toplevel_page_outwatch',
 			'outwatch_page_outwatch-log',
 			'outwatch_page_outwatch-domains',
-			'outwatch_page_outwatch-plugins',
+			'outwatch_page_outwatch-sources',
 			'outwatch_page_outwatch-settings',
 		);
 

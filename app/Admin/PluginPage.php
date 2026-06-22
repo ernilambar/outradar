@@ -31,7 +31,7 @@ class PluginPage {
 		$rows = DB::get_plugin_summary();
 		?>
 		<div class="wrap outwatch-wrap">
-			<h1><?php esc_html_e( 'Plugin Activity', 'outwatch' ); ?></h1>
+			<h1><?php esc_html_e( 'Source Activity', 'outwatch' ); ?></h1>
 
 			<?php if ( empty( $rows ) ) : ?>
 				<p><?php esc_html_e( 'No plugin data yet.', 'outwatch' ); ?></p>
@@ -40,7 +40,7 @@ class PluginPage {
 			<table class="wp-list-table widefat fixed striped">
 				<thead>
 					<tr>
-						<th><?php esc_html_e( 'Plugin / Source', 'outwatch' ); ?></th>
+						<th><?php esc_html_e( 'Source', 'outwatch' ); ?></th>
 						<th><?php esc_html_e( 'Total Requests', 'outwatch' ); ?></th>
 						<th><?php esc_html_e( 'Unique Domains', 'outwatch' ); ?></th>
 					</tr>

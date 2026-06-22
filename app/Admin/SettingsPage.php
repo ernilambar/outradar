@@ -93,7 +93,7 @@ class SettingsPage {
 					</tr>
 
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Exclude Plugins', 'outwatch' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Exclude Sources', 'outwatch' ); ?></th>
 						<td>
 							<textarea name="outwatch_excluded_plugins" rows="6" class="large-text code"><?php echo esc_textarea( $excluded_plugins ); ?></textarea>
 							<p class="description"><?php esc_html_e( 'One plugin name per line. Requests attributed to these plugins will not be logged.', 'outwatch' ); ?></p>
