@@ -1,0 +1,12 @@
+{
+	"files": [
+		"app/**/*",
+		"build/**/*",
+		"languages/**/*",
+		"vendor/**/*",
+		"composer.json",
+		"outpulse.php",
+		"readme.txt",
+		"uninstall.php"
+	]
+}

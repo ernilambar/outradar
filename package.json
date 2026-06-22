@@ -1,0 +1,52 @@
+{
+	"name": "outpulse",
+	"version": "1.0.0",
+	"description": "Intercept, log, and analyze all outbound HTTP requests made by WordPress core, plugins, and themes.",
+	"keywords": [
+		"wordpress",
+		"wordpress-plugin"
+	],
+	"homepage": "https://github.com/ernilambar/outpulse",
+	"bugs": {
+		"url": "https://github.com/ernilambar/outpulse/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ernilambar/outpulse.git"
+	},
+	"license": "GPL-2.0-or-later",
+	"author": "Nilambar Sharma",
+	"type": "module",
+	"main": "outpulse.php",
+	"scripts": {
+		"build": "vite build",
+		"predeploy": "rimraf build deploy vendor && pnpm run ready",
+		"deploy": "packtor",
+		"format": "prettier \"**/*.{cjs,css,js,jsx,json,mjs}\" --write --log-level warn",
+		"ready": "pnpm run build && pnpm run vendor",
+		"vendor": "composer install --no-dev --no-scripts -o",
+		"version": "easy-replace-in-files",
+		"wpassets": "wp-deployer --assets",
+		"prewpdeploy": "pnpm run deploy",
+		"wpdeploy": "wp-deployer"
+	},
+	"browserslist": "> 1%, last 2 versions, not dead",
+	"devDependencies": {
+		"@wordpress/prettier-config": "^4.48.1",
+		"easy-replace-in-files": "^2.0.0",
+		"packtor": "^2.0.0",
+		"postcss": "^8.5.15",
+		"postcss-nested": "^7.0.2",
+		"postcss-preset-env": "^11.3.1",
+		"prettier": "npm:wp-prettier@^3.0.3",
+		"rimraf": "^6.1.3",
+		"vite": "^8.0.16",
+		"wp-deployer": "^2.0.0"
+	},
+	"wpDeployer": {
+		"repoType": "plugin",
+		"username": "nilambar",
+		"buildDir": "deploy/outpulse",
+		"deployAssets": false
+	}
+}

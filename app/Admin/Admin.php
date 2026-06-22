@@ -75,14 +75,14 @@ class Admin {
 
 		wp_enqueue_style(
 			'outpulse-admin',
-			OUTPULSE_URL . 'assets/admin/css/outpulse-admin.css',
+			OUTPULSE_URL . 'build/main.css',
 			array(),
 			OUTPULSE_VERSION
 		);
 
 		wp_enqueue_script(
 			'outpulse-admin',
-			OUTPULSE_URL . 'assets/admin/js/outpulse-admin.js',
+			OUTPULSE_URL . 'build/main.js',
 			array(),
 			OUTPULSE_VERSION,
 			true
