@@ -1,0 +1,245 @@
+/* OutWatch Admin Styles */
+
+.outwatch-wrap h1 {
+	margin-bottom: 16px;
+}
+
+/* ── Widgets ─────────────────────────────────────────────── */
+
+.outwatch-widgets {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin-bottom: 24px;
+}
+
+.outwatch-widget {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 16px 20px;
+	min-width: 200px;
+	flex: 1 1 200px;
+}
+
+.outwatch-widget h3 {
+	margin: 0 0 12px;
+	font-size: 13px;
+	text-transform: uppercase;
+	color: #646970;
+	letter-spacing: 0.04em;
+}
+
+.outwatch-stat-group {
+	display: flex;
+	gap: 24px;
+}
+
+.outwatch-stat {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.outwatch-stat-number {
+	font-size: 28px;
+	font-weight: 600;
+	line-height: 1.1;
+	color: #1d2327;
+}
+
+.outwatch-stat-label {
+	font-size: 11px;
+	color: #646970;
+	margin-top: 2px;
+}
+
+.outwatch-kv-table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.outwatch-kv-table td {
+	padding: 4px 0;
+	font-size: 13px;
+}
+
+.outwatch-kv-table td:last-child {
+	text-align: right;
+}
+
+/* ── Chart ───────────────────────────────────────────────── */
+
+.outwatch-chart-section {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 16px 20px;
+	margin-bottom: 24px;
+}
+
+.outwatch-chart-section h2 {
+	margin-top: 0;
+	font-size: 14px;
+}
+
+#outwatch-chart {
+	display: block;
+	max-width: 100%;
+}
+
+/* ── Filter form ─────────────────────────────────────────── */
+
+.outwatch-filter-form {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: center;
+	margin-bottom: 12px;
+}
+
+.outwatch-filter-form input[type="text"],
+.outwatch-filter-form input[type="date"],
+.outwatch-filter-form select {
+	height: 30px;
+	line-height: 28px;
+	font-size: 13px;
+}
+
+.outwatch-checkbox-label {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 13px;
+}
+
+/* ── Log table ───────────────────────────────────────────── */
+
+.outwatch-log-table td,
+.outwatch-log-table th {
+	vertical-align: middle;
+}
+
+.outwatch-row-toggle {
+	background: none;
+	border: none;
+	padding: 0;
+	color: #2271b1;
+	cursor: pointer;
+	text-align: left;
+	font-size: 13px;
+}
+
+.outwatch-row-toggle:hover {
+	text-decoration: underline;
+}
+
+.outwatch-detail-row td {
+	background: #f6f7f7;
+	padding: 12px 16px;
+}
+
+.outwatch-detail-inner p {
+	margin: 4px 0;
+	font-size: 13px;
+}
+
+.outwatch-detail-inner pre {
+	background: #fff;
+	border: 1px solid #dcdcde;
+	padding: 8px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	word-break: break-all;
+	font-size: 12px;
+	max-height: 200px;
+	overflow-y: auto;
+	margin: 4px 0;
+}
+
+.outwatch-detail-inner details summary {
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 13px;
+	margin: 6px 0 2px;
+}
+
+.outwatch-reviewed td {
+	opacity: 0.6;
+}
+
+/* ── Status badges ───────────────────────────────────────── */
+
+.outwatch-status {
+	display: inline-block;
+	padding: 1px 6px;
+	border-radius: 3px;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.outwatch-status-ok { background: #d1e7dd; color: #0a3622; }
+.outwatch-status-redirect { background: #fff3cd; color: #664d03; }
+.outwatch-status-error { background: #f8d7da; color: #58151c; }
+
+.outwatch-context {
+	display: inline-block;
+	padding: 1px 6px;
+	border-radius: 3px;
+	font-size: 11px;
+	background: #f0f0f1;
+	color: #1d2327;
+}
+
+.outwatch-context--admin    { background: #dce8f5; color: #04347c; }
+.outwatch-context--cron     { background: #e9d8f5; color: #3c0063; }
+.outwatch-context--cli      { background: #d9f5e3; color: #014421; }
+.outwatch-context--frontend { background: #f0f0f1; color: #1d2327; }
+
+/* ── Flag icons ──────────────────────────────────────────── */
+
+.outwatch-flag {
+	font-size: 16px;
+	margin-right: 2px;
+	cursor: default;
+}
+
+.outwatch-flag--risk      { color: #d63638; }
+.outwatch-flag--recurring { color: #dba617; }
+.outwatch-flag--duplicate { color: #646970; }
+
+.outwatch-risk {
+	color: #d63638;
+	font-weight: 600;
+}
+
+/* ── Domain table ────────────────────────────────────────── */
+
+.outwatch-domain-unknown td:first-child {
+	font-weight: 600;
+}
+
+.outwatch-truncate {
+	max-width: 240px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.outwatch-badge {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	text-align: center;
+	border-radius: 50%;
+	font-size: 11px;
+	font-weight: 700;
+	margin-left: 4px;
+	vertical-align: middle;
+}
+
+.outwatch-badge--warn {
+	background: #dba617;
+	color: #fff;
+}
