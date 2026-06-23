@@ -7,6 +7,10 @@
 
 namespace Nilambar\Outpulse\Admin;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Registers admin menus, enqueues assets, and dispatches export requests.
  *
@@ -48,8 +52,7 @@ class Admin {
 			'manage_options',
 			'outpulse',
 			array( LogPage::class, 'render' ),
-			'dashicons-shield',
-			80
+			'dashicons-shield'
 		);
 
 		add_submenu_page( 'outpulse', __( 'Log', 'outpulse' ), __( 'Log', 'outpulse' ), 'manage_options', 'outpulse', array( LogPage::class, 'render' ) );
@@ -93,7 +96,6 @@ class Admin {
 				'confirmDelete' => __( 'Delete selected entries?', 'outpulse' ),
 				'chartData7'    => Dashboard::get_chart_data( 7 ),
 				'chartData30'   => Dashboard::get_chart_data( 30 ),
-				'nonce'         => wp_create_nonce( 'outpulse_admin' ),
 			)
 		);
 	}

@@ -26,7 +26,7 @@ msgstr ""
 
 #. Description of the plugin
 #: outpulse.php:5
-#: app/Admin/SettingsPage.php:85
+#: app/Admin/SettingsPage.php:87
 msgid "Log outbound HTTP requests."
 msgstr ""
 
@@ -40,328 +40,329 @@ msgstr ""
 msgid "https://github.com/ernilambar"
 msgstr ""
 
-#: app/Admin/Admin.php:46
+#: app/Admin/Admin.php:50
 msgctxt "page title"
 msgid "OutPulse"
 msgstr ""
 
-#: app/Admin/Admin.php:47
+#: app/Admin/Admin.php:51
 msgctxt "menu title"
 msgid "OutPulse"
 msgstr ""
 
-#: app/Admin/Admin.php:55
+#: app/Admin/Admin.php:58
 msgid "Log"
 msgstr ""
 
-#: app/Admin/Admin.php:56
+#: app/Admin/Admin.php:59
 msgid "Dashboard"
 msgstr ""
 
-#: app/Admin/Admin.php:57
+#: app/Admin/Admin.php:60
 msgid "Settings"
 msgstr ""
 
-#: app/Admin/Admin.php:92
-#: app/Admin/SettingsPage.php:152
+#: app/Admin/Admin.php:95
+#: app/Admin/SettingsPage.php:154
 msgid "Permanently delete all logs. This cannot be undone."
 msgstr ""
 
-#: app/Admin/Admin.php:93
+#: app/Admin/Admin.php:96
 msgid "Delete selected entries?"
 msgstr ""
 
-#: app/Admin/Dashboard.php:28
-#: app/Admin/Exporter.php:28
-#: app/Admin/LogPage.php:28
-#: app/Admin/SettingsPage.php:28
+#: app/Admin/Dashboard.php:32
+#: app/Admin/Exporter.php:32
+#: app/Admin/LogPage.php:32
+#: app/Admin/LogPage.php:247
+#: app/Admin/SettingsPage.php:32
 msgid "You do not have permission."
 msgstr ""
 
-#: app/Admin/Dashboard.php:42
-#: app/Admin/Dashboard.php:189
+#: app/Admin/Dashboard.php:46
+#: app/Admin/Dashboard.php:193
 msgid "Total Requests"
 msgstr ""
 
-#: app/Admin/Dashboard.php:46
+#: app/Admin/Dashboard.php:50
 msgid "Today"
 msgstr ""
 
 #. translators: %d: number of days
-#: app/Admin/Dashboard.php:53
-#: app/Admin/Dashboard.php:124
-#: app/Admin/Dashboard.php:130
-#: app/Admin/SettingsPage.php:97
+#: app/Admin/Dashboard.php:57
+#: app/Admin/Dashboard.php:128
+#: app/Admin/Dashboard.php:134
 #: app/Admin/SettingsPage.php:99
 #: app/Admin/SettingsPage.php:101
+#: app/Admin/SettingsPage.php:103
 #, php-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/Admin/Dashboard.php:59
+#: app/Admin/Dashboard.php:63
 msgid "All Time"
 msgstr ""
 
-#: app/Admin/Dashboard.php:65
+#: app/Admin/Dashboard.php:69
 msgid "Overview"
 msgstr ""
 
-#: app/Admin/Dashboard.php:68
-#: app/Admin/Dashboard.php:190
+#: app/Admin/Dashboard.php:72
+#: app/Admin/Dashboard.php:194
 msgid "Unique Domains"
 msgstr ""
 
-#: app/Admin/Dashboard.php:76
+#: app/Admin/Dashboard.php:80
 msgid "By Context"
 msgstr ""
 
-#: app/Admin/Dashboard.php:79
-#: app/Admin/Dashboard.php:137
+#: app/Admin/Dashboard.php:83
+#: app/Admin/Dashboard.php:141
 msgid "Frontend"
 msgstr ""
 
-#: app/Admin/Dashboard.php:83
-#: app/Admin/Dashboard.php:138
+#: app/Admin/Dashboard.php:87
+#: app/Admin/Dashboard.php:142
 msgid "Admin"
 msgstr ""
 
-#: app/Admin/Dashboard.php:87
-#: app/Admin/Dashboard.php:136
+#: app/Admin/Dashboard.php:91
+#: app/Admin/Dashboard.php:140
 msgid "Cron"
 msgstr ""
 
-#: app/Admin/Dashboard.php:91
-#: app/Admin/Dashboard.php:139
+#: app/Admin/Dashboard.php:95
+#: app/Admin/Dashboard.php:143
 msgid "CLI"
 msgstr ""
 
-#: app/Admin/Dashboard.php:99
+#: app/Admin/Dashboard.php:103
 msgid "Top Sources"
 msgstr ""
 
-#: app/Admin/Dashboard.php:119
+#: app/Admin/Dashboard.php:123
 msgid "Requests by Context"
 msgstr ""
 
-#: app/Admin/Dashboard.php:144
+#: app/Admin/Dashboard.php:148
 msgid "Domains"
 msgstr ""
 
-#: app/Admin/Dashboard.php:147
-#: app/Admin/Dashboard.php:183
+#: app/Admin/Dashboard.php:151
+#: app/Admin/Dashboard.php:187
 msgid "No data yet."
 msgstr ""
 
-#: app/Admin/Dashboard.php:152
-#: app/Admin/LogPage.php:51
-#: app/Admin/LogPage.php:125
+#: app/Admin/Dashboard.php:156
+#: app/Admin/LogPage.php:55
+#: app/Admin/LogPage.php:129
 msgid "Domain"
 msgstr ""
 
-#: app/Admin/Dashboard.php:153
+#: app/Admin/Dashboard.php:157
 msgid "First Seen"
 msgstr ""
 
-#: app/Admin/Dashboard.php:154
+#: app/Admin/Dashboard.php:158
 msgid "Last Seen"
 msgstr ""
 
-#: app/Admin/Dashboard.php:155
+#: app/Admin/Dashboard.php:159
 msgid "Requests"
 msgstr ""
 
-#: app/Admin/Dashboard.php:156
-#: app/Admin/Dashboard.php:180
+#: app/Admin/Dashboard.php:160
+#: app/Admin/Dashboard.php:184
 msgid "Sources"
 msgstr ""
 
-#: app/Admin/Dashboard.php:188
-#: app/Admin/LogPage.php:128
-#: app/Admin/LogPage.php:192
+#: app/Admin/Dashboard.php:192
+#: app/Admin/LogPage.php:132
+#: app/Admin/LogPage.php:196
 msgid "Source"
 msgstr ""
 
-#: app/Admin/Exporter.php:32
-#: app/Admin/LogPage.php:243
+#: app/Admin/Exporter.php:36
+#: app/Admin/LogPage.php:251
 msgid "Security check failed."
 msgstr ""
 
-#: app/Admin/LogPage.php:56
+#: app/Admin/LogPage.php:60
 msgid "All sources"
 msgstr ""
 
-#: app/Admin/LogPage.php:65
+#: app/Admin/LogPage.php:69
 msgid "All methods"
 msgstr ""
 
-#: app/Admin/LogPage.php:74
+#: app/Admin/LogPage.php:78
 msgid "All contexts"
 msgstr ""
 
-#: app/Admin/LogPage.php:85
+#: app/Admin/LogPage.php:89
 msgid "From"
 msgstr ""
 
-#: app/Admin/LogPage.php:92
+#: app/Admin/LogPage.php:96
 msgid "To"
 msgstr ""
 
-#: app/Admin/LogPage.php:96
+#: app/Admin/LogPage.php:100
 msgid "Filter"
 msgstr ""
 
-#: app/Admin/LogPage.php:97
+#: app/Admin/LogPage.php:101
 msgid "Reset"
 msgstr ""
 
-#: app/Admin/LogPage.php:106
+#: app/Admin/LogPage.php:110
 msgid "Bulk actions"
 msgstr ""
 
-#: app/Admin/LogPage.php:107
+#: app/Admin/LogPage.php:111
 msgid "Delete"
 msgstr ""
 
-#: app/Admin/LogPage.php:109
+#: app/Admin/LogPage.php:113
 msgid "Apply"
 msgstr ""
 
-#: app/Admin/LogPage.php:113
+#: app/Admin/LogPage.php:117
 msgid "Export CSV"
 msgstr ""
 
-#: app/Admin/LogPage.php:114
+#: app/Admin/LogPage.php:118
 msgid "Export JSON"
 msgstr ""
 
-#: app/Admin/LogPage.php:124
+#: app/Admin/LogPage.php:128
 msgid "Timestamp"
 msgstr ""
 
-#: app/Admin/LogPage.php:126
+#: app/Admin/LogPage.php:130
 msgid "Method"
 msgstr ""
 
-#: app/Admin/LogPage.php:127
+#: app/Admin/LogPage.php:131
 msgid "Status"
 msgstr ""
 
-#: app/Admin/LogPage.php:129
+#: app/Admin/LogPage.php:133
 msgid "Context"
 msgstr ""
 
-#: app/Admin/LogPage.php:130
+#: app/Admin/LogPage.php:134
 msgid "Flags"
 msgstr ""
 
-#: app/Admin/LogPage.php:136
+#: app/Admin/LogPage.php:140
 msgid "No requests found."
 msgstr ""
 
 #. translators: %s: human-readable time difference, e.g. "2 minutes"
-#: app/Admin/LogPage.php:151
+#: app/Admin/LogPage.php:155
 #, php-format
 msgid "%s ago"
 msgstr ""
 
-#: app/Admin/LogPage.php:180
+#: app/Admin/LogPage.php:184
 msgid "Recurring request"
 msgstr ""
 
-#: app/Admin/LogPage.php:183
+#: app/Admin/LogPage.php:187
 msgid "Duplicate request"
 msgstr ""
 
-#: app/Admin/LogPage.php:190
+#: app/Admin/LogPage.php:194
 msgid "URL"
 msgstr ""
 
-#: app/Admin/LogPage.php:200
+#: app/Admin/LogPage.php:204
 msgid "Request Headers"
 msgstr ""
 
-#: app/Admin/LogPage.php:206
+#: app/Admin/LogPage.php:210
 msgid "Request Body"
 msgstr ""
 
-#: app/Admin/LogPage.php:211
+#: app/Admin/LogPage.php:215
 msgid "Cron Hook"
 msgstr ""
 
 #. translators: %d: number of items
-#: app/Admin/LogPage.php:333
+#: app/Admin/LogPage.php:337
 #, php-format
 msgid "%d item"
 msgid_plural "%d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/Admin/SettingsPage.php:61
+#: app/Admin/SettingsPage.php:63
 msgid "Settings saved."
 msgstr ""
 
-#: app/Admin/SettingsPage.php:65
+#: app/Admin/SettingsPage.php:67
 msgid "All logs deleted."
 msgstr ""
 
-#: app/Admin/SettingsPage.php:69
+#: app/Admin/SettingsPage.php:71
 msgid "MU loader installed."
 msgstr ""
 
-#: app/Admin/SettingsPage.php:73
+#: app/Admin/SettingsPage.php:75
 msgid "MU loader install failed. Check file permissions."
 msgstr ""
 
-#: app/Admin/SettingsPage.php:81
+#: app/Admin/SettingsPage.php:83
 msgid "Enable Logging"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:91
+#: app/Admin/SettingsPage.php:93
 msgid "Log Retention"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:102
+#: app/Admin/SettingsPage.php:104
 msgid "Forever"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:111
+#: app/Admin/SettingsPage.php:113
 msgid "Older logs are auto-deleted daily."
 msgstr ""
 
-#: app/Admin/SettingsPage.php:116
+#: app/Admin/SettingsPage.php:118
 msgid "Exclude Sources"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:119
+#: app/Admin/SettingsPage.php:121
 msgid "One per line. Matching requests will not be logged."
 msgstr ""
 
-#: app/Admin/SettingsPage.php:126
+#: app/Admin/SettingsPage.php:128
 msgid "Save Settings"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:132
+#: app/Admin/SettingsPage.php:134
 msgid "MU Mode"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:134
+#: app/Admin/SettingsPage.php:136
 msgid "MU loader is active. Requests from all sources are captured."
 msgstr ""
 
-#: app/Admin/SettingsPage.php:138
+#: app/Admin/SettingsPage.php:140
 msgid "Install the MU loader to capture requests from all sources."
 msgstr ""
 
-#: app/Admin/SettingsPage.php:141
+#: app/Admin/SettingsPage.php:143
 msgid "Install MU Loader"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:149
+#: app/Admin/SettingsPage.php:151
 msgid "Danger Zone"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:155
+#: app/Admin/SettingsPage.php:157
 msgid "Purge All Logs"
 msgstr ""

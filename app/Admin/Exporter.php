@@ -7,6 +7,10 @@
 
 namespace Nilambar\Outpulse\Admin;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Nilambar\Outpulse\Core\DB;
 
 /**
@@ -94,14 +98,14 @@ class Exporter {
 			exit;
 		}
 
-		fputcsv( $out, $columns );
+		fputcsv( $out, $columns, ',', '"', '\\' );
 
 		foreach ( $rows as $row ) {
 			$line = array();
 			foreach ( $columns as $col ) {
 				$line[] = $row->$col ?? '';
 			}
-			fputcsv( $out, $line );
+			fputcsv( $out, $line, ',', '"', '\\' );
 		}
 
 		fclose( $out ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose

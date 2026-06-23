@@ -1,6 +1,6 @@
 export default {
 	build: {
-		minify: false,
+		minify: true,
 		outDir: 'build',
 		rollupOptions: {
 			input: 'src/main.js',

@@ -18,7 +18,7 @@ pnpm run build            # Build JS/CSS assets
 
 ## Architecture
 
-**OutPulse** is a WordPress plugin (PHP 8.0+, WordPress 7.0+) that intercepts every outbound HTTP request via `WP_HTTP`, logs it to a custom DB table with source attribution, and will expose an admin UI for analysis.
+**OutPulse** is a WordPress plugin (PHP 7.4+, WordPress 6.9+) that intercepts every outbound HTTP request via `WP_HTTP`, logs it to a custom DB table with source attribution, and will expose an admin UI for analysis.
 
 ### Boot sequence
 
