@@ -199,6 +199,13 @@
 	}
 }
 
+.outpulse-time-ago {
+	color: #646970;
+	font-size: 11px;
+	margin-left: 4px;
+	display: block;
+}
+
 .outpulse-detail-row {
 	td {
 		background: #f6f7f7;

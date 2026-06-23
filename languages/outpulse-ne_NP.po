@@ -8,22 +8,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-06-22T18:41:53+00:00\n"
+"PO-Revision-Date: 2026-06-23T04:49:41+00:00\n"
 "Language: ne_NP\n"
 "X-Generator: WP-CLI 2.13.0-alpha\n"
 "X-Domain: outpulse\n"
 
 #. Plugin Name of the plugin
 #: outpulse.php:3
-#: app/Admin/Admin.php:46
-#: app/Admin/Admin.php:47
 msgid "OutPulse"
-msgstr ""
+msgstr "OutPulse"
 
 #. Plugin URI of the plugin
 #: outpulse.php:4
 msgid "https://github.com/ernilambar/outpulse"
-msgstr ""
+msgstr "https://github.com/ernilambar/outpulse"
 
 #. Description of the plugin
 #: outpulse.php:5
@@ -33,11 +31,21 @@ msgstr ""
 #. Author of the plugin
 #: outpulse.php:7
 msgid "Nilambar Sharma"
-msgstr ""
+msgstr "निलाम्वर शर्मा"
 
 #. Author URI of the plugin
 #: outpulse.php:8
 msgid "https://github.com/ernilambar"
+msgstr "https://github.com/ernilambar"
+
+#: app/Admin/Admin.php:46
+msgctxt "page title"
+msgid "OutPulse"
+msgstr ""
+
+#: app/Admin/Admin.php:47
+msgctxt "menu title"
+msgid "OutPulse"
 msgstr ""
 
 #: app/Admin/Admin.php:55
@@ -50,7 +58,7 @@ msgstr ""
 
 #: app/Admin/Admin.php:57
 msgid "Settings"
-msgstr ""
+msgstr "सेटिङहरू"
 
 #: app/Admin/Admin.php:92
 msgid "Delete all logs? This cannot be undone."
@@ -74,7 +82,7 @@ msgstr ""
 
 #: app/Admin/Dashboard.php:46
 msgid "Today"
-msgstr ""
+msgstr "आज"
 
 #: app/Admin/Dashboard.php:50
 #: app/Admin/Dashboard.php:116
@@ -88,7 +96,7 @@ msgstr ""
 
 #: app/Admin/Dashboard.php:60
 msgid "Overview"
-msgstr ""
+msgstr "परिदृश्य"
 
 #: app/Admin/Dashboard.php:63
 #: app/Admin/Dashboard.php:175
@@ -107,7 +115,7 @@ msgstr ""
 #: app/Admin/Dashboard.php:78
 #: app/Admin/Dashboard.php:123
 msgid "Admin"
-msgstr ""
+msgstr "एडमिन"
 
 #: app/Admin/Dashboard.php:82
 #: app/Admin/Dashboard.php:121
@@ -145,7 +153,7 @@ msgstr ""
 #: app/Admin/LogPage.php:51
 #: app/Admin/LogPage.php:125
 msgid "Domain"
-msgstr ""
+msgstr "डोमेन"
 
 #: app/Admin/Dashboard.php:138
 msgid "First Seen"
@@ -167,12 +175,12 @@ msgstr ""
 #: app/Admin/Dashboard.php:173
 #: app/Admin/LogPage.php:128
 msgid "Source"
-msgstr ""
+msgstr "स्रोत"
 
 #: app/Admin/Exporter.php:32
-#: app/Admin/LogPage.php:237
+#: app/Admin/LogPage.php:243
 msgid "Security check failed."
-msgstr ""
+msgstr "सुरक्षा जाँच असफल भयो।"
 
 #: app/Admin/LogPage.php:56
 msgid "All sources"
@@ -188,23 +196,23 @@ msgstr ""
 
 #: app/Admin/LogPage.php:85
 msgid "From"
-msgstr ""
+msgstr "बाट"
 
 #: app/Admin/LogPage.php:92
 msgid "To"
-msgstr ""
+msgstr "लाई"
 
 #: app/Admin/LogPage.php:96
 msgid "Filter"
-msgstr ""
+msgstr "फिल्टर"
 
 #: app/Admin/LogPage.php:97
 msgid "Reset"
-msgstr ""
+msgstr "रिसेट गर्नुहोस्"
 
 #: app/Admin/LogPage.php:106
 msgid "Bulk actions"
-msgstr ""
+msgstr "एकमुस्ट कार्यहरू"
 
 #: app/Admin/LogPage.php:107
 msgid "Delete selected"
@@ -212,7 +220,7 @@ msgstr ""
 
 #: app/Admin/LogPage.php:109
 msgid "Apply"
-msgstr ""
+msgstr "लागू गर्नुहोस्"
 
 #: app/Admin/LogPage.php:113
 msgid "Export CSV"
@@ -228,11 +236,11 @@ msgstr ""
 
 #: app/Admin/LogPage.php:126
 msgid "Method"
-msgstr ""
+msgstr "विधि"
 
 #: app/Admin/LogPage.php:127
 msgid "Status"
-msgstr ""
+msgstr "स्टाटस"
 
 #: app/Admin/LogPage.php:129
 msgid "Context"
@@ -246,45 +254,51 @@ msgstr ""
 msgid "No requests found."
 msgstr ""
 
-#: app/Admin/LogPage.php:174
+#. translators: %s: human-readable time difference, e.g. "2 minutes"
+#: app/Admin/LogPage.php:151
+#, php-format
+msgid "%s ago"
+msgstr "%s अघि"
+
+#: app/Admin/LogPage.php:180
 msgid "Recurring request"
 msgstr ""
 
-#: app/Admin/LogPage.php:177
+#: app/Admin/LogPage.php:183
 msgid "Duplicate request"
 msgstr ""
 
-#: app/Admin/LogPage.php:184
+#: app/Admin/LogPage.php:190
 msgid "URL:"
 msgstr ""
 
-#: app/Admin/LogPage.php:186
+#: app/Admin/LogPage.php:192
 msgid "Source:"
 msgstr ""
 
-#: app/Admin/LogPage.php:194
+#: app/Admin/LogPage.php:200
 msgid "Request Headers"
 msgstr ""
 
-#: app/Admin/LogPage.php:200
+#: app/Admin/LogPage.php:206
 msgid "Request Body"
 msgstr ""
 
-#: app/Admin/LogPage.php:205
+#: app/Admin/LogPage.php:211
 msgid "Cron Hook:"
 msgstr ""
 
 #. translators: %d: number of items
-#: app/Admin/LogPage.php:327
+#: app/Admin/LogPage.php:333
 #, php-format
 msgid "%d item"
 msgid_plural "%d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d आइटम"
+msgstr[1] "%d आइटमहरू"
 
 #: app/Admin/SettingsPage.php:52
 msgid "Settings saved."
-msgstr ""
+msgstr "सेटिङहरू बचत गरियो।"
 
 #: app/Admin/SettingsPage.php:56
 msgid "All logs deleted."
@@ -324,7 +338,7 @@ msgstr ""
 
 #: app/Admin/SettingsPage.php:106
 msgid "Save Settings"
-msgstr ""
+msgstr "सेटिङहरू बचत गर्नुहोस्"
 
 #: app/Admin/SettingsPage.php:112
 msgid "Danger Zone"
