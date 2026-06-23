@@ -41,6 +41,9 @@ class Settings_Page {
 			self::save();
 			$saved = true;
 		} elseif ( ! empty( $_POST['outpulse_mu_nonce'] ) && wp_verify_nonce( sanitize_key( $_POST['outpulse_mu_nonce'] ), 'outpulse_install_mu' ) && isset( $_POST['install_mu_loader'] ) ) {
+			if ( ! self::can_install_mu() ) {
+				wp_die( esc_html__( 'You do not have permission to install MU plugins.', 'outpulse' ) );
+			}
 			if ( self::copy_mu_loader() ) {
 				$mu_copied = true;
 			} else {
@@ -145,7 +148,7 @@ class Settings_Page {
 			<h2><?php esc_html_e( 'MU Mode', 'outpulse' ); ?></h2>
 			<?php if ( $mu_active ) : ?>
 			<p><?php esc_html_e( 'MU loader is active. Requests from all sources are captured.', 'outpulse' ); ?></p>
-			<?php else : ?>
+			<?php elseif ( self::can_install_mu() ) : ?>
 			<form method="post">
 				<?php wp_nonce_field( 'outpulse_install_mu', 'outpulse_mu_nonce' ); ?>
 				<p><?php esc_html_e( 'Install the MU loader to capture requests from all sources.', 'outpulse' ); ?></p>
@@ -171,6 +174,28 @@ class Settings_Page {
 			</form>
 		</div><!-- .outpulse-wrap -->
 		<?php
+	}
+
+	/**
+	 * Check whether the current user may install the MU loader.
+	 *
+	 * Requires install_plugins on single-site, manage_network_plugins on multisite.
+	 * Always returns false when DISALLOW_FILE_MODS is set.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return bool
+	 */
+	private static function can_install_mu(): bool {
+		if ( defined( 'DISALLOW_FILE_MODS' ) && DISALLOW_FILE_MODS ) {
+			return false;
+		}
+
+		if ( is_multisite() ) {
+			return current_user_can( 'manage_network_plugins' );
+		}
+
+		return current_user_can( 'install_plugins' );
 	}
 
 	/**
