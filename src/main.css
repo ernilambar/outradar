@@ -1,6 +1,6 @@
-/* OutPulse Admin Styles */
+/* OutRadar Admin Styles */
 
-.outpulse-wrap {
+.outradar-wrap {
 	h1 {
 		margin-bottom: 16px;
 	}
@@ -8,14 +8,14 @@
 
 /* ── Widgets ─────────────────────────────────────────────── */
 
-.outpulse-widgets {
+.outradar-widgets {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 16px;
 	margin-bottom: 24px;
 }
 
-.outpulse-widget {
+.outradar-widget {
 	background: #fff;
 	border: 1px solid #c3c4c7;
 	border-radius: 4px;
@@ -32,31 +32,31 @@
 	}
 }
 
-.outpulse-stat-group {
+.outradar-stat-group {
 	display: flex;
 	gap: 24px;
 }
 
-.outpulse-stat {
+.outradar-stat {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-.outpulse-stat-number {
+.outradar-stat-number {
 	font-size: 28px;
 	font-weight: 600;
 	line-height: 1.1;
 	color: #1d2327;
 }
 
-.outpulse-stat-label {
+.outradar-stat-label {
 	font-size: 11px;
 	color: #646970;
 	margin-top: 2px;
 }
 
-.outpulse-kv-table {
+.outradar-kv-table {
 	border-collapse: collapse;
 	width: 100%;
 
@@ -72,7 +72,7 @@
 
 /* ── Chart ───────────────────────────────────────────────── */
 
-.outpulse-chart-section {
+.outradar-chart-section {
 	background: #fff;
 	border: 1px solid #c3c4c7;
 	border-radius: 4px;
@@ -80,7 +80,7 @@
 	margin-bottom: 24px;
 }
 
-.outpulse-chart-header {
+.outradar-chart-header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -92,12 +92,12 @@
 	}
 }
 
-.outpulse-chart-controls {
+.outradar-chart-controls {
 	display: flex;
 	gap: 4px;
 }
 
-.outpulse-range-btn {
+.outradar-range-btn {
 	&.active {
 		background: #2271b1;
 		border-color: #2271b1;
@@ -110,14 +110,14 @@
 	}
 }
 
-.outpulse-chart-legend {
+.outradar-chart-legend {
 	display: flex;
 	gap: 16px;
 	margin-bottom: 12px;
 	flex-wrap: wrap;
 }
 
-.outpulse-legend-item {
+.outradar-legend-item {
 	display: flex;
 	align-items: center;
 	gap: 6px;
@@ -146,14 +146,14 @@
 	}
 }
 
-#outpulse-chart {
+#outradar-chart {
 	display: block;
 	max-width: 100%;
 }
 
 /* ── Filter form ─────────────────────────────────────────── */
 
-.outpulse-filter-form {
+.outradar-filter-form {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;
@@ -169,7 +169,7 @@
 	}
 }
 
-.outpulse-checkbox-label {
+.outradar-checkbox-label {
 	display: flex;
 	align-items: center;
 	gap: 4px;
@@ -178,14 +178,14 @@
 
 /* ── Log table ───────────────────────────────────────────── */
 
-.outpulse-log-table {
+.outradar-log-table {
 	td,
 	th {
 		vertical-align: middle;
 	}
 }
 
-.outpulse-row-toggle {
+.outradar-row-toggle {
 	background: none;
 	border: none;
 	padding: 0;
@@ -199,22 +199,22 @@
 	}
 }
 
-.outpulse-log-table {
+.outradar-log-table {
 	table-layout: auto !important;
 }
 
-.outpulse-log-table .outpulse-timestamp-col {
+.outradar-log-table .outradar-timestamp-col {
 	white-space: nowrap;
 }
 
-.outpulse-time-ago {
+.outradar-time-ago {
 	color: #646970;
 	font-size: 11px;
 	margin-left: 4px;
 	white-space: nowrap;
 }
 
-.outpulse-detail-row {
+.outradar-detail-row {
 	td {
 		background: #f6f7f7;
 		padding: 12px 16px;
@@ -222,7 +222,7 @@
 	}
 }
 
-.outpulse-detail-inner {
+.outradar-detail-inner {
 	p {
 		margin: 4px 0;
 		font-size: 13px;
@@ -253,7 +253,7 @@
 	}
 }
 
-.outpulse-reviewed {
+.outradar-reviewed {
 	td {
 		opacity: 0.6;
 	}
@@ -261,7 +261,7 @@
 
 /* ── Status badges ───────────────────────────────────────── */
 
-.outpulse-status {
+.outradar-status {
 	display: inline-block;
 	padding: 1px 6px;
 	border-radius: 3px;
@@ -284,7 +284,7 @@
 	}
 }
 
-.outpulse-context {
+.outradar-context {
 	display: inline-block;
 	padding: 1px 6px;
 	border-radius: 3px;
@@ -315,7 +315,7 @@
 
 /* ── Flag icons ──────────────────────────────────────────── */
 
-.outpulse-flag {
+.outradar-flag {
 	font-size: 16px;
 	margin-right: 2px;
 	cursor: default;
@@ -333,20 +333,20 @@
 	}
 }
 
-.outpulse-risk {
+.outradar-risk {
 	color: #d63638;
 	font-weight: 600;
 }
 
 /* ── Pagination ──────────────────────────────────────────── */
 
-.outpulse-wrap .pagination-links {
+.outradar-wrap .pagination-links {
 	display: inline-flex;
 	align-items: center;
 	gap: 2px;
 }
 
-.outpulse-wrap .paging-input {
+.outradar-wrap .paging-input {
 	padding: 0 4px;
 	font-size: 13px;
 	line-height: 1;
@@ -354,20 +354,20 @@
 
 /* ── Domain table ────────────────────────────────────────── */
 
-.outpulse-domain-unknown {
+.outradar-domain-unknown {
 	td:first-child {
 		font-weight: 600;
 	}
 }
 
-.outpulse-truncate {
+.outradar-truncate {
 	max-width: 240px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
 
-.outpulse-badge {
+.outradar-badge {
 	display: inline-block;
 	width: 16px;
 	height: 16px;

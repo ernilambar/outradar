@@ -2,16 +2,16 @@
 /**
  * Log_Page.
  *
- * @package Nilambar\Outpulse
+ * @package Nilambar\OutRadar
  */
 
-namespace Nilambar\Outpulse\Admin\Pages;
+namespace Nilambar\OutRadar\Admin\Pages;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Nilambar\Outpulse\Services\DB;
+use Nilambar\OutRadar\Services\DB;
 
 /**
  * Renders the paginated, filterable Request Log admin page.
@@ -29,7 +29,7 @@ class Log_Page {
 	 */
 	public static function render(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission.', 'outpulse' ) );
+			wp_die( esc_html__( 'You do not have permission.', 'outradar' ) );
 		}
 
 		self::handle_bulk_action();
@@ -43,21 +43,21 @@ class Log_Page {
 		$per_page    = 50;
 		$total_pages = (int) ceil( $total / $per_page );
 		?>
-		<div class="wrap outpulse-wrap">
+		<div class="wrap outradar-wrap">
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 
-			<form method="get" class="outpulse-filter-form">
-				<input type="hidden" name="page" value="outpulse" />
+			<form method="get" class="outradar-filter-form">
+				<input type="hidden" name="page" value="outradar" />
 
 				<input
 					type="text"
 					name="domain"
-					placeholder="<?php esc_attr_e( 'Domain', 'outpulse' ); ?>"
+					placeholder="<?php esc_attr_e( 'Domain', 'outradar' ); ?>"
 					value="<?php echo esc_attr( $filters['domain'] ?? '' ); ?>"
 				/>
 
 				<select name="plugin">
-					<option value=""><?php esc_html_e( 'All sources', 'outpulse' ); ?></option>
+					<option value=""><?php esc_html_e( 'All sources', 'outradar' ); ?></option>
 					<?php foreach ( $plugins as $plugin ) : ?>
 					<option value="<?php echo esc_attr( $plugin ); ?>" <?php selected( $filters['plugin'] ?? '', $plugin ); ?>>
 						<?php echo esc_html( $plugin ); ?>
@@ -66,7 +66,7 @@ class Log_Page {
 				</select>
 
 				<select name="method">
-					<option value=""><?php esc_html_e( 'All methods', 'outpulse' ); ?></option>
+					<option value=""><?php esc_html_e( 'All methods', 'outradar' ); ?></option>
 					<?php foreach ( array( 'GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD' ) as $method ) : ?>
 					<option value="<?php echo esc_attr( $method ); ?>" <?php selected( $filters['method'] ?? '', $method ); ?>>
 						<?php echo esc_html( $method ); ?>
@@ -75,7 +75,7 @@ class Log_Page {
 				</select>
 
 				<select name="context">
-					<option value=""><?php esc_html_e( 'All contexts', 'outpulse' ); ?></option>
+					<option value=""><?php esc_html_e( 'All contexts', 'outradar' ); ?></option>
 					<?php foreach ( array( 'frontend', 'admin', 'cron', 'cli' ) as $ctx ) : ?>
 					<option value="<?php echo esc_attr( $ctx ); ?>" <?php selected( $filters['context'] ?? '', $ctx ); ?>>
 						<?php echo esc_html( $ctx ); ?>
@@ -86,78 +86,78 @@ class Log_Page {
 				<input
 					type="date"
 					name="date_from"
-					title="<?php esc_attr_e( 'From', 'outpulse' ); ?>"
+					title="<?php esc_attr_e( 'From', 'outradar' ); ?>"
 					value="<?php echo esc_attr( $filters['date_from'] ?? '' ); ?>"
 				/>
 
 				<input
 					type="date"
 					name="date_to"
-					title="<?php esc_attr_e( 'To', 'outpulse' ); ?>"
+					title="<?php esc_attr_e( 'To', 'outradar' ); ?>"
 					value="<?php echo esc_attr( $filters['date_to'] ?? '' ); ?>"
 				/>
 
-				<button type="submit" class="button"><?php esc_html_e( 'Filter', 'outpulse' ); ?></button>
-				<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse' ) ); ?>" class="button"><?php esc_html_e( 'Reset', 'outpulse' ); ?></a>
+				<button type="submit" class="button"><?php esc_html_e( 'Filter', 'outradar' ); ?></button>
+				<a href="<?php echo esc_url( admin_url( 'admin.php?page=outradar' ) ); ?>" class="button"><?php esc_html_e( 'Reset', 'outradar' ); ?></a>
 			</form>
 
-			<form method="post" id="outpulse-log-form">
-				<?php wp_nonce_field( 'outpulse_bulk', 'outpulse_nonce' ); ?>
+			<form method="post" id="outradar-log-form">
+				<?php wp_nonce_field( 'outradar_bulk', 'outradar_nonce' ); ?>
 
 				<div class="tablenav top">
 					<div class="alignleft actions bulkactions">
 						<select name="bulk_action">
-							<option value=""><?php esc_html_e( 'Bulk actions', 'outpulse' ); ?></option>
-							<option value="delete"><?php esc_html_e( 'Delete', 'outpulse' ); ?></option>
+							<option value=""><?php esc_html_e( 'Bulk actions', 'outradar' ); ?></option>
+							<option value="delete"><?php esc_html_e( 'Delete', 'outradar' ); ?></option>
 						</select>
-						<button type="submit" class="button action" id="outpulse-bulk-submit"><?php esc_html_e( 'Apply', 'outpulse' ); ?></button>
+						<button type="submit" class="button action" id="outradar-bulk-submit"><?php esc_html_e( 'Apply', 'outradar' ); ?></button>
 					</div>
 
 					<div class="alignleft actions">
-						<a href="<?php echo esc_url( self::export_url( $filters, 'csv' ) ); ?>" class="button"><?php esc_html_e( 'Export CSV', 'outpulse' ); ?></a>
-						<a href="<?php echo esc_url( self::export_url( $filters, 'json' ) ); ?>" class="button"><?php esc_html_e( 'Export JSON', 'outpulse' ); ?></a>
+						<a href="<?php echo esc_url( self::export_url( $filters, 'csv' ) ); ?>" class="button"><?php esc_html_e( 'Export CSV', 'outradar' ); ?></a>
+						<a href="<?php echo esc_url( self::export_url( $filters, 'json' ) ); ?>" class="button"><?php esc_html_e( 'Export JSON', 'outradar' ); ?></a>
 					</div>
 
 					<?php self::render_pagination( $page, $total_pages, $total, $filters ); ?>
 				</div>
 
-				<table class="wp-list-table widefat fixed striped outpulse-log-table">
+				<table class="wp-list-table widefat fixed striped outradar-log-table">
 					<thead>
 						<tr>
-							<td class="manage-column column-cb check-column"><input type="checkbox" id="outpulse-select-all" /></td>
-							<th><?php esc_html_e( 'Timestamp', 'outpulse' ); ?></th>
-							<th><?php esc_html_e( 'Domain', 'outpulse' ); ?></th>
-							<th><?php esc_html_e( 'Method', 'outpulse' ); ?></th>
-							<th><?php esc_html_e( 'Status', 'outpulse' ); ?></th>
-							<th><?php esc_html_e( 'Source', 'outpulse' ); ?></th>
-							<th><?php esc_html_e( 'Context', 'outpulse' ); ?></th>
-							<th><?php esc_html_e( 'Flags', 'outpulse' ); ?></th>
+							<td class="manage-column column-cb check-column"><input type="checkbox" id="outradar-select-all" /></td>
+							<th><?php esc_html_e( 'Timestamp', 'outradar' ); ?></th>
+							<th><?php esc_html_e( 'Domain', 'outradar' ); ?></th>
+							<th><?php esc_html_e( 'Method', 'outradar' ); ?></th>
+							<th><?php esc_html_e( 'Status', 'outradar' ); ?></th>
+							<th><?php esc_html_e( 'Source', 'outradar' ); ?></th>
+							<th><?php esc_html_e( 'Context', 'outradar' ); ?></th>
+							<th><?php esc_html_e( 'Flags', 'outradar' ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php if ( empty( $rows ) ) : ?>
 						<tr>
-							<td colspan="8"><?php esc_html_e( 'No requests found.', 'outpulse' ); ?></td>
+							<td colspan="8"><?php esc_html_e( 'No requests found.', 'outradar' ); ?></td>
 						</tr>
 						<?php else : ?>
 							<?php foreach ( $rows as $row ) : ?>
-						<tr class="outpulse-log-row">
+						<tr class="outradar-log-row">
 							<th scope="row" class="check-column">
-								<input type="checkbox" name="row_ids[]" value="<?php echo esc_attr( (string) $row->id ); ?>" class="outpulse-row-check" />
+								<input type="checkbox" name="row_ids[]" value="<?php echo esc_attr( (string) $row->id ); ?>" class="outradar-row-check" />
 							</th>
-							<td class="outpulse-timestamp-col">
-								<button type="button" class="outpulse-row-toggle button-link" data-id="<?php echo esc_attr( (string) $row->id ); ?>">
+							<td class="outradar-timestamp-col">
+								<button type="button" class="outradar-row-toggle button-link" data-id="<?php echo esc_attr( (string) $row->id ); ?>">
 									<?php echo esc_html( (string) $row->timestamp ); ?>
 								</button>
-								<span class="outpulse-time-ago">
+								<span class="outradar-time-ago">
 								<?php
 								/* translators: %s: human-readable time difference, e.g. "2 minutes" */
-								echo '(' . esc_html( sprintf( __( '%s ago', 'outpulse' ), human_time_diff( (int) strtotime( (string) $row->timestamp ) ) ) ) . ')';
+								echo '(' . esc_html( sprintf( __( '%s ago', 'outradar' ), human_time_diff( (int) strtotime( (string) $row->timestamp ) ) ) ) . ')';
 								?>
 								</span>
 							</td>
 							<td>
-								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse&domain=' . rawurlencode( (string) $row->domain ) ) ); ?>">
+								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outradar&domain=' . rawurlencode( (string) $row->domain ) ) ); ?>">
 									<?php echo esc_html( (string) $row->domain ); ?>
 								</a>
 							</td>
@@ -165,35 +165,35 @@ class Log_Page {
 							<td>
 								<?php
 								$code  = (int) $row->response_code;
-								$class = $code >= 400 ? 'outpulse-status-error' : ( $code >= 300 ? 'outpulse-status-redirect' : 'outpulse-status-ok' );
+								$class = $code >= 400 ? 'outradar-status-error' : ( $code >= 300 ? 'outradar-status-redirect' : 'outradar-status-ok' );
 								?>
-								<span class="outpulse-status <?php echo esc_attr( $class ); ?>"><?php echo esc_html( (string) $row->response_code ); ?></span>
+								<span class="outradar-status <?php echo esc_attr( $class ); ?>"><?php echo esc_html( (string) $row->response_code ); ?></span>
 							</td>
 							<td>
 								<?php if ( ! empty( $row->source_plugin ) ) : ?>
-								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse&plugin=' . rawurlencode( (string) $row->source_plugin ) ) ); ?>">
+								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outradar&plugin=' . rawurlencode( (string) $row->source_plugin ) ) ); ?>">
 									<?php echo esc_html( (string) $row->source_plugin ); ?>
 								</a>
 								<?php else : ?>
 								&mdash;
 								<?php endif; ?>
 							</td>
-							<td><span class="outpulse-context outpulse-context--<?php echo esc_attr( (string) $row->context ); ?>"><?php echo esc_html( (string) $row->context ); ?></span></td>
+							<td><span class="outradar-context outradar-context--<?php echo esc_attr( (string) $row->context ); ?>"><?php echo esc_html( (string) $row->context ); ?></span></td>
 							<td>
 								<?php if ( ! empty( $row->is_recurring ) ) : ?>
-									<span class="outpulse-flag outpulse-flag--recurring" title="<?php esc_attr_e( 'Recurring request', 'outpulse' ); ?>">&#8635;</span>
+									<span class="outradar-flag outradar-flag--recurring" title="<?php esc_attr_e( 'Recurring request', 'outradar' ); ?>">&#8635;</span>
 								<?php endif; ?>
 								<?php if ( ! empty( $row->duplicate_of ) ) : ?>
-									<span class="outpulse-flag outpulse-flag--duplicate" title="<?php esc_attr_e( 'Duplicate request', 'outpulse' ); ?>">&#8645;</span>
+									<span class="outradar-flag outradar-flag--duplicate" title="<?php esc_attr_e( 'Duplicate request', 'outradar' ); ?>">&#8645;</span>
 								<?php endif; ?>
 							</td>
 						</tr>
-						<tr class="outpulse-detail-row" id="outpulse-detail-<?php echo esc_attr( (string) $row->id ); ?>" style="display:none;">
+						<tr class="outradar-detail-row" id="outradar-detail-<?php echo esc_attr( (string) $row->id ); ?>" style="display:none;">
 							<td colspan="8">
-								<div class="outpulse-detail-inner">
-									<p><strong><?php esc_html_e( 'URL', 'outpulse' ); ?>:</strong> <code><?php echo esc_html( (string) $row->url ); ?></code></p>
+								<div class="outradar-detail-inner">
+									<p><strong><?php esc_html_e( 'URL', 'outradar' ); ?>:</strong> <code><?php echo esc_html( (string) $row->url ); ?></code></p>
 									<p>
-										<strong><?php esc_html_e( 'Source', 'outpulse' ); ?>:</strong>
+										<strong><?php esc_html_e( 'Source', 'outradar' ); ?>:</strong>
 										<?php echo esc_html( (string) $row->source_file ); ?>
 										<?php if ( ! empty( $row->source_line ) ) : ?>
 											<?php echo esc_html( sprintf( ':%d', (int) $row->source_line ) ); ?>
@@ -201,18 +201,18 @@ class Log_Page {
 									</p>
 									<?php if ( ! empty( $row->request_headers ) ) : ?>
 									<details>
-										<summary><?php esc_html_e( 'Request Headers', 'outpulse' ); ?></summary>
+										<summary><?php esc_html_e( 'Request Headers', 'outradar' ); ?></summary>
 										<pre><?php echo esc_html( (string) $row->request_headers ); ?></pre>
 									</details>
 									<?php endif; ?>
 									<?php if ( ! empty( $row->request_body ) ) : ?>
 									<details>
-										<summary><?php esc_html_e( 'Request Body', 'outpulse' ); ?></summary>
+										<summary><?php esc_html_e( 'Request Body', 'outradar' ); ?></summary>
 										<pre><?php echo esc_html( (string) $row->request_body ); ?></pre>
 									</details>
 									<?php endif; ?>
 									<?php if ( ! empty( $row->cron_hook ) ) : ?>
-									<p><strong><?php esc_html_e( 'Cron Hook', 'outpulse' ); ?>:</strong> <code><?php echo esc_html( (string) $row->cron_hook ); ?></code></p>
+									<p><strong><?php esc_html_e( 'Cron Hook', 'outradar' ); ?>:</strong> <code><?php echo esc_html( (string) $row->cron_hook ); ?></code></p>
 									<?php endif; ?>
 								</div>
 							</td>
@@ -227,7 +227,7 @@ class Log_Page {
 				</div>
 
 			</form>
-		</div><!-- .outpulse-wrap -->
+		</div><!-- .outradar-wrap -->
 		<?php
 	}
 
@@ -239,16 +239,16 @@ class Log_Page {
 	 * @return void
 	 */
 	private static function handle_bulk_action(): void {
-		if ( empty( $_POST['outpulse_nonce'] ) ) {
+		if ( empty( $_POST['outradar_nonce'] ) ) {
 			return;
 		}
 
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission.', 'outpulse' ) );
+			wp_die( esc_html__( 'You do not have permission.', 'outradar' ) );
 		}
 
-		if ( ! wp_verify_nonce( sanitize_key( $_POST['outpulse_nonce'] ), 'outpulse_bulk' ) ) {
-			wp_die( esc_html__( 'Security check failed.', 'outpulse' ) );
+		if ( ! wp_verify_nonce( sanitize_key( $_POST['outradar_nonce'] ), 'outradar_bulk' ) ) {
+			wp_die( esc_html__( 'Security check failed.', 'outradar' ) );
 		}
 
 		$action = isset( $_POST['bulk_action'] ) ? sanitize_key( $_POST['bulk_action'] ) : '';
@@ -262,7 +262,7 @@ class Log_Page {
 			DB::delete_by_ids( $ids );
 		}
 
-		wp_safe_redirect( admin_url( 'admin.php?page=outpulse' ) );
+		wp_safe_redirect( admin_url( 'admin.php?page=outradar' ) );
 		exit;
 	}
 
@@ -299,9 +299,9 @@ class Log_Page {
 		$params = array_merge(
 			array_filter( $filters, static fn( $v ) => '' !== $v && false !== $v ),
 			array(
-				'action'   => 'outpulse_export',
+				'action'   => 'outradar_export',
 				'format'   => $format,
-				'_wpnonce' => wp_create_nonce( 'outpulse_export' ),
+				'_wpnonce' => wp_create_nonce( 'outradar_export' ),
 			)
 		);
 
@@ -326,7 +326,7 @@ class Log_Page {
 
 		$base_url            = admin_url( 'admin.php' );
 		$base_params         = array_filter( $filters, static fn( $v ) => '' !== $v && false !== $v );
-		$base_params['page'] = 'outpulse';
+		$base_params['page'] = 'outradar';
 
 		echo '<div class="tablenav-pages">';
 		printf(
@@ -334,7 +334,7 @@ class Log_Page {
 			esc_html(
 				sprintf(
 					/* translators: %d: number of items */
-					_n( '%d item', '%d items', $total_rows, 'outpulse' ),
+					_n( '%d item', '%d items', $total_rows, 'outradar' ),
 					number_format_i18n( $total_rows )
 				)
 			)

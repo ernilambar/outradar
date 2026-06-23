@@ -2,16 +2,16 @@
 /**
  * Dashboard.
  *
- * @package Nilambar\Outpulse
+ * @package Nilambar\OutRadar
  */
 
-namespace Nilambar\Outpulse\Admin\Pages;
+namespace Nilambar\OutRadar\Admin\Pages;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Nilambar\Outpulse\Services\DB;
+use Nilambar\OutRadar\Services\DB;
 
 /**
  * Renders the Dashboard admin page.
@@ -29,7 +29,7 @@ class Dashboard_Page {
 	 */
 	public static function render(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission.', 'outpulse' ) );
+			wp_die( esc_html__( 'You do not have permission.', 'outradar' ) );
 		}
 
 		$stats       = DB::get_summary();
@@ -37,75 +37,75 @@ class Dashboard_Page {
 		$domain_rows = DB::get_domain_summary();
 		$source_rows = DB::get_plugin_summary();
 		?>
-		<div class="wrap outpulse-wrap">
+		<div class="wrap outradar-wrap">
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 
-			<div class="outpulse-widgets">
+			<div class="outradar-widgets">
 
-				<div class="outpulse-widget">
-					<h3><?php esc_html_e( 'Total Requests', 'outpulse' ); ?></h3>
-					<div class="outpulse-stat-group">
-						<div class="outpulse-stat">
-							<span class="outpulse-stat-number"><?php echo esc_html( number_format_i18n( $stats['today'] ) ); ?></span>
-							<span class="outpulse-stat-label"><?php esc_html_e( 'Today', 'outpulse' ); ?></span>
+				<div class="outradar-widget">
+					<h3><?php esc_html_e( 'Total Requests', 'outradar' ); ?></h3>
+					<div class="outradar-stat-group">
+						<div class="outradar-stat">
+							<span class="outradar-stat-number"><?php echo esc_html( number_format_i18n( $stats['today'] ) ); ?></span>
+							<span class="outradar-stat-label"><?php esc_html_e( 'Today', 'outradar' ); ?></span>
 						</div>
-						<div class="outpulse-stat">
-							<span class="outpulse-stat-number"><?php echo esc_html( number_format_i18n( $stats['week'] ) ); ?></span>
-							<span class="outpulse-stat-label">
+						<div class="outradar-stat">
+							<span class="outradar-stat-number"><?php echo esc_html( number_format_i18n( $stats['week'] ) ); ?></span>
+							<span class="outradar-stat-label">
 							<?php
 								/* translators: %d: number of days */
-								echo esc_html( sprintf( _n( '%d day', '%d days', 7, 'outpulse' ), 7 ) );
+								echo esc_html( sprintf( _n( '%d day', '%d days', 7, 'outradar' ), 7 ) );
 							?>
 								</span>
 						</div>
-						<div class="outpulse-stat">
-							<span class="outpulse-stat-number"><?php echo esc_html( number_format_i18n( $stats['total'] ) ); ?></span>
-							<span class="outpulse-stat-label"><?php esc_html_e( 'All Time', 'outpulse' ); ?></span>
+						<div class="outradar-stat">
+							<span class="outradar-stat-number"><?php echo esc_html( number_format_i18n( $stats['total'] ) ); ?></span>
+							<span class="outradar-stat-label"><?php esc_html_e( 'All Time', 'outradar' ); ?></span>
 						</div>
 					</div>
 				</div>
 
-				<div class="outpulse-widget">
-					<h3><?php esc_html_e( 'Overview', 'outpulse' ); ?></h3>
-					<table class="outpulse-kv-table">
+				<div class="outradar-widget">
+					<h3><?php esc_html_e( 'Overview', 'outradar' ); ?></h3>
+					<table class="outradar-kv-table">
 						<tr>
-							<td><?php esc_html_e( 'Unique Domains', 'outpulse' ); ?></td>
+							<td><?php esc_html_e( 'Unique Domains', 'outradar' ); ?></td>
 							<td><strong><?php echo esc_html( number_format_i18n( $stats['unique_domains'] ) ); ?></strong></td>
 						</tr>
 
 					</table>
 				</div>
 
-				<div class="outpulse-widget">
-					<h3><?php esc_html_e( 'By Context', 'outpulse' ); ?></h3>
-					<table class="outpulse-kv-table">
+				<div class="outradar-widget">
+					<h3><?php esc_html_e( 'By Context', 'outradar' ); ?></h3>
+					<table class="outradar-kv-table">
 						<tr>
-							<td><?php esc_html_e( 'Frontend', 'outpulse' ); ?></td>
+							<td><?php esc_html_e( 'Frontend', 'outradar' ); ?></td>
 							<td><strong><?php echo esc_html( number_format_i18n( $stats['ctx_frontend'] ) ); ?></strong></td>
 						</tr>
 						<tr>
-							<td><?php esc_html_e( 'Admin', 'outpulse' ); ?></td>
+							<td><?php esc_html_e( 'Admin', 'outradar' ); ?></td>
 							<td><strong><?php echo esc_html( number_format_i18n( $stats['ctx_admin'] ) ); ?></strong></td>
 						</tr>
 						<tr>
-							<td><?php esc_html_e( 'Cron', 'outpulse' ); ?></td>
+							<td><?php esc_html_e( 'Cron', 'outradar' ); ?></td>
 							<td><strong><?php echo esc_html( number_format_i18n( $stats['ctx_cron'] ) ); ?></strong></td>
 						</tr>
 						<tr>
-							<td><?php esc_html_e( 'CLI', 'outpulse' ); ?></td>
+							<td><?php esc_html_e( 'CLI', 'outradar' ); ?></td>
 							<td><strong><?php echo esc_html( number_format_i18n( $stats['ctx_cli'] ) ); ?></strong></td>
 						</tr>
 					</table>
 				</div>
 
 				<?php if ( ! empty( $top_plugins ) ) : ?>
-				<div class="outpulse-widget">
-					<h3><?php esc_html_e( 'Top Sources', 'outpulse' ); ?></h3>
-					<table class="outpulse-kv-table">
+				<div class="outradar-widget">
+					<h3><?php esc_html_e( 'Top Sources', 'outradar' ); ?></h3>
+					<table class="outradar-kv-table">
 						<?php foreach ( $top_plugins as $row ) : ?>
 						<tr>
 							<td>
-								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse&plugin=' . rawurlencode( (string) $row['source_plugin'] ) ) ); ?>">
+								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outradar&plugin=' . rawurlencode( (string) $row['source_plugin'] ) ) ); ?>">
 									<?php echo esc_html( (string) $row['source_plugin'] ); ?>
 								</a>
 							</td>
@@ -116,48 +116,48 @@ class Dashboard_Page {
 				</div>
 				<?php endif; ?>
 
-			</div><!-- .outpulse-widgets -->
+			</div><!-- .outradar-widgets -->
 
-			<div class="outpulse-chart-section">
-				<div class="outpulse-chart-header">
-					<h2><?php esc_html_e( 'Requests by Context', 'outpulse' ); ?></h2>
-					<div class="outpulse-chart-controls">
-						<button class="button outpulse-range-btn active" data-range="7">
+			<div class="outradar-chart-section">
+				<div class="outradar-chart-header">
+					<h2><?php esc_html_e( 'Requests by Context', 'outradar' ); ?></h2>
+					<div class="outradar-chart-controls">
+						<button class="button outradar-range-btn active" data-range="7">
 						<?php
 							/* translators: %d: number of days */
-							echo esc_html( sprintf( _n( '%d day', '%d days', 7, 'outpulse' ), 7 ) );
+							echo esc_html( sprintf( _n( '%d day', '%d days', 7, 'outradar' ), 7 ) );
 						?>
 							</button>
-						<button class="button outpulse-range-btn" data-range="30">
+						<button class="button outradar-range-btn" data-range="30">
 						<?php
 							/* translators: %d: number of days */
-							echo esc_html( sprintf( _n( '%d day', '%d days', 30, 'outpulse' ), 30 ) );
+							echo esc_html( sprintf( _n( '%d day', '%d days', 30, 'outradar' ), 30 ) );
 						?>
 							</button>
 					</div>
 				</div>
-				<div class="outpulse-chart-legend">
-					<span class="outpulse-legend-item" data-ctx="cron"><?php esc_html_e( 'Cron', 'outpulse' ); ?></span>
-					<span class="outpulse-legend-item" data-ctx="frontend"><?php esc_html_e( 'Frontend', 'outpulse' ); ?></span>
-					<span class="outpulse-legend-item" data-ctx="admin"><?php esc_html_e( 'Admin', 'outpulse' ); ?></span>
-					<span class="outpulse-legend-item" data-ctx="cli"><?php esc_html_e( 'CLI', 'outpulse' ); ?></span>
+				<div class="outradar-chart-legend">
+					<span class="outradar-legend-item" data-ctx="cron"><?php esc_html_e( 'Cron', 'outradar' ); ?></span>
+					<span class="outradar-legend-item" data-ctx="frontend"><?php esc_html_e( 'Frontend', 'outradar' ); ?></span>
+					<span class="outradar-legend-item" data-ctx="admin"><?php esc_html_e( 'Admin', 'outradar' ); ?></span>
+					<span class="outradar-legend-item" data-ctx="cli"><?php esc_html_e( 'CLI', 'outradar' ); ?></span>
 				</div>
-				<canvas id="outpulse-chart" width="800" height="220"></canvas>
+				<canvas id="outradar-chart" width="800" height="220"></canvas>
 			</div>
 
-			<h2><?php esc_html_e( 'Domains', 'outpulse' ); ?></h2>
+			<h2><?php esc_html_e( 'Domains', 'outradar' ); ?></h2>
 
 			<?php if ( empty( $domain_rows ) ) : ?>
-				<p><?php esc_html_e( 'No data yet.', 'outpulse' ); ?></p>
+				<p><?php esc_html_e( 'No data yet.', 'outradar' ); ?></p>
 			<?php else : ?>
-			<table class="wp-list-table widefat fixed striped outpulse-domain-table">
+			<table class="wp-list-table widefat fixed striped outradar-domain-table">
 				<thead>
 					<tr>
-						<th><?php esc_html_e( 'Domain', 'outpulse' ); ?></th>
-						<th><?php esc_html_e( 'First Seen', 'outpulse' ); ?></th>
-						<th><?php esc_html_e( 'Last Seen', 'outpulse' ); ?></th>
-						<th><?php esc_html_e( 'Requests', 'outpulse' ); ?></th>
-						<th><?php esc_html_e( 'Sources', 'outpulse' ); ?></th>
+						<th><?php esc_html_e( 'Domain', 'outradar' ); ?></th>
+						<th><?php esc_html_e( 'First Seen', 'outradar' ); ?></th>
+						<th><?php esc_html_e( 'Last Seen', 'outradar' ); ?></th>
+						<th><?php esc_html_e( 'Requests', 'outradar' ); ?></th>
+						<th><?php esc_html_e( 'Sources', 'outradar' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -165,14 +165,14 @@ class Dashboard_Page {
 						<?php $domain = (string) $row->domain; ?>
 					<tr>
 						<td>
-							<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse&domain=' . rawurlencode( $domain ) ) ); ?>">
+							<a href="<?php echo esc_url( admin_url( 'admin.php?page=outradar&domain=' . rawurlencode( $domain ) ) ); ?>">
 								<?php echo esc_html( $domain ); ?>
 							</a>
 						</td>
 						<td><?php echo esc_html( (string) $row->first_seen ); ?></td>
 						<td><?php echo esc_html( (string) $row->last_seen ); ?></td>
 						<td><?php echo esc_html( number_format_i18n( (int) $row->total ) ); ?></td>
-						<td class="outpulse-truncate" title="<?php echo esc_attr( (string) $row->plugins ); ?>">
+						<td class="outradar-truncate" title="<?php echo esc_attr( (string) $row->plugins ); ?>">
 							<?php echo esc_html( (string) $row->plugins ); ?>
 						</td>
 					</tr>
@@ -181,24 +181,24 @@ class Dashboard_Page {
 			</table>
 			<?php endif; ?>
 
-			<h2><?php esc_html_e( 'Sources', 'outpulse' ); ?></h2>
+			<h2><?php esc_html_e( 'Sources', 'outradar' ); ?></h2>
 
 			<?php if ( empty( $source_rows ) ) : ?>
-				<p><?php esc_html_e( 'No data yet.', 'outpulse' ); ?></p>
+				<p><?php esc_html_e( 'No data yet.', 'outradar' ); ?></p>
 			<?php else : ?>
 			<table class="wp-list-table widefat fixed striped">
 				<thead>
 					<tr>
-						<th><?php esc_html_e( 'Source', 'outpulse' ); ?></th>
-						<th><?php esc_html_e( 'Total Requests', 'outpulse' ); ?></th>
-						<th><?php esc_html_e( 'Unique Domains', 'outpulse' ); ?></th>
+						<th><?php esc_html_e( 'Source', 'outradar' ); ?></th>
+						<th><?php esc_html_e( 'Total Requests', 'outradar' ); ?></th>
+						<th><?php esc_html_e( 'Unique Domains', 'outradar' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php foreach ( $source_rows as $row ) : ?>
 					<tr>
 						<td>
-							<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse&plugin=' . rawurlencode( (string) $row->source_plugin ) ) ); ?>">
+							<a href="<?php echo esc_url( admin_url( 'admin.php?page=outradar&plugin=' . rawurlencode( (string) $row->source_plugin ) ) ); ?>">
 								<?php echo esc_html( (string) $row->source_plugin ); ?>
 							</a>
 						</td>
@@ -210,7 +210,7 @@ class Dashboard_Page {
 			</table>
 			<?php endif; ?>
 
-		</div><!-- .outpulse-wrap -->
+		</div><!-- .outradar-wrap -->
 		<?php
 	}
 

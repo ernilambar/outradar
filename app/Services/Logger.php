@@ -2,10 +2,10 @@
 /**
  * Logger.
  *
- * @package Nilambar\Outpulse
+ * @package Nilambar\OutRadar
  */
 
-namespace Nilambar\Outpulse\Services;
+namespace Nilambar\OutRadar\Services;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -30,7 +30,7 @@ class Logger {
 		$source = Tracer::get_source();
 
 		// Skip if this plugin is excluded from logging.
-		$excluded_raw = (string) get_option( 'outpulse_excluded_plugins', '' );
+		$excluded_raw = (string) get_option( 'outradar_excluded_plugins', '' );
 		if ( '' !== $excluded_raw && '' !== $source['source_plugin'] ) {
 			$excluded = array_filter( array_map( 'trim', explode( "\n", $excluded_raw ) ) );
 			if ( in_array( $source['source_plugin'], $excluded, true ) ) {

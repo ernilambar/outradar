@@ -1,53 +1,53 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: OutPulse 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/outpulse\n"
+"Project-Id-Version: OutRadar 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/outradar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-06-23T08:58:03+00:00\n"
+"PO-Revision-Date: 2026-06-23T15:35:30+00:00\n"
 "Language: ne_NP\n"
 "X-Generator: WP-CLI 2.13.0-alpha\n"
-"X-Domain: outpulse\n"
+"X-Domain: outradar\n"
 
 #. Plugin Name of the plugin
-#: outpulse.php:3
-msgid "OutPulse"
-msgstr "OutPulse"
+#: outradar.php:3
+msgid "OutRadar"
+msgstr "OutRadar"
 
 #. Plugin URI of the plugin
-#: outpulse.php:4
-msgid "https://github.com/ernilambar/outpulse"
-msgstr "https://github.com/ernilambar/outpulse"
+#: outradar.php:4
+msgid "https://github.com/ernilambar/outradar"
+msgstr "https://github.com/ernilambar/outradar"
 
 #. Description of the plugin
-#: outpulse.php:5
-#: app/Admin/Pages/Settings_Page.php:88
+#: outradar.php:5
+#: app/Admin/Pages/Settings_Page.php:91
 msgid "Log outbound HTTP requests."
 msgstr "बाहिर जाने HTTP अनुरोधहरू लग गर्नुहोस्।"
 
 #. Author of the plugin
-#: outpulse.php:7
+#: outradar.php:7
 msgid "Nilambar Sharma"
 msgstr "निलाम्वर शर्मा"
 
 #. Author URI of the plugin
-#: outpulse.php:8
+#: outradar.php:8
 msgid "https://github.com/ernilambar"
 msgstr "https://github.com/ernilambar"
 
 #: app/Admin/Admin.php:54
 msgctxt "page title"
-msgid "OutPulse"
-msgstr "आउटपल्स"
+msgid "OutRadar"
+msgstr "आउटरेडार"
 
 #: app/Admin/Admin.php:55
 msgctxt "menu title"
-msgid "OutPulse"
-msgstr "आउटपल्स"
+msgid "OutRadar"
+msgstr "आउटरेडार"
 
 #: app/Admin/Admin.php:62
 msgid "Log"
@@ -62,7 +62,7 @@ msgid "Settings"
 msgstr "सेटिङहरू"
 
 #: app/Admin/Admin.php:99
-#: app/Admin/Pages/Settings_Page.php:165
+#: app/Admin/Pages/Settings_Page.php:168
 msgid "Permanently delete all logs. This cannot be undone."
 msgstr "सबै लगहरू स्थायी रूपले मेटाउनुहोस्। यो प्रक्रिया पूर्ववत गर्न सकिँदैन।"
 
@@ -96,9 +96,9 @@ msgstr "आज"
 #: app/Admin/Pages/Dashboard_Page.php:57
 #: app/Admin/Pages/Dashboard_Page.php:128
 #: app/Admin/Pages/Dashboard_Page.php:134
-#: app/Admin/Pages/Settings_Page.php:100
-#: app/Admin/Pages/Settings_Page.php:102
-#: app/Admin/Pages/Settings_Page.php:104
+#: app/Admin/Pages/Settings_Page.php:103
+#: app/Admin/Pages/Settings_Page.php:105
+#: app/Admin/Pages/Settings_Page.php:107
 #, php-format
 msgid "%d day"
 msgid_plural "%d days"
@@ -298,78 +298,82 @@ msgid_plural "%d items"
 msgstr[0] "%d आइटम"
 msgstr[1] "%d आइटमहरू"
 
-#: app/Admin/Pages/Settings_Page.php:64
+#: app/Admin/Pages/Settings_Page.php:45
+msgid "You do not have permission to install MU plugins."
+msgstr "तपाईँलाई एमयु प्लगिनहरू स्थापना गर्ने अनुमति छैन।"
+
+#: app/Admin/Pages/Settings_Page.php:67
 msgid "Settings saved."
 msgstr "सेटिङहरू बचत गरियो।"
 
-#: app/Admin/Pages/Settings_Page.php:68
+#: app/Admin/Pages/Settings_Page.php:71
 msgid "All logs deleted."
 msgstr "सबै लगहरू मेटाइयो।"
 
-#: app/Admin/Pages/Settings_Page.php:72
+#: app/Admin/Pages/Settings_Page.php:75
 msgid "MU loader installed."
 msgstr "एमयु लोडर स्थापना गरियो।"
 
-#: app/Admin/Pages/Settings_Page.php:76
+#: app/Admin/Pages/Settings_Page.php:79
 msgid "MU loader install failed. Check file permissions."
 msgstr "एमयु लोडर स्थापना असफल भयो। फाइल अनुमतिहरू जाँच गर्नुहोस्।"
 
-#: app/Admin/Pages/Settings_Page.php:84
+#: app/Admin/Pages/Settings_Page.php:87
 msgid "Enable Logging"
 msgstr "लग सक्षम गर्नुहोस्"
 
-#: app/Admin/Pages/Settings_Page.php:94
+#: app/Admin/Pages/Settings_Page.php:97
 msgid "Log Retention"
 msgstr "लग राख्ने अवधि"
 
-#: app/Admin/Pages/Settings_Page.php:105
+#: app/Admin/Pages/Settings_Page.php:108
 msgid "Forever"
 msgstr "सधैँभरि"
 
-#: app/Admin/Pages/Settings_Page.php:114
+#: app/Admin/Pages/Settings_Page.php:117
 msgid "Older logs are auto-deleted daily."
 msgstr "पुराना लगहरू दैनिक स्वतः मेटाइन्छन्।"
 
-#: app/Admin/Pages/Settings_Page.php:119
+#: app/Admin/Pages/Settings_Page.php:122
 msgid "Exclude Sources"
 msgstr "स्रोतहरू बहिष्कृत गर्नुहोस्"
 
-#: app/Admin/Pages/Settings_Page.php:122
+#: app/Admin/Pages/Settings_Page.php:125
 msgid "One per line. Matching requests will not be logged."
 msgstr "प्रति लाइन एउटा। मिल्ने अनुरोधहरू रेकर्ड गरिने छैनन्।"
 
-#: app/Admin/Pages/Settings_Page.php:127
+#: app/Admin/Pages/Settings_Page.php:130
 msgid "Delete Data on Uninstall"
-msgstr ""
+msgstr "अनइन्स्टल गर्दा डाटा मेटाउनुहोस्"
 
-#: app/Admin/Pages/Settings_Page.php:131
+#: app/Admin/Pages/Settings_Page.php:134
 msgid "Remove all logs and settings when the plugin is deleted."
-msgstr ""
+msgstr "प्लगिन मेटाउँदा सबै लगहरू र सेटिङहरू हटाउनुहोस्।"
 
-#: app/Admin/Pages/Settings_Page.php:139
+#: app/Admin/Pages/Settings_Page.php:142
 msgid "Save Settings"
 msgstr "सेटिङहरू बचत गर्नुहोस्"
 
-#: app/Admin/Pages/Settings_Page.php:145
+#: app/Admin/Pages/Settings_Page.php:148
 msgid "MU Mode"
 msgstr "एमयु मोड"
 
-#: app/Admin/Pages/Settings_Page.php:147
+#: app/Admin/Pages/Settings_Page.php:150
 msgid "MU loader is active. Requests from all sources are captured."
 msgstr "एमयु लोडर सक्रिय छ। सबै स्रोतहरूबाट आएका अनुरोधहरू क्याप्चर गरिन्छन्।"
 
-#: app/Admin/Pages/Settings_Page.php:151
+#: app/Admin/Pages/Settings_Page.php:154
 msgid "Install the MU loader to capture requests from all sources."
 msgstr "सबै स्रोतहरूबाट अनुरोधहरू क्याप्चर गर्न एमयु लोडर स्थापना गर्नुहोस्।"
 
-#: app/Admin/Pages/Settings_Page.php:154
+#: app/Admin/Pages/Settings_Page.php:157
 msgid "Install MU Loader"
 msgstr "एमयु लोडर स्थापना गर्नुहोस्"
 
-#: app/Admin/Pages/Settings_Page.php:162
+#: app/Admin/Pages/Settings_Page.php:165
 msgid "Danger Zone"
 msgstr "खतराको क्षेत्र"
 
-#: app/Admin/Pages/Settings_Page.php:168
+#: app/Admin/Pages/Settings_Page.php:171
 msgid "Purge All Logs"
 msgstr "सबै लगहरू मेटाउनुहोस्"

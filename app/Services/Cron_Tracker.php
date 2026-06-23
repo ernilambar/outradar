@@ -2,10 +2,10 @@
 /**
  * Cron_Tracker.
  *
- * @package Nilambar\Outpulse
+ * @package Nilambar\OutRadar
  */
 
-namespace Nilambar\Outpulse\Services;
+namespace Nilambar\OutRadar\Services;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

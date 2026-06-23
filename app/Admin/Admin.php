@@ -2,18 +2,18 @@
 /**
  * Admin.
  *
- * @package Nilambar\Outpulse
+ * @package Nilambar\OutRadar
  */
 
-namespace Nilambar\Outpulse\Admin;
+namespace Nilambar\OutRadar\Admin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Nilambar\Outpulse\Admin\Pages\Dashboard_Page;
-use Nilambar\Outpulse\Admin\Pages\Log_Page;
-use Nilambar\Outpulse\Admin\Pages\Settings_Page;
+use Nilambar\OutRadar\Admin\Pages\Dashboard_Page;
+use Nilambar\OutRadar\Admin\Pages\Log_Page;
+use Nilambar\OutRadar\Admin\Pages\Settings_Page;
 
 /**
  * Registers admin menus, enqueues assets, and dispatches export requests.
@@ -39,7 +39,7 @@ class Admin {
 	public function run(): void {
 		add_action( 'admin_menu', array( $this, 'register_menu' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
-		add_action( 'admin_post_outpulse_export', array( Exporter::class, 'handle' ) );
+		add_action( 'admin_post_outradar_export', array( Exporter::class, 'handle' ) );
 	}
 
 	/**
@@ -51,17 +51,17 @@ class Admin {
 	 */
 	public function register_menu(): void {
 		add_menu_page(
-			_x( 'OutPulse', 'page title', 'outpulse' ),
-			_x( 'OutPulse', 'menu title', 'outpulse' ),
+			_x( 'OutRadar', 'page title', 'outradar' ),
+			_x( 'OutRadar', 'menu title', 'outradar' ),
 			'manage_options',
-			'outpulse',
+			'outradar',
 			array( Log_Page::class, 'render' ),
 			'dashicons-shield'
 		);
 
-		add_submenu_page( 'outpulse', __( 'Log', 'outpulse' ), __( 'Log', 'outpulse' ), 'manage_options', 'outpulse', array( Log_Page::class, 'render' ) );
-		$this->hooks[] = (string) add_submenu_page( 'outpulse', __( 'Dashboard', 'outpulse' ), __( 'Dashboard', 'outpulse' ), 'manage_options', 'outpulse-dashboard', array( Dashboard_Page::class, 'render' ) );
-		$this->hooks[] = (string) add_submenu_page( 'outpulse', __( 'Settings', 'outpulse' ), __( 'Settings', 'outpulse' ), 'manage_options', 'outpulse-settings', array( Settings_Page::class, 'render' ) );
+		add_submenu_page( 'outradar', __( 'Log', 'outradar' ), __( 'Log', 'outradar' ), 'manage_options', 'outradar', array( Log_Page::class, 'render' ) );
+		$this->hooks[] = (string) add_submenu_page( 'outradar', __( 'Dashboard', 'outradar' ), __( 'Dashboard', 'outradar' ), 'manage_options', 'outradar-dashboard', array( Dashboard_Page::class, 'render' ) );
+		$this->hooks[] = (string) add_submenu_page( 'outradar', __( 'Settings', 'outradar' ), __( 'Settings', 'outradar' ), 'manage_options', 'outradar-settings', array( Settings_Page::class, 'render' ) );
 	}
 
 	/**
@@ -73,31 +73,31 @@ class Admin {
 	 * @return void
 	 */
 	public function enqueue_assets( string $hook ): void {
-		if ( 'toplevel_page_outpulse' !== $hook && ! in_array( $hook, $this->hooks, true ) ) {
+		if ( 'toplevel_page_outradar' !== $hook && ! in_array( $hook, $this->hooks, true ) ) {
 			return;
 		}
 
 		wp_enqueue_style(
-			'outpulse-admin',
-			OUTPULSE_URL . 'build/main.css',
+			'outradar-admin',
+			OUTRADAR_URL . 'build/main.css',
 			array(),
-			OUTPULSE_VERSION
+			OUTRADAR_VERSION
 		);
 
 		wp_enqueue_script(
-			'outpulse-admin',
-			OUTPULSE_URL . 'build/main.js',
+			'outradar-admin',
+			OUTRADAR_URL . 'build/main.js',
 			array(),
-			OUTPULSE_VERSION,
+			OUTRADAR_VERSION,
 			true
 		);
 
 		wp_localize_script(
-			'outpulse-admin',
-			'outpulseData',
+			'outradar-admin',
+			'outradarData',
 			array(
-				'confirmPurge'  => __( 'Permanently delete all logs. This cannot be undone.', 'outpulse' ),
-				'confirmDelete' => __( 'Delete selected entries?', 'outpulse' ),
+				'confirmPurge'  => __( 'Permanently delete all logs. This cannot be undone.', 'outradar' ),
+				'confirmDelete' => __( 'Delete selected entries?', 'outradar' ),
 				'chartData7'    => Dashboard_Page::get_chart_data( 7 ),
 				'chartData30'   => Dashboard_Page::get_chart_data( 30 ),
 			)

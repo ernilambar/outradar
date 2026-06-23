@@ -1,23 +1,23 @@
 {
-	"name": "outpulse",
+	"name": "outradar",
 	"version": "1.0.0",
 	"description": "Log outbound HTTP requests.",
 	"keywords": [
 		"wordpress",
 		"wordpress-plugin"
 	],
-	"homepage": "https://github.com/ernilambar/outpulse",
+	"homepage": "https://github.com/ernilambar/outradar",
 	"bugs": {
-		"url": "https://github.com/ernilambar/outpulse/issues"
+		"url": "https://github.com/ernilambar/outradar/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/ernilambar/outpulse.git"
+		"url": "https://github.com/ernilambar/outradar.git"
 	},
 	"license": "GPL-2.0-or-later",
 	"author": "Nilambar Sharma",
 	"type": "module",
-	"main": "outpulse.php",
+	"main": "outradar.php",
 	"scripts": {
 		"build": "vite build",
 		"predeploy": "rimraf build deploy vendor && pnpm run ready",
@@ -46,7 +46,7 @@
 	"wpDeployer": {
 		"repoType": "plugin",
 		"username": "nilambar",
-		"buildDir": "deploy/outpulse",
+		"buildDir": "deploy/outradar",
 		"deployAssets": false
 	}
 }
