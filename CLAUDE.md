@@ -9,7 +9,12 @@ composer install          # Install dev dependencies (PHPCS, coding standards)
 composer run phpcs        # Check coding standards
 composer run format       # Auto-fix coding standard violations (phpcbf)
 composer run lint         # Alias for phpcs
+
+pnpm install              # Install JS dependencies
+pnpm run build            # Build JS/CSS assets
 ```
+
+**Always use `pnpm` — never `npm` or `yarn`.**
 
 ## Architecture
 

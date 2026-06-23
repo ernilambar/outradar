@@ -145,6 +145,12 @@ class LogPage {
 								<button type="button" class="outpulse-row-toggle button-link" data-id="<?php echo esc_attr( (string) $row->id ); ?>">
 									<?php echo esc_html( (string) $row->timestamp ); ?>
 								</button>
+								<span class="outpulse-time-ago">
+								<?php
+								/* translators: %s: human-readable time difference, e.g. "2 minutes" */
+								echo '(' . esc_html( sprintf( __( '%s ago', 'outpulse' ), human_time_diff( (int) strtotime( (string) $row->timestamp ) ) ) ) . ')';
+								?>
+								</span>
 							</td>
 							<td>
 								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outpulse&domain=' . rawurlencode( (string) $row->domain ) ) ); ?>">

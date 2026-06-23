@@ -16,8 +16,6 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: outpulse.php:3
-#: app/Admin/Admin.php:46
-#: app/Admin/Admin.php:47
 msgid "OutPulse"
 msgstr ""
 
@@ -39,6 +37,16 @@ msgstr ""
 #. Author URI of the plugin
 #: outpulse.php:8
 msgid "https://github.com/ernilambar"
+msgstr ""
+
+#: app/Admin/Admin.php:46
+msgctxt "page title"
+msgid "OutPulse"
+msgstr ""
+
+#: app/Admin/Admin.php:47
+msgctxt "menu title"
+msgid "OutPulse"
 msgstr ""
 
 #: app/Admin/Admin.php:55
@@ -171,7 +179,7 @@ msgid "Source"
 msgstr ""
 
 #: app/Admin/Exporter.php:32
-#: app/Admin/LogPage.php:237
+#: app/Admin/LogPage.php:243
 msgid "Security check failed."
 msgstr ""
 
@@ -247,36 +255,42 @@ msgstr ""
 msgid "No requests found."
 msgstr ""
 
-#: app/Admin/LogPage.php:174
+#. translators: %s: human-readable time difference, e.g. "2 minutes"
+#: app/Admin/LogPage.php:151
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+#: app/Admin/LogPage.php:180
 msgid "Recurring request"
 msgstr ""
 
-#: app/Admin/LogPage.php:177
+#: app/Admin/LogPage.php:183
 msgid "Duplicate request"
 msgstr ""
 
-#: app/Admin/LogPage.php:184
+#: app/Admin/LogPage.php:190
 msgid "URL:"
 msgstr ""
 
-#: app/Admin/LogPage.php:186
+#: app/Admin/LogPage.php:192
 msgid "Source:"
 msgstr ""
 
-#: app/Admin/LogPage.php:194
+#: app/Admin/LogPage.php:200
 msgid "Request Headers"
 msgstr ""
 
-#: app/Admin/LogPage.php:200
+#: app/Admin/LogPage.php:206
 msgid "Request Body"
 msgstr ""
 
-#: app/Admin/LogPage.php:205
+#: app/Admin/LogPage.php:211
 msgid "Cron Hook:"
 msgstr ""
 
 #. translators: %d: number of items
-#: app/Admin/LogPage.php:327
+#: app/Admin/LogPage.php:333
 #, php-format
 msgid "%d item"
 msgid_plural "%d items"
