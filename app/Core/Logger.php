@@ -50,7 +50,7 @@ class Logger {
 
 		$body_hash = md5( $url . strtoupper( $method ) . $request_body );
 
-		$cron_hook    = CronTracker::get_current_hook();
+		$cron_hook    = Cron_Tracker::get_current_hook();
 		$recurrence   = DB::check_recurring( $domain, $source['source_plugin'] );
 		$duplicate_of = DB::find_duplicate( $body_hash );
 

@@ -51,13 +51,13 @@ class Admin {
 			_x( 'OutPulse', 'menu title', 'outpulse' ),
 			'manage_options',
 			'outpulse',
-			array( LogPage::class, 'render' ),
+			array( Log_Page::class, 'render' ),
 			'dashicons-shield'
 		);
 
-		add_submenu_page( 'outpulse', __( 'Log', 'outpulse' ), __( 'Log', 'outpulse' ), 'manage_options', 'outpulse', array( LogPage::class, 'render' ) );
+		add_submenu_page( 'outpulse', __( 'Log', 'outpulse' ), __( 'Log', 'outpulse' ), 'manage_options', 'outpulse', array( Log_Page::class, 'render' ) );
 		$this->hooks[] = (string) add_submenu_page( 'outpulse', __( 'Dashboard', 'outpulse' ), __( 'Dashboard', 'outpulse' ), 'manage_options', 'outpulse-dashboard', array( Dashboard::class, 'render' ) );
-		$this->hooks[] = (string) add_submenu_page( 'outpulse', __( 'Settings', 'outpulse' ), __( 'Settings', 'outpulse' ), 'manage_options', 'outpulse-settings', array( SettingsPage::class, 'render' ) );
+		$this->hooks[] = (string) add_submenu_page( 'outpulse', __( 'Settings', 'outpulse' ), __( 'Settings', 'outpulse' ), 'manage_options', 'outpulse-settings', array( Settings_Page::class, 'render' ) );
 	}
 
 	/**

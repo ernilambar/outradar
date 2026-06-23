@@ -1,6 +1,6 @@
 <?php
 /**
- * LogPage.
+ * Log_Page.
  *
  * @package Nilambar\Outpulse
  */
@@ -18,7 +18,7 @@ use Nilambar\Outpulse\Core\DB;
  *
  * @since 1.0.0
  */
-class LogPage {
+class Log_Page {
 
 	/**
 	 * Render the log page, handling bulk actions before output.

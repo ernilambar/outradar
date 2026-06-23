@@ -1,6 +1,6 @@
 <?php
 /**
- * SettingsPage.
+ * Settings_Page.
  *
  * @package Nilambar\Outpulse
  */
@@ -18,7 +18,7 @@ use Nilambar\Outpulse\Core\DB;
  *
  * @since 1.0.0
  */
-class SettingsPage {
+class Settings_Page {
 
 	/**
 	 * Render the settings page, handling saves and purge before output.

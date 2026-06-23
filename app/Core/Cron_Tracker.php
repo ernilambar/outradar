@@ -1,6 +1,6 @@
 <?php
 /**
- * CronTracker.
+ * Cron_Tracker.
  *
  * @package Nilambar\Outpulse
  */
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-class CronTracker {
+class Cron_Tracker {
 
 	// WordPress lifecycle hooks that run before/around cron event handlers.
 	private const WP_LIFECYCLE_HOOKS = array(
