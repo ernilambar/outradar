@@ -7,6 +7,10 @@
 
 namespace Nilambar\Outpulse\Core;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use WP_Error;
 
 /**
@@ -73,7 +77,7 @@ class Interceptor {
 	 * @param string                        $url         Request URL.
 	 * @return void
 	 */
-	public static function on_response( array|WP_Error $response, string $context, string $transport, array $parsed_args, string $url ): void {
+	public static function on_response( $response, string $context, string $transport, array $parsed_args, string $url ): void {
 		if ( 'response' !== $context ) {
 			return;
 		}

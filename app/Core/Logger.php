@@ -7,6 +7,10 @@
 
 namespace Nilambar\Outpulse\Core;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Assembles a log entry and persists it to the database.
  *
@@ -56,11 +60,11 @@ class Logger {
 		DB::insert(
 			array(
 				'timestamp'        => current_time( 'mysql' ),
-				'url'              => $url,
+				'url'              => self::redact_url( $url ),
 				'domain'           => $domain,
 				'method'           => $method,
 				'request_headers'  => wp_json_encode( self::redact_headers( $request['request_headers'] ?? array() ) ),
-				'request_body'     => $request_body,
+				'request_body'     => self::redact_body( $request_body ),
 				'response_code'    => $request['response_code'] ?? null,
 				'response_size'    => $request['response_size'] ?? null,
 				'source_plugin'    => $source['source_plugin'],
@@ -85,7 +89,7 @@ class Logger {
 	 * @param mixed $headers Raw headers (array or string).
 	 * @return mixed Redacted copy.
 	 */
-	private static function redact_headers( mixed $headers ): mixed {
+	private static function redact_headers( $headers ) {
 		if ( ! is_array( $headers ) ) {
 			return $headers;
 		}
@@ -102,6 +106,86 @@ class Logger {
 		}
 
 		return $redacted;
+	}
+
+	/**
+	 * Redact sensitive keys from a JSON-encoded request body.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $body Raw request body string.
+	 * @return string Body with sensitive values replaced by [redacted].
+	 */
+	private static function redact_body( string $body ): string {
+		if ( '' === $body ) {
+			return $body;
+		}
+
+		$decoded = json_decode( $body, true );
+		if ( ! is_array( $decoded ) ) {
+			return $body;
+		}
+
+		$sensitive = array( 'password', 'secret', 'api_key', 'apikey', 'token', 'access_token', 'client_secret' );
+		$changed   = false;
+
+		array_walk_recursive(
+			$decoded,
+			static function ( &$v, $k ) use ( $sensitive, &$changed ) {
+				if ( in_array( strtolower( (string) $k ), $sensitive, true ) ) {
+					$v       = '[redacted]';
+					$changed = true;
+				}
+			}
+		);
+
+		if ( ! $changed ) {
+			return $body;
+		}
+
+		$encoded = wp_json_encode( $decoded );
+
+		return false !== $encoded ? $encoded : $body;
+	}
+
+	/**
+	 * Redact sensitive query parameters from a URL before storage.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $url Full URL.
+	 * @return string URL with sensitive query param values replaced by [redacted].
+	 */
+	private static function redact_url( string $url ): string {
+		$query = (string) wp_parse_url( $url, PHP_URL_QUERY );
+		if ( '' === $query ) {
+			return $url;
+		}
+
+		parse_str( $query, $params );
+
+		$sensitive = array( 'api_key', 'apikey', 'key', 'token', 'secret', 'password', 'access_token', 'client_secret' );
+		$changed   = false;
+
+		foreach ( $params as $k => $v ) {
+			if ( in_array( strtolower( (string) $k ), $sensitive, true ) ) {
+				$params[ $k ] = '[redacted]';
+				$changed      = true;
+			}
+		}
+
+		if ( ! $changed ) {
+			return $url;
+		}
+
+		$pos = strpos( $url, '?' );
+		if ( false === $pos ) {
+			return $url;
+		}
+
+		$fragment = (string) wp_parse_url( $url, PHP_URL_FRAGMENT );
+
+		return substr( $url, 0, $pos ) . '?' . http_build_query( $params ) . ( '' !== $fragment ? '#' . $fragment : '' );
 	}
 
 	/**

@@ -342,8 +342,13 @@ class DB {
 		$where  = self::build_where( $filters );
 		$offset = ( max( 1, $page ) - 1 ) * $per_page;
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared
-		$rows = $wpdb->get_results( "SELECT * FROM {$table} WHERE 1=1{$where} ORDER BY timestamp DESC LIMIT {$per_page} OFFSET {$offset}" );
+		$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$wpdb->prepare(
+				"SELECT * FROM {$table} WHERE 1=1{$where} ORDER BY timestamp DESC LIMIT %d OFFSET %d", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				$per_page,
+				$offset
+			)
+		);
 
 		return is_array( $rows ) ? $rows : array();
 	}

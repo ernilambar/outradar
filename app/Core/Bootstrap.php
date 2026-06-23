@@ -7,6 +7,10 @@
 
 namespace Nilambar\Outpulse\Core;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Nilambar\Outpulse\Admin\Admin;
 
 /**

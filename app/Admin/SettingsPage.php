@@ -7,6 +7,10 @@
 
 namespace Nilambar\Outpulse\Admin;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Nilambar\Outpulse\Core\DB;
 
 /**
@@ -33,20 +37,18 @@ class SettingsPage {
 		$mu_copied = false;
 		$mu_error  = false;
 
-		if ( ! empty( $_POST['outpulse_settings_nonce'] ) && wp_verify_nonce( sanitize_key( $_POST['outpulse_settings_nonce'] ), 'outpulse_settings' ) ) {
-			if ( isset( $_POST['save_settings'] ) ) {
-				self::save();
-				$saved = true;
-			} elseif ( isset( $_POST['purge_all'] ) ) {
-				DB::purge_all_logs();
-				$purged = true;
-			} elseif ( isset( $_POST['install_mu_loader'] ) ) {
-				if ( self::copy_mu_loader() ) {
-					$mu_copied = true;
-				} else {
-					$mu_error = true;
-				}
+		if ( ! empty( $_POST['outpulse_settings_nonce'] ) && wp_verify_nonce( sanitize_key( $_POST['outpulse_settings_nonce'] ), 'outpulse_save_settings' ) && isset( $_POST['save_settings'] ) ) {
+			self::save();
+			$saved = true;
+		} elseif ( ! empty( $_POST['outpulse_mu_nonce'] ) && wp_verify_nonce( sanitize_key( $_POST['outpulse_mu_nonce'] ), 'outpulse_install_mu' ) && isset( $_POST['install_mu_loader'] ) ) {
+			if ( self::copy_mu_loader() ) {
+				$mu_copied = true;
+			} else {
+				$mu_error = true;
 			}
+		} elseif ( ! empty( $_POST['outpulse_purge_nonce'] ) && wp_verify_nonce( sanitize_key( $_POST['outpulse_purge_nonce'] ), 'outpulse_purge_logs' ) && isset( $_POST['purge_all'] ) ) {
+			DB::purge_all_logs();
+			$purged = true;
 		}
 
 		$logging_enabled  = get_option( 'outpulse_logging_enabled', '1' );
@@ -74,7 +76,7 @@ class SettingsPage {
 			<?php endif; ?>
 
 			<form method="post">
-				<?php wp_nonce_field( 'outpulse_settings', 'outpulse_settings_nonce' ); ?>
+				<?php wp_nonce_field( 'outpulse_save_settings', 'outpulse_settings_nonce' ); ?>
 
 				<table class="form-table">
 					<tr>
@@ -134,7 +136,7 @@ class SettingsPage {
 			<p><?php esc_html_e( 'MU loader is active. Requests from all sources are captured.', 'outpulse' ); ?></p>
 			<?php else : ?>
 			<form method="post">
-				<?php wp_nonce_field( 'outpulse_settings', 'outpulse_settings_nonce' ); ?>
+				<?php wp_nonce_field( 'outpulse_install_mu', 'outpulse_mu_nonce' ); ?>
 				<p><?php esc_html_e( 'Install the MU loader to capture requests from all sources.', 'outpulse' ); ?></p>
 				<p>
 					<button type="submit" name="install_mu_loader" class="button button-secondary">
@@ -148,7 +150,7 @@ class SettingsPage {
 
 			<h2><?php esc_html_e( 'Danger Zone', 'outpulse' ); ?></h2>
 			<form method="post">
-				<?php wp_nonce_field( 'outpulse_settings', 'outpulse_settings_nonce' ); ?>
+				<?php wp_nonce_field( 'outpulse_purge_logs', 'outpulse_purge_nonce' ); ?>
 				<p><?php esc_html_e( 'Permanently delete all logs. This cannot be undone.', 'outpulse' ); ?></p>
 				<p>
 					<button type="submit" name="purge_all" class="button button-secondary outpulse-purge-btn" id="outpulse-purge-btn">

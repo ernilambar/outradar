@@ -7,6 +7,10 @@
 
 namespace Nilambar\Outpulse\Core;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Identifies the scheduled event hook that triggered the current HTTP request.
  *

@@ -7,6 +7,10 @@
 
 namespace Nilambar\Outpulse\Admin;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use Nilambar\Outpulse\Core\DB;
 
 /**
@@ -239,12 +243,12 @@ class LogPage {
 			return;
 		}
 
-		if ( ! wp_verify_nonce( sanitize_key( $_POST['outpulse_nonce'] ), 'outpulse_bulk' ) ) {
-			wp_die( esc_html__( 'Security check failed.', 'outpulse' ) );
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'You do not have permission.', 'outpulse' ) );
 		}
 
-		if ( ! current_user_can( 'manage_options' ) ) {
-			return;
+		if ( ! wp_verify_nonce( sanitize_key( $_POST['outpulse_nonce'] ), 'outpulse_bulk' ) ) {
+			wp_die( esc_html__( 'Security check failed.', 'outpulse' ) );
 		}
 
 		$action = isset( $_POST['bulk_action'] ) ? sanitize_key( $_POST['bulk_action'] ) : '';
