@@ -12,14 +12,14 @@ use Nilambar\Outpulse\Core\DB;
 /**
  * Renders the OutPulse Dashboard admin page.
  *
- * @since 1.2.0
+ * @since 1.0.0
  */
 class Dashboard {
 
 	/**
 	 * Render the dashboard page.
 	 *
-	 * @since 1.2.0
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
@@ -198,7 +198,7 @@ class Dashboard {
 	/**
 	 * Return stacked chart data for the last N days (passed to JS via wp_localize_script).
 	 *
-	 * @since 1.3.0
+	 * @since 1.0.0
 	 *
 	 * @param int $days Number of days to look back.
 	 * @return array<string, mixed>

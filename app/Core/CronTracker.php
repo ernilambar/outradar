@@ -10,7 +10,7 @@ namespace Nilambar\Outpulse\Core;
 /**
  * Identifies the scheduled event hook that triggered the current HTTP request.
  *
- * @since 1.1.0
+ * @since 1.0.0
  */
 class CronTracker {
 
@@ -46,7 +46,7 @@ class CronTracker {
 	 * WordPress lifecycle hook — in a cron context that is the scheduled event
 	 * hook that initiated the outbound request.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 *
 	 * @return string|null
 	 */

@@ -23,6 +23,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if ( defined( 'OUTPULSE_LOADED' ) ) {
+	return;
+}
+define( 'OUTPULSE_LOADED', true );
+
 define( 'OUTPULSE_VERSION', '1.0.0' );
 define( 'OUTPULSE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'OUTPULSE_URL', plugin_dir_url( __FILE__ ) );

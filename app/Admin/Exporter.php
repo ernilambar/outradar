@@ -12,14 +12,14 @@ use Nilambar\Outpulse\Core\DB;
 /**
  * Handles CSV and JSON export of log data via admin-post.php.
  *
- * @since 1.2.0
+ * @since 1.0.0
  */
 class Exporter {
 
 	/**
 	 * Handle the outpulse_export admin-post action.
 	 *
-	 * @since 1.2.0
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
@@ -56,7 +56,7 @@ class Exporter {
 	/**
 	 * Stream rows as a CSV file download.
 	 *
-	 * @since 1.2.0
+	 * @since 1.0.0
 	 *
 	 * @param object[] $rows Log rows.
 	 * @return void
@@ -111,7 +111,7 @@ class Exporter {
 	/**
 	 * Stream rows as a JSON file download.
 	 *
-	 * @since 1.2.0
+	 * @since 1.0.0
 	 *
 	 * @param object[] $rows Log rows.
 	 * @return void

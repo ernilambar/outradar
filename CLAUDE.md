@@ -41,6 +41,10 @@ PSR-4: `Nilambar\Outpulse\` maps to `app/`. All plugin classes live under `app/C
 
 Single table `wp_outpulse_log` (constant `OUTPULSE_TABLE = 'outpulse_log'`). Created via `dbDelta()` on activation. Indexed on `domain`, `source_plugin`, `timestamp`. Dropped on uninstall.
 
+## Versioning
+
+**Never bump the plugin version** (`OUTPULSE_VERSION` in `outpulse.php`, `Version:` in the plugin header, `readme.txt` stable tag) unless explicitly asked. Use `@since 1.0.0` for all new docblocks — never invent a higher version.
+
 ## Quality Gate
 
 Every task must end with:

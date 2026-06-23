@@ -10,7 +10,7 @@ namespace Nilambar\Outpulse\Admin;
 /**
  * Registers admin menus, enqueues assets, and dispatches export requests.
  *
- * @since 1.2.0
+ * @since 1.0.0
  */
 class Admin {
 
@@ -24,7 +24,7 @@ class Admin {
 	/**
 	 * Wire up admin hooks.
 	 *
-	 * @since 1.2.0
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
@@ -37,7 +37,7 @@ class Admin {
 	/**
 	 * Register the top-level menu and sub-pages.
 	 *
-	 * @since 1.2.0
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
@@ -60,7 +60,7 @@ class Admin {
 	/**
 	 * Enqueue CSS and JS only on OutPulse admin pages.
 	 *
-	 * @since 1.2.0
+	 * @since 1.0.0
 	 *
 	 * @param string $hook Current admin page hook suffix.
 	 * @return void
