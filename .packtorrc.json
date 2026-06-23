@@ -3,6 +3,7 @@
 		"app/**/*",
 		"build/**/*",
 		"languages/**/*",
+		"loader/**/*",
 		"vendor/**/*",
 		"composer.json",
 		"outpulse.php",
