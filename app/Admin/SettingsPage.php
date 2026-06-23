@@ -131,11 +131,11 @@ class SettingsPage {
 
 			<h2><?php esc_html_e( 'MU Mode', 'outpulse' ); ?></h2>
 			<?php if ( $mu_active ) : ?>
-			<p><?php esc_html_e( 'MU loader is active. Requests from all plugins are captured.', 'outpulse' ); ?></p>
+			<p><?php esc_html_e( 'MU loader is active. Requests from all sources are captured.', 'outpulse' ); ?></p>
 			<?php else : ?>
 			<form method="post">
 				<?php wp_nonce_field( 'outpulse_settings', 'outpulse_settings_nonce' ); ?>
-				<p><?php esc_html_e( 'Install a loader in mu-plugins to capture requests from all plugins.', 'outpulse' ); ?></p>
+				<p><?php esc_html_e( 'Install the MU loader to capture requests from all sources.', 'outpulse' ); ?></p>
 				<p>
 					<button type="submit" name="install_mu_loader" class="button button-secondary">
 						<?php esc_html_e( 'Install MU Loader', 'outpulse' ); ?>

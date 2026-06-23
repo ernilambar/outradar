@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-06-23T06:00:25+00:00\n"
+"PO-Revision-Date: 2026-06-23T06:20:29+00:00\n"
 "Language: ne_NP\n"
 "X-Generator: WP-CLI 2.13.0-alpha\n"
 "X-Domain: outpulse\n"
@@ -346,12 +346,12 @@ msgid "MU Mode"
 msgstr "एमयु मोड"
 
 #: app/Admin/SettingsPage.php:134
-msgid "MU loader is active. Requests from all plugins are captured."
-msgstr "एमयु लोडर सक्रिय छ। सबै प्लगिनहरूबाट आएका अनुरोधहरू क्याप्चर गरिन्छन्।"
+msgid "MU loader is active. Requests from all sources are captured."
+msgstr "एमयु लोडर सक्रिय छ। सबै स्रोतहरूबाट आएका अनुरोधहरू क्याप्चर गरिन्छन्।"
 
 #: app/Admin/SettingsPage.php:138
-msgid "Install a loader in mu-plugins to capture requests from all plugins."
-msgstr "सबै प्लगिनहरूबाट अनुरोधहरू क्याप्चर गर्न mu-plugins मा लोडर स्थापना गर्नुहोस्।"
+msgid "Install the MU loader to capture requests from all sources."
+msgstr "सबै स्रोतहरूबाट अनुरोधहरू क्याप्चर गर्न एमयु लोडर स्थापना गर्नुहोस्।"
 
 #: app/Admin/SettingsPage.php:141
 msgid "Install MU Loader"

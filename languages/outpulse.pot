@@ -347,11 +347,11 @@ msgid "MU Mode"
 msgstr ""
 
 #: app/Admin/SettingsPage.php:134
-msgid "MU loader is active. Requests from all plugins are captured."
+msgid "MU loader is active. Requests from all sources are captured."
 msgstr ""
 
 #: app/Admin/SettingsPage.php:138
-msgid "Install a loader in mu-plugins to capture requests from all plugins."
+msgid "Install the MU loader to capture requests from all sources."
 msgstr ""
 
 #: app/Admin/SettingsPage.php:141

@@ -120,7 +120,7 @@ class LogPage {
 				<table class="wp-list-table widefat fixed striped outpulse-log-table">
 					<thead>
 						<tr>
-							<td class="check-column"><input type="checkbox" id="outpulse-select-all" /></td>
+							<td class="manage-column column-cb check-column"><input type="checkbox" id="outpulse-select-all" /></td>
 							<th><?php esc_html_e( 'Timestamp', 'outpulse' ); ?></th>
 							<th><?php esc_html_e( 'Domain', 'outpulse' ); ?></th>
 							<th><?php esc_html_e( 'Method', 'outpulse' ); ?></th>
@@ -138,9 +138,9 @@ class LogPage {
 						<?php else : ?>
 							<?php foreach ( $rows as $row ) : ?>
 						<tr class="outpulse-log-row">
-							<td class="check-column">
+							<th scope="row" class="check-column">
 								<input type="checkbox" name="row_ids[]" value="<?php echo esc_attr( (string) $row->id ); ?>" class="outpulse-row-check" />
-							</td>
+							</th>
 							<td>
 								<button type="button" class="outpulse-row-toggle button-link" data-id="<?php echo esc_attr( (string) $row->id ); ?>">
 									<?php echo esc_html( (string) $row->timestamp ); ?>

@@ -325,6 +325,20 @@
 	font-weight: 600;
 }
 
+/* ── Pagination ──────────────────────────────────────────── */
+
+.outpulse-wrap .pagination-links {
+	display: inline-flex;
+	align-items: center;
+	gap: 2px;
+}
+
+.outpulse-wrap .paging-input {
+	padding: 0 4px;
+	font-size: 13px;
+	line-height: 1;
+}
+
 /* ── Domain table ────────────────────────────────────────── */
 
 .outpulse-domain-unknown {
