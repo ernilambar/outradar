@@ -12,14 +12,14 @@ use Nilambar\Outpulse\Core\DB;
 /**
  * Renders the paginated, filterable Request Log admin page.
  *
- * @since 1.2.0
+ * @since 1.0.0
  */
 class LogPage {
 
 	/**
 	 * Render the log page, handling bulk actions before output.
 	 *
-	 * @since 1.2.0
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
@@ -104,7 +104,7 @@ class LogPage {
 					<div class="alignleft actions bulkactions">
 						<select name="bulk_action">
 							<option value=""><?php esc_html_e( 'Bulk actions', 'outpulse' ); ?></option>
-							<option value="delete"><?php esc_html_e( 'Delete selected', 'outpulse' ); ?></option>
+							<option value="delete"><?php esc_html_e( 'Delete', 'outpulse' ); ?></option>
 						</select>
 						<button type="submit" class="button action" id="outpulse-bulk-submit"><?php esc_html_e( 'Apply', 'outpulse' ); ?></button>
 					</div>
@@ -230,7 +230,7 @@ class LogPage {
 	/**
 	 * Handle bulk delete / mark-reviewed actions before page output.
 	 *
-	 * @since 1.2.0
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
@@ -265,7 +265,7 @@ class LogPage {
 	/**
 	 * Parse and sanitize filter values from GET params.
 	 *
-	 * @since 1.2.0
+	 * @since 1.0.0
 	 *
 	 * @return array<string, mixed>
 	 */
@@ -285,7 +285,7 @@ class LogPage {
 	/**
 	 * Build the export URL for the current filter set.
 	 *
-	 * @since 1.2.0
+	 * @since 1.0.0
 	 *
 	 * @param array<string, mixed> $filters Active filters.
 	 * @param string               $format  'csv' or 'json'.
@@ -307,7 +307,7 @@ class LogPage {
 	/**
 	 * Render pagination links.
 	 *
-	 * @since 1.2.0
+	 * @since 1.0.0
 	 *
 	 * @param int                  $current     Current page number.
 	 * @param int                  $total_pages Total page count.

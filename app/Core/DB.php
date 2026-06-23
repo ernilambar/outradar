@@ -91,7 +91,7 @@ class DB {
 	/**
 	 * Count recent rows matching the same domain + source_plugin pair.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 *
 	 * @param string $domain        Request domain.
 	 * @param string $source_plugin Attributed plugin name.
@@ -124,7 +124,7 @@ class DB {
 	 * Only considers rows that are not themselves duplicates (duplicate_of IS NULL), so dedup
 	 * chains always point to the original.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 *
 	 * @param string $body_hash MD5 of url + method + body.
 	 * @param int    $window    Look-back window in minutes.
@@ -246,7 +246,7 @@ class DB {
 	/**
 	 * Return daily request counts broken down by context for the last N days (filling gaps with 0).
 	 *
-	 * @since 1.3.0
+	 * @since 1.0.0
 	 *
 	 * @param int $days Number of days to look back.
 	 * @return array<string, array<string, int>> Keyed by date (Y-m-d), value is context => count.

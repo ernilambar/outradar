@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-06-23T04:49:41+00:00\n"
+"PO-Revision-Date: 2026-06-23T05:13:53+00:00\n"
 "Language: ne_NP\n"
 "X-Generator: WP-CLI 2.13.0-alpha\n"
 "X-Domain: outpulse\n"
@@ -41,12 +41,12 @@ msgstr "https://github.com/ernilambar"
 #: app/Admin/Admin.php:46
 msgctxt "page title"
 msgid "OutPulse"
-msgstr ""
+msgstr "आउटपल्स"
 
 #: app/Admin/Admin.php:47
 msgctxt "menu title"
 msgid "OutPulse"
-msgstr ""
+msgstr "आउटपल्स"
 
 #: app/Admin/Admin.php:55
 msgid "Request Log"
@@ -86,7 +86,7 @@ msgstr "आज"
 
 #: app/Admin/Dashboard.php:50
 #: app/Admin/Dashboard.php:116
-#: app/Admin/SettingsPage.php:79
+#: app/Admin/SettingsPage.php:96
 msgid "7 days"
 msgstr ""
 
@@ -136,7 +136,7 @@ msgid "Requests by Context"
 msgstr ""
 
 #: app/Admin/Dashboard.php:117
-#: app/Admin/SettingsPage.php:80
+#: app/Admin/SettingsPage.php:97
 msgid "30 days"
 msgstr ""
 
@@ -215,8 +215,8 @@ msgid "Bulk actions"
 msgstr "एकमुस्ट कार्यहरू"
 
 #: app/Admin/LogPage.php:107
-msgid "Delete selected"
-msgstr ""
+msgid "Delete"
+msgstr "मेटाउनुहोस्"
 
 #: app/Admin/LogPage.php:109
 msgid "Apply"
@@ -296,58 +296,82 @@ msgid_plural "%d items"
 msgstr[0] "%d आइटम"
 msgstr[1] "%d आइटमहरू"
 
-#: app/Admin/SettingsPage.php:52
+#: app/Admin/SettingsPage.php:61
 msgid "Settings saved."
 msgstr "सेटिङहरू बचत गरियो।"
 
-#: app/Admin/SettingsPage.php:56
+#: app/Admin/SettingsPage.php:65
 msgid "All logs deleted."
 msgstr ""
 
-#: app/Admin/SettingsPage.php:64
-msgid "Enable Logging"
+#: app/Admin/SettingsPage.php:69
+msgid "MU loader installed."
 msgstr ""
 
-#: app/Admin/SettingsPage.php:68
-msgid "Log outbound HTTP requests"
-msgstr ""
-
-#: app/Admin/SettingsPage.php:74
-msgid "Log Retention"
+#: app/Admin/SettingsPage.php:73
+msgid "MU loader install failed. Check file permissions."
 msgstr ""
 
 #: app/Admin/SettingsPage.php:81
-msgid "90 days"
+msgid "Enable Logging"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:82
-msgid "Forever"
+#: app/Admin/SettingsPage.php:85
+msgid "Log outbound HTTP requests"
 msgstr ""
 
 #: app/Admin/SettingsPage.php:91
-msgid "Older logs are auto-deleted daily."
+msgid "Log Retention"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:96
-msgid "Exclude Sources"
+#: app/Admin/SettingsPage.php:98
+msgid "90 days"
 msgstr ""
 
 #: app/Admin/SettingsPage.php:99
+msgid "Forever"
+msgstr ""
+
+#: app/Admin/SettingsPage.php:108
+msgid "Older logs are auto-deleted daily."
+msgstr ""
+
+#: app/Admin/SettingsPage.php:113
+msgid "Exclude Sources"
+msgstr ""
+
+#: app/Admin/SettingsPage.php:116
 msgid "One per line. Matching requests will not be logged."
 msgstr ""
 
-#: app/Admin/SettingsPage.php:106
+#: app/Admin/SettingsPage.php:123
 msgid "Save Settings"
 msgstr "सेटिङहरू बचत गर्नुहोस्"
 
-#: app/Admin/SettingsPage.php:112
+#: app/Admin/SettingsPage.php:129
+msgid "MU Mode"
+msgstr ""
+
+#: app/Admin/SettingsPage.php:131
+msgid "MU loader is active. Requests from all plugins are captured."
+msgstr ""
+
+#: app/Admin/SettingsPage.php:135
+msgid "Install a loader in mu-plugins to capture requests from all plugins."
+msgstr ""
+
+#: app/Admin/SettingsPage.php:138
+msgid "Install MU Loader"
+msgstr ""
+
+#: app/Admin/SettingsPage.php:146
 msgid "Danger Zone"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:115
+#: app/Admin/SettingsPage.php:149
 msgid "Permanently delete all logs. This cannot be undone."
 msgstr ""
 
-#: app/Admin/SettingsPage.php:118
+#: app/Admin/SettingsPage.php:152
 msgid "Purge All Logs"
 msgstr ""

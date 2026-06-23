@@ -12,14 +12,14 @@ use Nilambar\Outpulse\Core\DB;
 /**
  * Renders and handles the OutPulse Settings admin page.
  *
- * @since 1.2.0
+ * @since 1.0.0
  */
 class SettingsPage {
 
 	/**
 	 * Render the settings page, handling saves and purge before output.
 	 *
-	 * @since 1.2.0
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
@@ -28,8 +28,10 @@ class SettingsPage {
 			wp_die( esc_html__( 'You do not have permission.', 'outpulse' ) );
 		}
 
-		$saved  = false;
-		$purged = false;
+		$saved     = false;
+		$purged    = false;
+		$mu_copied = false;
+		$mu_error  = false;
 
 		if ( ! empty( $_POST['outpulse_settings_nonce'] ) && wp_verify_nonce( sanitize_key( $_POST['outpulse_settings_nonce'] ), 'outpulse_settings' ) ) {
 			if ( isset( $_POST['save_settings'] ) ) {
@@ -38,12 +40,19 @@ class SettingsPage {
 			} elseif ( isset( $_POST['purge_all'] ) ) {
 				DB::purge_all_logs();
 				$purged = true;
+			} elseif ( isset( $_POST['install_mu_loader'] ) ) {
+				if ( self::copy_mu_loader() ) {
+					$mu_copied = true;
+				} else {
+					$mu_error = true;
+				}
 			}
 		}
 
 		$logging_enabled  = get_option( 'outpulse_logging_enabled', '1' );
 		$retention_days   = (int) get_option( 'outpulse_retention_days', 30 );
 		$excluded_plugins = (string) get_option( 'outpulse_excluded_plugins', '' );
+		$mu_active        = file_exists( trailingslashit( WPMU_PLUGIN_DIR ) . 'outpulse-loader.php' );
 		?>
 		<div class="wrap outpulse-wrap">
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
@@ -54,6 +63,14 @@ class SettingsPage {
 
 			<?php if ( $purged ) : ?>
 			<div class="notice notice-success is-dismissible"><p><?php esc_html_e( 'All logs deleted.', 'outpulse' ); ?></p></div>
+			<?php endif; ?>
+
+			<?php if ( $mu_copied ) : ?>
+			<div class="notice notice-success is-dismissible"><p><?php esc_html_e( 'MU loader installed.', 'outpulse' ); ?></p></div>
+			<?php endif; ?>
+
+			<?php if ( $mu_error ) : ?>
+			<div class="notice notice-error is-dismissible"><p><?php esc_html_e( 'MU loader install failed. Check file permissions.', 'outpulse' ); ?></p></div>
 			<?php endif; ?>
 
 			<form method="post">
@@ -109,6 +126,23 @@ class SettingsPage {
 
 			<hr />
 
+			<h2><?php esc_html_e( 'MU Mode', 'outpulse' ); ?></h2>
+			<?php if ( $mu_active ) : ?>
+			<p><?php esc_html_e( 'MU loader is active. Requests from all plugins are captured.', 'outpulse' ); ?></p>
+			<?php else : ?>
+			<form method="post">
+				<?php wp_nonce_field( 'outpulse_settings', 'outpulse_settings_nonce' ); ?>
+				<p><?php esc_html_e( 'Install a loader in mu-plugins to capture requests from all plugins.', 'outpulse' ); ?></p>
+				<p>
+					<button type="submit" name="install_mu_loader" class="button button-secondary">
+						<?php esc_html_e( 'Install MU Loader', 'outpulse' ); ?>
+					</button>
+				</p>
+			</form>
+			<?php endif; ?>
+
+			<hr />
+
 			<h2><?php esc_html_e( 'Danger Zone', 'outpulse' ); ?></h2>
 			<form method="post">
 				<?php wp_nonce_field( 'outpulse_settings', 'outpulse_settings_nonce' ); ?>
@@ -124,9 +158,33 @@ class SettingsPage {
 	}
 
 	/**
+	 * Copy the bundled MU loader file into WPMU_PLUGIN_DIR.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return bool True on success, false on failure.
+	 */
+	private static function copy_mu_loader(): bool {
+		$source = OUTPULSE_DIR . 'loader/outpulse-loader.php';
+
+		if ( ! file_exists( $source ) ) {
+			return false;
+		}
+
+		if ( ! file_exists( WPMU_PLUGIN_DIR ) ) {
+			wp_mkdir_p( WPMU_PLUGIN_DIR );
+		}
+
+		$dest = trailingslashit( WPMU_PLUGIN_DIR ) . 'outpulse-loader.php';
+
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_copy
+		return copy( $source, $dest );
+	}
+
+	/**
 	 * Persist settings from the POST data.
 	 *
-	 * @since 1.2.0
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
