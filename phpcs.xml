@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="OutPulse">
+<ruleset name="OutRadar">
 	<description>Coding standards for the plugin.</description>
 
 	<!-- What to scan -->
@@ -56,7 +56,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="outpulse"/>
+				<element value="outradar"/>
 			</property>
 		</properties>
 	</rule>
@@ -66,7 +66,7 @@
 			<property name="old_text_domain" type="array">
 				<element value="" />
 			</property>
-			<property name="new_text_domain" value="outpulse" />
+			<property name="new_text_domain" value="outradar" />
 		</properties>
 	</rule>
 

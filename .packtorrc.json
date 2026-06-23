@@ -6,7 +6,7 @@
 		"loader/**/*",
 		"vendor/**/*",
 		"composer.json",
-		"outpulse.php",
+		"outradar.php",
 		"readme.txt",
 		"uninstall.php"
 	]

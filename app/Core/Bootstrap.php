@@ -2,18 +2,18 @@
 /**
  * Bootstrap.
  *
- * @package Nilambar\Outpulse
+ * @package Nilambar\OutRadar
  */
 
-namespace Nilambar\Outpulse\Core;
+namespace Nilambar\OutRadar\Core;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Nilambar\Outpulse\Admin\Admin;
-use Nilambar\Outpulse\HTTP\Interceptor;
-use Nilambar\Outpulse\Services\DB;
+use Nilambar\OutRadar\Admin\Admin;
+use Nilambar\OutRadar\HTTP\Interceptor;
+use Nilambar\OutRadar\Services\DB;
 
 /**
  * Plugin bootstrap class.
@@ -31,7 +31,7 @@ class Bootstrap {
 	 */
 	public function run(): void {
 		add_action( 'plugins_loaded', array( $this, 'boot' ) );
-		add_action( 'outpulse_daily_purge', array( $this, 'run_purge' ) );
+		add_action( 'outradar_daily_purge', array( $this, 'run_purge' ) );
 	}
 
 	/**
@@ -42,7 +42,7 @@ class Bootstrap {
 	 * @return void
 	 */
 	public function boot(): void {
-		if ( '1' === get_option( 'outpulse_logging_enabled', '1' ) ) {
+		if ( '1' === get_option( 'outradar_logging_enabled', '1' ) ) {
 			Interceptor::init();
 		}
 
@@ -57,8 +57,8 @@ class Bootstrap {
 	 * @return void
 	 */
 	public static function activate(): void {
-		if ( ! wp_next_scheduled( 'outpulse_daily_purge' ) ) {
-			wp_schedule_event( time(), 'daily', 'outpulse_daily_purge' );
+		if ( ! wp_next_scheduled( 'outradar_daily_purge' ) ) {
+			wp_schedule_event( time(), 'daily', 'outradar_daily_purge' );
 		}
 	}
 
@@ -70,7 +70,7 @@ class Bootstrap {
 	 * @return void
 	 */
 	public static function deactivate(): void {
-		wp_clear_scheduled_hook( 'outpulse_daily_purge' );
+		wp_clear_scheduled_hook( 'outradar_daily_purge' );
 	}
 
 	/**
@@ -81,7 +81,7 @@ class Bootstrap {
 	 * @return void
 	 */
 	public function run_purge(): void {
-		$days = (int) get_option( 'outpulse_retention_days', 30 );
+		$days = (int) get_option( 'outradar_retention_days', 30 );
 
 		if ( $days > 0 ) {
 			DB::purge_old_logs( $days );

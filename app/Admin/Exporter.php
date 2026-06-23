@@ -2,16 +2,16 @@
 /**
  * Exporter.
  *
- * @package Nilambar\Outpulse
+ * @package Nilambar\OutRadar
  */
 
-namespace Nilambar\Outpulse\Admin;
+namespace Nilambar\OutRadar\Admin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Nilambar\Outpulse\Services\DB;
+use Nilambar\OutRadar\Services\DB;
 
 /**
  * Handles CSV and JSON export of log data via admin-post.php.
@@ -21,7 +21,7 @@ use Nilambar\Outpulse\Services\DB;
 class Exporter {
 
 	/**
-	 * Handle the outpulse_export admin-post action.
+	 * Handle the outradar_export admin-post action.
 	 *
 	 * @since 1.0.0
 	 *
@@ -29,11 +29,11 @@ class Exporter {
 	 */
 	public static function handle(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission.', 'outpulse' ) );
+			wp_die( esc_html__( 'You do not have permission.', 'outradar' ) );
 		}
 
-		if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_REQUEST['_wpnonce'] ), 'outpulse_export' ) ) {
-			wp_die( esc_html__( 'Security check failed.', 'outpulse' ) );
+		if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( $_REQUEST['_wpnonce'] ), 'outradar_export' ) ) {
+			wp_die( esc_html__( 'Security check failed.', 'outradar' ) );
 		}
 
 		// phpcs:disable WordPress.Security.NonceVerification.Recommended
@@ -66,7 +66,7 @@ class Exporter {
 	 * @return void
 	 */
 	private static function output_csv( array $rows ): void {
-		$filename = 'outpulse-export-' . gmdate( 'Y-m-d' ) . '.csv';
+		$filename = 'outradar-export-' . gmdate( 'Y-m-d' ) . '.csv';
 
 		header( 'Content-Type: text/csv; charset=UTF-8' );
 		header( 'Content-Disposition: attachment; filename="' . $filename . '"' );
@@ -121,7 +121,7 @@ class Exporter {
 	 * @return void
 	 */
 	private static function output_json( array $rows ): void {
-		$filename = 'outpulse-export-' . gmdate( 'Y-m-d' ) . '.json';
+		$filename = 'outradar-export-' . gmdate( 'Y-m-d' ) . '.json';
 
 		header( 'Content-Type: application/json; charset=UTF-8' );
 		header( 'Content-Disposition: attachment; filename="' . $filename . '"' );

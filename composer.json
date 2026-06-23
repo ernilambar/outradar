@@ -1,9 +1,9 @@
 {
-	"name": "ernilambar/outpulse",
-	"description": "WordPress Outbound HTTP Request Tracker & Analyzer.",
+	"name": "ernilambar/outradar",
+	"description": "Log outbound HTTP requests.",
 	"license": "GPL-2.0-or-later",
 	"type": "wordpress-plugin",
-	"homepage": "https://github.com/ernilambar/outpulse",
+	"homepage": "https://github.com/ernilambar/outradar",
 	"require": {
 		"php": ">=7.4"
 	},
@@ -21,7 +21,7 @@
 	"prefer-stable": true,
 	"autoload": {
 		"psr-4": {
-			"Nilambar\\Outpulse\\": "app/"
+			"Nilambar\\OutRadar\\": "app/"
 		}
 	},
 	"config": {
@@ -44,7 +44,7 @@
 		"lint-php": "@php ./vendor/bin/parallel-lint -p php --colors --exclude .git --exclude vendor .",
 		"mo": "./vendor/bin/wp i18n make-mo languages/",
 		"phpcs": "@php ./vendor/bin/phpcs --report-full --report-summary",
-		"po": "./vendor/bin/wp i18n update-po languages/outpulse.pot languages/",
+		"po": "./vendor/bin/wp i18n update-po languages/outradar.pot languages/",
 		"pot": "./vendor/bin/wp i18n make-pot . --exclude=build,deploy,node_modules,vendor --headers='{\"POT-Creation-Date\":\"\"}'"
 	}
 }

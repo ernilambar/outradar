@@ -1,4 +1,4 @@
-=== OutPulse ===
+=== OutRadar ===
 Contributors: nilambar
 Tags: http, logging, requests, monitoring, debug
 Requires at least: 6.9
@@ -12,7 +12,7 @@ Log outbound HTTP requests from WordPress plugins, themes, and core.
 
 == Description ==
 
-OutPulse hooks into WordPress's HTTP layer and records every outbound request — URL, method, status code, response size, originating plugin or theme, and execution context (frontend, admin, cron, CLI).
+OutRadar hooks into WordPress's HTTP layer and records every outbound request — URL, method, status code, response size, originating plugin or theme, and execution context (frontend, admin, cron, CLI).
 
 **Features**
 
@@ -26,10 +26,10 @@ OutPulse hooks into WordPress's HTTP layer and records every outbound request �
 
 == Installation ==
 
-1. Upload the plugin files to `/wp-content/plugins/outpulse`.
+1. Upload the plugin files to `/wp-content/plugins/outradar`.
 2. Activate the plugin through the **Plugins** screen in WordPress.
-3. Navigate to **OutPulse** in the admin menu to view the request log.
-4. Configure retention and exclusions under **OutPulse → Settings**.
+3. Navigate to **OutRadar** in the admin menu to view the request log.
+4. Configure retention and exclusions under **OutRadar → Settings**.
 
 == Changelog ==
 

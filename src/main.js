@@ -4,10 +4,10 @@ import './main.css';
 	'use strict';
 
 	// ── Row expand ───────────────────────────────────────────────
-	document.querySelectorAll( '.outpulse-row-toggle' ).forEach( function ( btn ) {
+	document.querySelectorAll( '.outradar-row-toggle' ).forEach( function ( btn ) {
 		btn.addEventListener( 'click', function () {
 			const id = btn.getAttribute( 'data-id' );
-			const row = document.getElementById( 'outpulse-detail-' + id );
+			const row = document.getElementById( 'outradar-detail-' + id );
 			if ( row ) {
 				row.style.display = 'none' === row.style.display ? '' : 'none';
 			}
@@ -15,26 +15,26 @@ import './main.css';
 	} );
 
 	// ── Select all checkbox ──────────────────────────────────────
-	const selectAll = document.getElementById( 'outpulse-select-all' );
+	const selectAll = document.getElementById( 'outradar-select-all' );
 	if ( selectAll ) {
 		selectAll.addEventListener( 'change', function () {
-			document.querySelectorAll( '.outpulse-row-check' ).forEach( function ( cb ) {
+			document.querySelectorAll( '.outradar-row-check' ).forEach( function ( cb ) {
 				cb.checked = selectAll.checked;
 			} );
 		} );
 	}
 
 	// ── Bulk delete confirmation ─────────────────────────────────
-	const bulkSubmit = document.getElementById( 'outpulse-bulk-submit' );
+	const bulkSubmit = document.getElementById( 'outradar-bulk-submit' );
 	if ( bulkSubmit ) {
 		bulkSubmit.addEventListener( 'click', function ( e ) {
 			const select = bulkSubmit.closest( 'form' ).querySelector( '[name="bulk_action"]' );
 			if ( select && 'delete' === select.value ) {
-				const checked = document.querySelectorAll( '.outpulse-row-check:checked' ).length;
+				const checked = document.querySelectorAll( '.outradar-row-check:checked' ).length;
 				if (
 					checked > 0 &&
 					! window.confirm(
-						( window.outpulseData && window.outpulseData.confirmDelete ) ||
+						( window.outradarData && window.outradarData.confirmDelete ) ||
 							'Delete selected items?'
 					)
 				) {
@@ -45,12 +45,12 @@ import './main.css';
 	}
 
 	// ── Purge all confirmation ───────────────────────────────────
-	const purgeBtn = document.getElementById( 'outpulse-purge-btn' );
+	const purgeBtn = document.getElementById( 'outradar-purge-btn' );
 	if ( purgeBtn ) {
 		purgeBtn.addEventListener( 'click', function ( e ) {
 			if (
 				! window.confirm(
-					( window.outpulseData && window.outpulseData.confirmPurge ) ||
+					( window.outradarData && window.outradarData.confirmPurge ) ||
 						'Delete all logs?'
 				)
 			) {
@@ -68,20 +68,20 @@ import './main.css';
 	};
 	const CTX_ORDER = [ 'cron', 'frontend', 'admin', 'cli' ];
 
-	const canvas = document.getElementById( 'outpulse-chart' );
-	if ( canvas && window.outpulseData ) {
+	const canvas = document.getElementById( 'outradar-chart' );
+	if ( canvas && window.outradarData ) {
 		const datasets = {
-			7: window.outpulseData.chartData7,
-			30: window.outpulseData.chartData30,
+			7: window.outradarData.chartData7,
+			30: window.outradarData.chartData30,
 		};
 
 		if ( datasets[ 7 ] ) {
 			drawStackedChart( canvas, datasets[ 7 ] );
 		}
 
-		document.querySelectorAll( '.outpulse-range-btn' ).forEach( function ( btn ) {
+		document.querySelectorAll( '.outradar-range-btn' ).forEach( function ( btn ) {
 			btn.addEventListener( 'click', function () {
-				document.querySelectorAll( '.outpulse-range-btn' ).forEach( function ( b ) {
+				document.querySelectorAll( '.outradar-range-btn' ).forEach( function ( b ) {
 					b.classList.remove( 'active' );
 				} );
 				btn.classList.add( 'active' );

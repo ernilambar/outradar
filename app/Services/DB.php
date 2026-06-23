@@ -2,10 +2,10 @@
 /**
  * DB.
  *
- * @package Nilambar\Outpulse
+ * @package Nilambar\OutRadar
  */
 
-namespace Nilambar\Outpulse\Services;
+namespace Nilambar\OutRadar\Services;
 
 use stdClass;
 
@@ -26,7 +26,7 @@ class DB {
 	public static function create_table(): void {
 		global $wpdb;
 
-		$table           = $wpdb->prefix . OUTPULSE_TABLE;
+		$table           = $wpdb->prefix . OUTRADAR_TABLE;
 		$charset_collate = $wpdb->get_charset_collate();
 
 		$sql = "CREATE TABLE {$table} (
@@ -70,7 +70,7 @@ class DB {
 	public static function drop_table(): void {
 		global $wpdb;
 
-		$table = $wpdb->prefix . OUTPULSE_TABLE;
+		$table = $wpdb->prefix . OUTRADAR_TABLE;
 		$wpdb->query( "DROP TABLE IF EXISTS {$table}" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 	}
 
@@ -85,7 +85,7 @@ class DB {
 	public static function insert( array $data ): void {
 		global $wpdb;
 
-		$wpdb->insert( $wpdb->prefix . OUTPULSE_TABLE, $data ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		$wpdb->insert( $wpdb->prefix . OUTRADAR_TABLE, $data ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 	}
 
 	/**
@@ -101,7 +101,7 @@ class DB {
 	public static function check_recurring( string $domain, string $source_plugin, int $window = 5 ): array {
 		global $wpdb;
 
-		$table = $wpdb->prefix . OUTPULSE_TABLE;
+		$table = $wpdb->prefix . OUTRADAR_TABLE;
 
 		$count = (int) $wpdb->get_var( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare(
@@ -133,7 +133,7 @@ class DB {
 	public static function find_duplicate( string $body_hash, int $window = 60 ): ?int {
 		global $wpdb;
 
-		$table = $wpdb->prefix . OUTPULSE_TABLE;
+		$table = $wpdb->prefix . OUTRADAR_TABLE;
 
 		$id = $wpdb->get_var( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare(
@@ -160,7 +160,7 @@ class DB {
 	public static function get_summary(): array {
 		global $wpdb;
 
-		$table = $wpdb->prefix . OUTPULSE_TABLE;
+		$table = $wpdb->prefix . OUTRADAR_TABLE;
 
 		$row = $wpdb->get_row( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			"SELECT
@@ -194,7 +194,7 @@ class DB {
 	public static function get_top_plugins( int $limit = 5 ): array {
 		global $wpdb;
 
-		$table = $wpdb->prefix . OUTPULSE_TABLE;
+		$table = $wpdb->prefix . OUTRADAR_TABLE;
 
 		$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare(
@@ -218,7 +218,7 @@ class DB {
 	public static function get_requests_by_day( int $days = 7 ): array {
 		global $wpdb;
 
-		$table = $wpdb->prefix . OUTPULSE_TABLE;
+		$table = $wpdb->prefix . OUTRADAR_TABLE;
 
 		$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare(
@@ -254,7 +254,7 @@ class DB {
 	public static function get_requests_by_day_context( int $days = 7 ): array {
 		global $wpdb;
 
-		$table = $wpdb->prefix . OUTPULSE_TABLE;
+		$table = $wpdb->prefix . OUTRADAR_TABLE;
 
 		$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare(
@@ -338,7 +338,7 @@ class DB {
 	public static function get_log_rows( array $filters, int $page = 1, int $per_page = 50 ): array {
 		global $wpdb;
 
-		$table  = $wpdb->prefix . OUTPULSE_TABLE;
+		$table  = $wpdb->prefix . OUTRADAR_TABLE;
 		$where  = self::build_where( $filters );
 		$offset = ( max( 1, $page ) - 1 ) * $per_page;
 
@@ -364,7 +364,7 @@ class DB {
 	public static function count_log_rows( array $filters ): int {
 		global $wpdb;
 
-		$table = $wpdb->prefix . OUTPULSE_TABLE;
+		$table = $wpdb->prefix . OUTRADAR_TABLE;
 		$where = self::build_where( $filters );
 
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared
@@ -383,7 +383,7 @@ class DB {
 	public static function get_domain_summary(): array {
 		global $wpdb;
 
-		$table = $wpdb->prefix . OUTPULSE_TABLE;
+		$table = $wpdb->prefix . OUTRADAR_TABLE;
 
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$rows = $wpdb->get_results(
@@ -412,7 +412,7 @@ class DB {
 	public static function get_plugin_summary(): array {
 		global $wpdb;
 
-		$table = $wpdb->prefix . OUTPULSE_TABLE;
+		$table = $wpdb->prefix . OUTRADAR_TABLE;
 
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$rows = $wpdb->get_results(
@@ -439,7 +439,7 @@ class DB {
 	public static function get_all_source_plugins(): array {
 		global $wpdb;
 
-		$table = $wpdb->prefix . OUTPULSE_TABLE;
+		$table = $wpdb->prefix . OUTRADAR_TABLE;
 
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$rows = $wpdb->get_col( "SELECT DISTINCT source_plugin FROM {$table} WHERE source_plugin IS NOT NULL AND source_plugin != '' ORDER BY source_plugin ASC" );
@@ -458,7 +458,7 @@ class DB {
 	public static function get_row( int $id ): ?object {
 		global $wpdb;
 
-		$table = $wpdb->prefix . OUTPULSE_TABLE;
+		$table = $wpdb->prefix . OUTRADAR_TABLE;
 
 		$row = $wpdb->get_row( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare( "SELECT * FROM {$table} WHERE id = %d", $id ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
@@ -478,7 +478,7 @@ class DB {
 	public static function purge_old_logs( int $days ): int {
 		global $wpdb;
 
-		$table  = $wpdb->prefix . OUTPULSE_TABLE;
+		$table  = $wpdb->prefix . OUTRADAR_TABLE;
 		$result = $wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare( "DELETE FROM {$table} WHERE timestamp < DATE_SUB(NOW(), INTERVAL %d DAY)", $days ) // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		);
@@ -496,7 +496,7 @@ class DB {
 	public static function purge_all_logs(): int {
 		global $wpdb;
 
-		$table  = $wpdb->prefix . OUTPULSE_TABLE;
+		$table  = $wpdb->prefix . OUTRADAR_TABLE;
 		$result = $wpdb->query( "TRUNCATE TABLE {$table}" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 		return is_int( $result ) ? $result : 0;
@@ -517,7 +517,7 @@ class DB {
 
 		global $wpdb;
 
-		$table        = $wpdb->prefix . OUTPULSE_TABLE;
+		$table        = $wpdb->prefix . OUTRADAR_TABLE;
 		$ids          = array_map( 'intval', $ids );
 		$placeholders = implode( ', ', array_fill( 0, count( $ids ), '%d' ) );
 

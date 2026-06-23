@@ -2,16 +2,16 @@
 /**
  * Interceptor.
  *
- * @package Nilambar\Outpulse
+ * @package Nilambar\OutRadar
  */
 
-namespace Nilambar\Outpulse\HTTP;
+namespace Nilambar\OutRadar\HTTP;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Nilambar\Outpulse\Services\Logger;
+use Nilambar\OutRadar\Services\Logger;
 use WP_Error;
 
 /**
