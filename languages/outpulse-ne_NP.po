@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-06-23T05:13:53+00:00\n"
+"PO-Revision-Date: 2026-06-23T05:33:55+00:00\n"
 "Language: ne_NP\n"
 "X-Generator: WP-CLI 2.13.0-alpha\n"
 "X-Domain: outpulse\n"
@@ -25,6 +25,7 @@ msgstr "https://github.com/ernilambar/outpulse"
 
 #. Description of the plugin
 #: outpulse.php:5
+#: app/Admin/SettingsPage.php:85
 msgid "Log outbound HTTP requests."
 msgstr ""
 
@@ -49,7 +50,7 @@ msgid "OutPulse"
 msgstr "आउटपल्स"
 
 #: app/Admin/Admin.php:55
-msgid "Request Log"
+msgid "Log"
 msgstr ""
 
 #: app/Admin/Admin.php:56
@@ -61,7 +62,8 @@ msgid "Settings"
 msgstr "सेटिङहरू"
 
 #: app/Admin/Admin.php:92
-msgid "Delete all logs? This cannot be undone."
+#: app/Admin/SettingsPage.php:149
+msgid "Permanently delete all logs. This cannot be undone."
 msgstr ""
 
 #: app/Admin/Admin.php:93
@@ -174,6 +176,7 @@ msgstr ""
 
 #: app/Admin/Dashboard.php:173
 #: app/Admin/LogPage.php:128
+#: app/Admin/LogPage.php:192
 msgid "Source"
 msgstr "स्रोत"
 
@@ -269,11 +272,7 @@ msgid "Duplicate request"
 msgstr ""
 
 #: app/Admin/LogPage.php:190
-msgid "URL:"
-msgstr ""
-
-#: app/Admin/LogPage.php:192
-msgid "Source:"
+msgid "URL"
 msgstr ""
 
 #: app/Admin/LogPage.php:200
@@ -285,7 +284,7 @@ msgid "Request Body"
 msgstr ""
 
 #: app/Admin/LogPage.php:211
-msgid "Cron Hook:"
+msgid "Cron Hook"
 msgstr ""
 
 #. translators: %d: number of items
@@ -314,10 +313,6 @@ msgstr ""
 
 #: app/Admin/SettingsPage.php:81
 msgid "Enable Logging"
-msgstr ""
-
-#: app/Admin/SettingsPage.php:85
-msgid "Log outbound HTTP requests"
 msgstr ""
 
 #: app/Admin/SettingsPage.php:91
@@ -366,10 +361,6 @@ msgstr ""
 
 #: app/Admin/SettingsPage.php:146
 msgid "Danger Zone"
-msgstr ""
-
-#: app/Admin/SettingsPage.php:149
-msgid "Permanently delete all logs. This cannot be undone."
 msgstr ""
 
 #: app/Admin/SettingsPage.php:152

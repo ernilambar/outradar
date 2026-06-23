@@ -187,9 +187,9 @@ class LogPage {
 						<tr class="outpulse-detail-row" id="outpulse-detail-<?php echo esc_attr( (string) $row->id ); ?>" style="display:none;">
 							<td colspan="8">
 								<div class="outpulse-detail-inner">
-									<p><strong><?php esc_html_e( 'URL:', 'outpulse' ); ?></strong> <code><?php echo esc_html( (string) $row->url ); ?></code></p>
+									<p><strong><?php esc_html_e( 'URL', 'outpulse' ); ?>:</strong> <code><?php echo esc_html( (string) $row->url ); ?></code></p>
 									<p>
-										<strong><?php esc_html_e( 'Source:', 'outpulse' ); ?></strong>
+										<strong><?php esc_html_e( 'Source', 'outpulse' ); ?>:</strong>
 										<?php echo esc_html( (string) $row->source_file ); ?>
 										<?php if ( ! empty( $row->source_line ) ) : ?>
 											<?php echo esc_html( sprintf( ':%d', (int) $row->source_line ) ); ?>
@@ -208,7 +208,7 @@ class LogPage {
 									</details>
 									<?php endif; ?>
 									<?php if ( ! empty( $row->cron_hook ) ) : ?>
-									<p><strong><?php esc_html_e( 'Cron Hook:', 'outpulse' ); ?></strong> <code><?php echo esc_html( (string) $row->cron_hook ); ?></code></p>
+									<p><strong><?php esc_html_e( 'Cron Hook', 'outpulse' ); ?>:</strong> <code><?php echo esc_html( (string) $row->cron_hook ); ?></code></p>
 									<?php endif; ?>
 								</div>
 							</td>

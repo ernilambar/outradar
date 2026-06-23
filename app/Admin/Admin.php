@@ -52,7 +52,7 @@ class Admin {
 			80
 		);
 
-		add_submenu_page( 'outpulse', __( 'Request Log', 'outpulse' ), __( 'Request Log', 'outpulse' ), 'manage_options', 'outpulse', array( LogPage::class, 'render' ) );
+		add_submenu_page( 'outpulse', __( 'Log', 'outpulse' ), __( 'Log', 'outpulse' ), 'manage_options', 'outpulse', array( LogPage::class, 'render' ) );
 		$this->hooks[] = (string) add_submenu_page( 'outpulse', __( 'Dashboard', 'outpulse' ), __( 'Dashboard', 'outpulse' ), 'manage_options', 'outpulse-dashboard', array( Dashboard::class, 'render' ) );
 		$this->hooks[] = (string) add_submenu_page( 'outpulse', __( 'Settings', 'outpulse' ), __( 'Settings', 'outpulse' ), 'manage_options', 'outpulse-settings', array( SettingsPage::class, 'render' ) );
 	}
@@ -89,7 +89,7 @@ class Admin {
 			'outpulse-admin',
 			'outpulseData',
 			array(
-				'confirmPurge'  => __( 'Delete all logs? This cannot be undone.', 'outpulse' ),
+				'confirmPurge'  => __( 'Permanently delete all logs. This cannot be undone.', 'outpulse' ),
 				'confirmDelete' => __( 'Delete selected entries?', 'outpulse' ),
 				'chartData7'    => Dashboard::get_chart_data( 7 ),
 				'chartData30'   => Dashboard::get_chart_data( 30 ),

@@ -82,7 +82,7 @@ class SettingsPage {
 						<td>
 							<label>
 								<input type="checkbox" name="outpulse_logging_enabled" value="1" <?php checked( '1', $logging_enabled ); ?> />
-								<?php esc_html_e( 'Log outbound HTTP requests', 'outpulse' ); ?>
+								<?php esc_html_e( 'Log outbound HTTP requests.', 'outpulse' ); ?>
 							</label>
 						</td>
 					</tr>
