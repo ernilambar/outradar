@@ -5,7 +5,7 @@
  * @package Nilambar\Outpulse
  */
 
-namespace Nilambar\Outpulse\Core;
+namespace Nilambar\Outpulse\Services;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

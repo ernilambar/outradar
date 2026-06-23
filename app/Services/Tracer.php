@@ -5,7 +5,7 @@
  * @package Nilambar\Outpulse
  */
 
-namespace Nilambar\Outpulse\Core;
+namespace Nilambar\Outpulse\Services;
 
 /**
  * Attributes an HTTP request to its source plugin, theme, or WordPress core via stack trace.
@@ -15,7 +15,7 @@ namespace Nilambar\Outpulse\Core;
 class Tracer {
 
 	/**
-	 * Walk the call stack and return the first non-OutPulse, non-core frame.
+	 * Walk the call stack and return the first non-plugin, non-core frame.
 	 *
 	 * @since 1.0.0
 	 *

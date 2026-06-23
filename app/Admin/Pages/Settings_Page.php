@@ -5,16 +5,16 @@
  * @package Nilambar\Outpulse
  */
 
-namespace Nilambar\Outpulse\Admin;
+namespace Nilambar\Outpulse\Admin\Pages;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Nilambar\Outpulse\Core\DB;
+use Nilambar\Outpulse\Services\DB;
 
 /**
- * Renders and handles the OutPulse Settings admin page.
+ * Renders and handles the Settings admin page.
  *
  * @since 1.0.0
  */
@@ -51,10 +51,11 @@ class Settings_Page {
 			$purged = true;
 		}
 
-		$logging_enabled  = get_option( 'outpulse_logging_enabled', '1' );
-		$retention_days   = (int) get_option( 'outpulse_retention_days', 30 );
-		$excluded_plugins = (string) get_option( 'outpulse_excluded_plugins', '' );
-		$mu_active        = file_exists( trailingslashit( WPMU_PLUGIN_DIR ) . 'outpulse-loader.php' );
+		$logging_enabled          = get_option( 'outpulse_logging_enabled', '1' );
+		$retention_days           = (int) get_option( 'outpulse_retention_days', 30 );
+		$excluded_plugins         = (string) get_option( 'outpulse_excluded_plugins', '' );
+		$delete_data_on_uninstall = get_option( 'outpulse_delete_data_on_uninstall', '0' );
+		$mu_active                = file_exists( trailingslashit( WPMU_PLUGIN_DIR ) . 'outpulse-loader.php' );
 		?>
 		<div class="wrap outpulse-wrap">
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
@@ -119,6 +120,16 @@ class Settings_Page {
 						<td>
 							<textarea name="outpulse_excluded_plugins" rows="6" class="large-text code"><?php echo esc_textarea( $excluded_plugins ); ?></textarea>
 							<p class="description"><?php esc_html_e( 'One per line. Matching requests will not be logged.', 'outpulse' ); ?></p>
+						</td>
+					</tr>
+
+					<tr>
+						<th scope="row"><?php esc_html_e( 'Delete Data on Uninstall', 'outpulse' ); ?></th>
+						<td>
+							<label>
+								<input type="checkbox" name="outpulse_delete_data_on_uninstall" value="1" <?php checked( '1', $delete_data_on_uninstall ); ?> />
+								<?php esc_html_e( 'Remove all logs and settings when the plugin is deleted.', 'outpulse' ); ?>
+							</label>
 						</td>
 					</tr>
 
@@ -197,5 +208,6 @@ class Settings_Page {
 		update_option( 'outpulse_logging_enabled', ! empty( $_POST['outpulse_logging_enabled'] ) ? '1' : '0' );
 		update_option( 'outpulse_retention_days', absint( $_POST['outpulse_retention_days'] ?? 30 ) );
 		update_option( 'outpulse_excluded_plugins', sanitize_textarea_field( wp_unslash( (string) ( $_POST['outpulse_excluded_plugins'] ?? '' ) ) ) );
+		update_option( 'outpulse_delete_data_on_uninstall', ! empty( $_POST['outpulse_delete_data_on_uninstall'] ) ? '1' : '0' );
 	}
 }

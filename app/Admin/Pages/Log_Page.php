@@ -5,13 +5,13 @@
  * @package Nilambar\Outpulse
  */
 
-namespace Nilambar\Outpulse\Admin;
+namespace Nilambar\Outpulse\Admin\Pages;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Nilambar\Outpulse\Core\DB;
+use Nilambar\Outpulse\Services\DB;
 
 /**
  * Renders the paginated, filterable Request Log admin page.

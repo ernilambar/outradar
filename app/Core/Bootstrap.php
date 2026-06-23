@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Nilambar\Outpulse\Admin\Admin;
+use Nilambar\Outpulse\HTTP\Interceptor;
+use Nilambar\Outpulse\Services\DB;
 
 /**
  * Plugin bootstrap class.

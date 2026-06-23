@@ -5,20 +5,20 @@
  * @package Nilambar\Outpulse
  */
 
-namespace Nilambar\Outpulse\Admin;
+namespace Nilambar\Outpulse\Admin\Pages;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Nilambar\Outpulse\Core\DB;
+use Nilambar\Outpulse\Services\DB;
 
 /**
- * Renders the OutPulse Dashboard admin page.
+ * Renders the Dashboard admin page.
  *
  * @since 1.0.0
  */
-class Dashboard {
+class Dashboard_Page {
 
 	/**
 	 * Render the dashboard page.
