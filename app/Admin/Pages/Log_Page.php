@@ -145,7 +145,7 @@ class Log_Page {
 							<th scope="row" class="check-column">
 								<input type="checkbox" name="row_ids[]" value="<?php echo esc_attr( (string) $row->id ); ?>" class="outpulse-row-check" />
 							</th>
-							<td>
+							<td class="outpulse-timestamp-col">
 								<button type="button" class="outpulse-row-toggle button-link" data-id="<?php echo esc_attr( (string) $row->id ); ?>">
 									<?php echo esc_html( (string) $row->timestamp ); ?>
 								</button>
