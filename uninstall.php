@@ -17,6 +17,10 @@ if ( ! defined( 'OUTPULSE_TABLE' ) ) {
 
 require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 
-DB::drop_table();
-delete_option( 'outpulse_logging_enabled' );
-delete_option( 'outpulse_db_version' );
+if ( '1' === get_option( 'outpulse_delete_data_on_uninstall' ) ) {
+	DB::drop_table();
+	delete_option( 'outpulse_logging_enabled' );
+	delete_option( 'outpulse_retention_days' );
+	delete_option( 'outpulse_excluded_plugins' );
+	delete_option( 'outpulse_delete_data_on_uninstall' );
+}

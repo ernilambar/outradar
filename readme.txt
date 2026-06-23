@@ -1,4 +1,4 @@
-=== OutPulse — Monitor Outbound HTTP Requests ===
+=== OutPulse ===
 Contributors: nilambar
 Tags: http, logging, requests, monitoring, debug
 Requires at least: 6.9

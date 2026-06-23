@@ -17,7 +17,7 @@
  */
 
 use Nilambar\Outpulse\Core\Bootstrap;
-use Nilambar\Outpulse\Core\DB;
+use Nilambar\Outpulse\Services\DB;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

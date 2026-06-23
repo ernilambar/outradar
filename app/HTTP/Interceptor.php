@@ -5,12 +5,13 @@
  * @package Nilambar\Outpulse
  */
 
-namespace Nilambar\Outpulse\Core;
+namespace Nilambar\Outpulse\HTTP;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Nilambar\Outpulse\Services\Logger;
 use WP_Error;
 
 /**

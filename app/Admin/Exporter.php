@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Nilambar\Outpulse\Core\DB;
+use Nilambar\Outpulse\Services\DB;
 
 /**
  * Handles CSV and JSON export of log data via admin-post.php.
