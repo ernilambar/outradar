@@ -47,7 +47,12 @@ class Dashboard {
 						</div>
 						<div class="outpulse-stat">
 							<span class="outpulse-stat-number"><?php echo esc_html( number_format_i18n( $stats['week'] ) ); ?></span>
-							<span class="outpulse-stat-label"><?php esc_html_e( '7 days', 'outpulse' ); ?></span>
+							<span class="outpulse-stat-label">
+							<?php
+								/* translators: %d: number of days */
+								echo esc_html( sprintf( _n( '%d day', '%d days', 7, 'outpulse' ), 7 ) );
+							?>
+								</span>
 						</div>
 						<div class="outpulse-stat">
 							<span class="outpulse-stat-number"><?php echo esc_html( number_format_i18n( $stats['total'] ) ); ?></span>
@@ -113,8 +118,18 @@ class Dashboard {
 				<div class="outpulse-chart-header">
 					<h2><?php esc_html_e( 'Requests by Context', 'outpulse' ); ?></h2>
 					<div class="outpulse-chart-controls">
-						<button class="button outpulse-range-btn active" data-range="7"><?php esc_html_e( '7 days', 'outpulse' ); ?></button>
-						<button class="button outpulse-range-btn" data-range="30"><?php esc_html_e( '30 days', 'outpulse' ); ?></button>
+						<button class="button outpulse-range-btn active" data-range="7">
+						<?php
+							/* translators: %d: number of days */
+							echo esc_html( sprintf( _n( '%d day', '%d days', 7, 'outpulse' ), 7 ) );
+						?>
+							</button>
+						<button class="button outpulse-range-btn" data-range="30">
+						<?php
+							/* translators: %d: number of days */
+							echo esc_html( sprintf( _n( '%d day', '%d days', 30, 'outpulse' ), 30 ) );
+						?>
+							</button>
 					</div>
 				</div>
 				<div class="outpulse-chart-legend">

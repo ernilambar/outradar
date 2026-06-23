@@ -63,7 +63,7 @@ msgid "Settings"
 msgstr ""
 
 #: app/Admin/Admin.php:92
-#: app/Admin/SettingsPage.php:149
+#: app/Admin/SettingsPage.php:152
 msgid "Permanently delete all logs. This cannot be undone."
 msgstr ""
 
@@ -79,7 +79,7 @@ msgid "You do not have permission."
 msgstr ""
 
 #: app/Admin/Dashboard.php:42
-#: app/Admin/Dashboard.php:174
+#: app/Admin/Dashboard.php:189
 msgid "Total Requests"
 msgstr ""
 
@@ -87,95 +87,97 @@ msgstr ""
 msgid "Today"
 msgstr ""
 
-#: app/Admin/Dashboard.php:50
-#: app/Admin/Dashboard.php:116
-#: app/Admin/SettingsPage.php:96
-msgid "7 days"
-msgstr ""
+#. translators: %d: number of days
+#: app/Admin/Dashboard.php:53
+#: app/Admin/Dashboard.php:124
+#: app/Admin/Dashboard.php:130
+#: app/Admin/SettingsPage.php:97
+#: app/Admin/SettingsPage.php:99
+#: app/Admin/SettingsPage.php:101
+#, php-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
 
-#: app/Admin/Dashboard.php:54
+#: app/Admin/Dashboard.php:59
 msgid "All Time"
 msgstr ""
 
-#: app/Admin/Dashboard.php:60
+#: app/Admin/Dashboard.php:65
 msgid "Overview"
 msgstr ""
 
-#: app/Admin/Dashboard.php:63
-#: app/Admin/Dashboard.php:175
+#: app/Admin/Dashboard.php:68
+#: app/Admin/Dashboard.php:190
 msgid "Unique Domains"
 msgstr ""
 
-#: app/Admin/Dashboard.php:71
+#: app/Admin/Dashboard.php:76
 msgid "By Context"
 msgstr ""
 
-#: app/Admin/Dashboard.php:74
-#: app/Admin/Dashboard.php:122
+#: app/Admin/Dashboard.php:79
+#: app/Admin/Dashboard.php:137
 msgid "Frontend"
 msgstr ""
 
-#: app/Admin/Dashboard.php:78
-#: app/Admin/Dashboard.php:123
+#: app/Admin/Dashboard.php:83
+#: app/Admin/Dashboard.php:138
 msgid "Admin"
 msgstr ""
 
-#: app/Admin/Dashboard.php:82
-#: app/Admin/Dashboard.php:121
+#: app/Admin/Dashboard.php:87
+#: app/Admin/Dashboard.php:136
 msgid "Cron"
 msgstr ""
 
-#: app/Admin/Dashboard.php:86
-#: app/Admin/Dashboard.php:124
+#: app/Admin/Dashboard.php:91
+#: app/Admin/Dashboard.php:139
 msgid "CLI"
 msgstr ""
 
-#: app/Admin/Dashboard.php:94
+#: app/Admin/Dashboard.php:99
 msgid "Top Sources"
 msgstr ""
 
-#: app/Admin/Dashboard.php:114
+#: app/Admin/Dashboard.php:119
 msgid "Requests by Context"
 msgstr ""
 
-#: app/Admin/Dashboard.php:117
-#: app/Admin/SettingsPage.php:97
-msgid "30 days"
-msgstr ""
-
-#: app/Admin/Dashboard.php:129
+#: app/Admin/Dashboard.php:144
 msgid "Domains"
 msgstr ""
 
-#: app/Admin/Dashboard.php:132
-#: app/Admin/Dashboard.php:168
+#: app/Admin/Dashboard.php:147
+#: app/Admin/Dashboard.php:183
 msgid "No data yet."
 msgstr ""
 
-#: app/Admin/Dashboard.php:137
+#: app/Admin/Dashboard.php:152
 #: app/Admin/LogPage.php:51
 #: app/Admin/LogPage.php:125
 msgid "Domain"
 msgstr ""
 
-#: app/Admin/Dashboard.php:138
+#: app/Admin/Dashboard.php:153
 msgid "First Seen"
 msgstr ""
 
-#: app/Admin/Dashboard.php:139
+#: app/Admin/Dashboard.php:154
 msgid "Last Seen"
 msgstr ""
 
-#: app/Admin/Dashboard.php:140
+#: app/Admin/Dashboard.php:155
 msgid "Requests"
 msgstr ""
 
-#: app/Admin/Dashboard.php:141
-#: app/Admin/Dashboard.php:165
+#: app/Admin/Dashboard.php:156
+#: app/Admin/Dashboard.php:180
 msgid "Sources"
 msgstr ""
 
-#: app/Admin/Dashboard.php:173
+#: app/Admin/Dashboard.php:188
 #: app/Admin/LogPage.php:128
 #: app/Admin/LogPage.php:192
 msgid "Source"
@@ -320,50 +322,46 @@ msgstr ""
 msgid "Log Retention"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:98
-msgid "90 days"
-msgstr ""
-
-#: app/Admin/SettingsPage.php:99
+#: app/Admin/SettingsPage.php:102
 msgid "Forever"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:108
+#: app/Admin/SettingsPage.php:111
 msgid "Older logs are auto-deleted daily."
 msgstr ""
 
-#: app/Admin/SettingsPage.php:113
+#: app/Admin/SettingsPage.php:116
 msgid "Exclude Sources"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:116
+#: app/Admin/SettingsPage.php:119
 msgid "One per line. Matching requests will not be logged."
 msgstr ""
 
-#: app/Admin/SettingsPage.php:123
+#: app/Admin/SettingsPage.php:126
 msgid "Save Settings"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:129
+#: app/Admin/SettingsPage.php:132
 msgid "MU Mode"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:131
+#: app/Admin/SettingsPage.php:134
 msgid "MU loader is active. Requests from all plugins are captured."
 msgstr ""
 
-#: app/Admin/SettingsPage.php:135
+#: app/Admin/SettingsPage.php:138
 msgid "Install a loader in mu-plugins to capture requests from all plugins."
 msgstr ""
 
-#: app/Admin/SettingsPage.php:138
+#: app/Admin/SettingsPage.php:141
 msgid "Install MU Loader"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:146
+#: app/Admin/SettingsPage.php:149
 msgid "Danger Zone"
 msgstr ""
 
-#: app/Admin/SettingsPage.php:152
+#: app/Admin/SettingsPage.php:155
 msgid "Purge All Logs"
 msgstr ""

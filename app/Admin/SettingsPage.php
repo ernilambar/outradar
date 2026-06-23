@@ -93,9 +93,12 @@ class SettingsPage {
 							<select name="outpulse_retention_days">
 								<?php
 								$options = array(
-									7  => __( '7 days', 'outpulse' ),
-									30 => __( '30 days', 'outpulse' ),
-									90 => __( '90 days', 'outpulse' ),
+									/* translators: %d: number of days */
+									7  => sprintf( _n( '%d day', '%d days', 7, 'outpulse' ), 7 ),
+									/* translators: %d: number of days */
+									30 => sprintf( _n( '%d day', '%d days', 30, 'outpulse' ), 30 ),
+									/* translators: %d: number of days */
+									90 => sprintf( _n( '%d day', '%d days', 90, 'outpulse' ), 90 ),
 									0  => __( 'Forever', 'outpulse' ),
 								);
 								foreach ( $options as $value => $label ) :

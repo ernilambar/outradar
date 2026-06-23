@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-06-23T05:33:55+00:00\n"
+"PO-Revision-Date: 2026-06-23T06:00:25+00:00\n"
 "Language: ne_NP\n"
 "X-Generator: WP-CLI 2.13.0-alpha\n"
 "X-Domain: outpulse\n"
@@ -27,7 +27,7 @@ msgstr "https://github.com/ernilambar/outpulse"
 #: outpulse.php:5
 #: app/Admin/SettingsPage.php:85
 msgid "Log outbound HTTP requests."
-msgstr ""
+msgstr "बाहिर जाने HTTP अनुरोधहरू लग गर्नुहोस्।"
 
 #. Author of the plugin
 #: outpulse.php:7
@@ -51,130 +51,132 @@ msgstr "आउटपल्स"
 
 #: app/Admin/Admin.php:55
 msgid "Log"
-msgstr ""
+msgstr "लग"
 
 #: app/Admin/Admin.php:56
 msgid "Dashboard"
-msgstr ""
+msgstr "ड्यासबोर्ड"
 
 #: app/Admin/Admin.php:57
 msgid "Settings"
 msgstr "सेटिङहरू"
 
 #: app/Admin/Admin.php:92
-#: app/Admin/SettingsPage.php:149
+#: app/Admin/SettingsPage.php:152
 msgid "Permanently delete all logs. This cannot be undone."
-msgstr ""
+msgstr "सबै लगहरू स्थायी रूपले मेटाउनुहोस्। यो प्रक्रिया पूर्ववत गर्न सकिँदैन।"
 
 #: app/Admin/Admin.php:93
 msgid "Delete selected entries?"
-msgstr ""
+msgstr "चयन गरिएका प्रविष्टिहरू मेटाउने हो?"
 
 #: app/Admin/Dashboard.php:28
 #: app/Admin/Exporter.php:28
 #: app/Admin/LogPage.php:28
 #: app/Admin/SettingsPage.php:28
 msgid "You do not have permission."
-msgstr ""
+msgstr "तपाईँलाई  अनुमति छैन।"
 
 #: app/Admin/Dashboard.php:42
-#: app/Admin/Dashboard.php:174
+#: app/Admin/Dashboard.php:189
 msgid "Total Requests"
-msgstr ""
+msgstr "कुल अनुरोधहरू"
 
 #: app/Admin/Dashboard.php:46
 msgid "Today"
 msgstr "आज"
 
-#: app/Admin/Dashboard.php:50
-#: app/Admin/Dashboard.php:116
-#: app/Admin/SettingsPage.php:96
-msgid "7 days"
-msgstr ""
+#. translators: %d: number of days
+#: app/Admin/Dashboard.php:53
+#: app/Admin/Dashboard.php:124
+#: app/Admin/Dashboard.php:130
+#: app/Admin/SettingsPage.php:97
+#: app/Admin/SettingsPage.php:99
+#: app/Admin/SettingsPage.php:101
+#, php-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d दिन"
+msgstr[1] "%d दिन"
 
-#: app/Admin/Dashboard.php:54
+#: app/Admin/Dashboard.php:59
 msgid "All Time"
-msgstr ""
+msgstr "हालसम्म"
 
-#: app/Admin/Dashboard.php:60
+#: app/Admin/Dashboard.php:65
 msgid "Overview"
 msgstr "परिदृश्य"
 
-#: app/Admin/Dashboard.php:63
-#: app/Admin/Dashboard.php:175
+#: app/Admin/Dashboard.php:68
+#: app/Admin/Dashboard.php:190
 msgid "Unique Domains"
-msgstr ""
+msgstr "अद्वितीय डोमेनहरू"
 
-#: app/Admin/Dashboard.php:71
+#: app/Admin/Dashboard.php:76
 msgid "By Context"
-msgstr ""
+msgstr "सन्दर्भद्वारा"
 
-#: app/Admin/Dashboard.php:74
-#: app/Admin/Dashboard.php:122
+#: app/Admin/Dashboard.php:79
+#: app/Admin/Dashboard.php:137
 msgid "Frontend"
-msgstr ""
+msgstr "फ्रन्टइन्ड"
 
-#: app/Admin/Dashboard.php:78
-#: app/Admin/Dashboard.php:123
+#: app/Admin/Dashboard.php:83
+#: app/Admin/Dashboard.php:138
 msgid "Admin"
 msgstr "एडमिन"
 
-#: app/Admin/Dashboard.php:82
-#: app/Admin/Dashboard.php:121
+#: app/Admin/Dashboard.php:87
+#: app/Admin/Dashboard.php:136
 msgid "Cron"
-msgstr ""
+msgstr "क्रोन"
 
-#: app/Admin/Dashboard.php:86
-#: app/Admin/Dashboard.php:124
+#: app/Admin/Dashboard.php:91
+#: app/Admin/Dashboard.php:139
 msgid "CLI"
-msgstr ""
+msgstr "सिएलआई"
 
-#: app/Admin/Dashboard.php:94
+#: app/Admin/Dashboard.php:99
 msgid "Top Sources"
-msgstr ""
+msgstr "शीर्ष स्रोतहरू"
 
-#: app/Admin/Dashboard.php:114
+#: app/Admin/Dashboard.php:119
 msgid "Requests by Context"
-msgstr ""
+msgstr "सन्दर्भ अनुसार अनुरोधहरू"
 
-#: app/Admin/Dashboard.php:117
-#: app/Admin/SettingsPage.php:97
-msgid "30 days"
-msgstr ""
-
-#: app/Admin/Dashboard.php:129
+#: app/Admin/Dashboard.php:144
 msgid "Domains"
-msgstr ""
+msgstr "डोमेनहरू"
 
-#: app/Admin/Dashboard.php:132
-#: app/Admin/Dashboard.php:168
+#: app/Admin/Dashboard.php:147
+#: app/Admin/Dashboard.php:183
 msgid "No data yet."
-msgstr ""
+msgstr "अहिलेसम्म डाटा छैन।"
 
-#: app/Admin/Dashboard.php:137
+#: app/Admin/Dashboard.php:152
 #: app/Admin/LogPage.php:51
 #: app/Admin/LogPage.php:125
 msgid "Domain"
 msgstr "डोमेन"
 
-#: app/Admin/Dashboard.php:138
+#: app/Admin/Dashboard.php:153
 msgid "First Seen"
-msgstr ""
+msgstr "पहिलो पटक देखिएको"
 
-#: app/Admin/Dashboard.php:139
+#: app/Admin/Dashboard.php:154
 msgid "Last Seen"
-msgstr ""
+msgstr "अन्तिम पटक देखिएको"
 
-#: app/Admin/Dashboard.php:140
+#: app/Admin/Dashboard.php:155
 msgid "Requests"
-msgstr ""
+msgstr "अनुरोधहरू"
 
-#: app/Admin/Dashboard.php:141
-#: app/Admin/Dashboard.php:165
+#: app/Admin/Dashboard.php:156
+#: app/Admin/Dashboard.php:180
 msgid "Sources"
-msgstr ""
+msgstr "स्रोतहरू"
 
-#: app/Admin/Dashboard.php:173
+#: app/Admin/Dashboard.php:188
 #: app/Admin/LogPage.php:128
 #: app/Admin/LogPage.php:192
 msgid "Source"
@@ -187,15 +189,15 @@ msgstr "सुरक्षा जाँच असफल भयो।"
 
 #: app/Admin/LogPage.php:56
 msgid "All sources"
-msgstr ""
+msgstr "सबै स्रोतहरू"
 
 #: app/Admin/LogPage.php:65
 msgid "All methods"
-msgstr ""
+msgstr "सबै विधिहरू"
 
 #: app/Admin/LogPage.php:74
 msgid "All contexts"
-msgstr ""
+msgstr "सबै सन्दर्भहरू"
 
 #: app/Admin/LogPage.php:85
 msgid "From"
@@ -207,7 +209,7 @@ msgstr "लाई"
 
 #: app/Admin/LogPage.php:96
 msgid "Filter"
-msgstr "फिल्टर"
+msgstr "फिल्टर गर्नुहोस्"
 
 #: app/Admin/LogPage.php:97
 msgid "Reset"
@@ -227,15 +229,15 @@ msgstr "लागू गर्नुहोस्"
 
 #: app/Admin/LogPage.php:113
 msgid "Export CSV"
-msgstr ""
+msgstr "CSV निर्यात गर्नुहोस्"
 
 #: app/Admin/LogPage.php:114
 msgid "Export JSON"
-msgstr ""
+msgstr "JSON निर्यात गर्नुहोस्"
 
 #: app/Admin/LogPage.php:124
 msgid "Timestamp"
-msgstr ""
+msgstr "टाइमस्ट्याम्प"
 
 #: app/Admin/LogPage.php:126
 msgid "Method"
@@ -247,15 +249,15 @@ msgstr "स्टाटस"
 
 #: app/Admin/LogPage.php:129
 msgid "Context"
-msgstr ""
+msgstr "सन्दर्भ"
 
 #: app/Admin/LogPage.php:130
 msgid "Flags"
-msgstr ""
+msgstr "झण्डाहरू"
 
 #: app/Admin/LogPage.php:136
 msgid "No requests found."
-msgstr ""
+msgstr "कुनै अनुरोध फेला परेन।"
 
 #. translators: %s: human-readable time difference, e.g. "2 minutes"
 #: app/Admin/LogPage.php:151
@@ -265,27 +267,27 @@ msgstr "%s अघि"
 
 #: app/Admin/LogPage.php:180
 msgid "Recurring request"
-msgstr ""
+msgstr "आवर्ती अनुरोध"
 
 #: app/Admin/LogPage.php:183
 msgid "Duplicate request"
-msgstr ""
+msgstr "डुप्लिकेट अनुरोध"
 
 #: app/Admin/LogPage.php:190
 msgid "URL"
-msgstr ""
+msgstr "युआरएल"
 
 #: app/Admin/LogPage.php:200
 msgid "Request Headers"
-msgstr ""
+msgstr "अनुरोध हेडरहरू"
 
 #: app/Admin/LogPage.php:206
 msgid "Request Body"
-msgstr ""
+msgstr "अनुरोध बडी"
 
 #: app/Admin/LogPage.php:211
 msgid "Cron Hook"
-msgstr ""
+msgstr "क्रोन हुक"
 
 #. translators: %d: number of items
 #: app/Admin/LogPage.php:333
@@ -301,68 +303,64 @@ msgstr "सेटिङहरू बचत गरियो।"
 
 #: app/Admin/SettingsPage.php:65
 msgid "All logs deleted."
-msgstr ""
+msgstr "सबै लगहरू मेटाइयो।"
 
 #: app/Admin/SettingsPage.php:69
 msgid "MU loader installed."
-msgstr ""
+msgstr "एमयु लोडर स्थापना गरियो।"
 
 #: app/Admin/SettingsPage.php:73
 msgid "MU loader install failed. Check file permissions."
-msgstr ""
+msgstr "एमयु लोडर स्थापना असफल भयो। फाइल अनुमतिहरू जाँच गर्नुहोस्।"
 
 #: app/Admin/SettingsPage.php:81
 msgid "Enable Logging"
-msgstr ""
+msgstr "लग सक्षम गर्नुहोस्"
 
 #: app/Admin/SettingsPage.php:91
 msgid "Log Retention"
-msgstr ""
+msgstr "लग राख्ने अवधि"
 
-#: app/Admin/SettingsPage.php:98
-msgid "90 days"
-msgstr ""
-
-#: app/Admin/SettingsPage.php:99
+#: app/Admin/SettingsPage.php:102
 msgid "Forever"
-msgstr ""
+msgstr "सधैँभरि"
 
-#: app/Admin/SettingsPage.php:108
+#: app/Admin/SettingsPage.php:111
 msgid "Older logs are auto-deleted daily."
-msgstr ""
-
-#: app/Admin/SettingsPage.php:113
-msgid "Exclude Sources"
-msgstr ""
+msgstr "पुराना लगहरू दैनिक स्वतः मेटाइन्छन्।"
 
 #: app/Admin/SettingsPage.php:116
-msgid "One per line. Matching requests will not be logged."
-msgstr ""
+msgid "Exclude Sources"
+msgstr "स्रोतहरू बहिष्कृत गर्नुहोस्"
 
-#: app/Admin/SettingsPage.php:123
+#: app/Admin/SettingsPage.php:119
+msgid "One per line. Matching requests will not be logged."
+msgstr "प्रति लाइन एउटा। मिल्ने अनुरोधहरू रेकर्ड गरिने छैनन्।"
+
+#: app/Admin/SettingsPage.php:126
 msgid "Save Settings"
 msgstr "सेटिङहरू बचत गर्नुहोस्"
 
-#: app/Admin/SettingsPage.php:129
+#: app/Admin/SettingsPage.php:132
 msgid "MU Mode"
-msgstr ""
+msgstr "एमयु मोड"
 
-#: app/Admin/SettingsPage.php:131
+#: app/Admin/SettingsPage.php:134
 msgid "MU loader is active. Requests from all plugins are captured."
-msgstr ""
-
-#: app/Admin/SettingsPage.php:135
-msgid "Install a loader in mu-plugins to capture requests from all plugins."
-msgstr ""
+msgstr "एमयु लोडर सक्रिय छ। सबै प्लगिनहरूबाट आएका अनुरोधहरू क्याप्चर गरिन्छन्।"
 
 #: app/Admin/SettingsPage.php:138
+msgid "Install a loader in mu-plugins to capture requests from all plugins."
+msgstr "सबै प्लगिनहरूबाट अनुरोधहरू क्याप्चर गर्न mu-plugins मा लोडर स्थापना गर्नुहोस्।"
+
+#: app/Admin/SettingsPage.php:141
 msgid "Install MU Loader"
-msgstr ""
+msgstr "एमयु लोडर स्थापना गर्नुहोस्"
 
-#: app/Admin/SettingsPage.php:146
+#: app/Admin/SettingsPage.php:149
 msgid "Danger Zone"
-msgstr ""
+msgstr "खतराको क्षेत्र"
 
-#: app/Admin/SettingsPage.php:152
+#: app/Admin/SettingsPage.php:155
 msgid "Purge All Logs"
-msgstr ""
+msgstr "सबै लगहरू मेटाउनुहोस्"
