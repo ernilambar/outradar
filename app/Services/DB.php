@@ -39,6 +39,7 @@ class DB {
 			request_body LONGTEXT,
 			response_code INT,
 			response_size INT,
+			duration INT UNSIGNED,
 			source_plugin VARCHAR(255),
 			source_file TEXT,
 			source_line INT,
@@ -338,14 +339,15 @@ class DB {
 	public static function get_log_rows( array $filters, int $page = 1, int $per_page = 50 ): array {
 		global $wpdb;
 
-		$table  = $wpdb->prefix . OUTRADAR_TABLE;
-		$where  = self::build_where( $filters );
-		$offset = ( max( 1, $page ) - 1 ) * $per_page;
-		$order  = isset( $filters['order'] ) && 'asc' === $filters['order'] ? 'ASC' : 'DESC';
+		$table    = $wpdb->prefix . OUTRADAR_TABLE;
+		$where    = self::build_where( $filters );
+		$offset   = ( max( 1, $page ) - 1 ) * $per_page;
+		$order    = isset( $filters['order'] ) && 'asc' === $filters['order'] ? 'ASC' : 'DESC';
+		$sort_col = isset( $filters['sort'] ) && 'duration' === $filters['sort'] ? 'duration' : 'timestamp';
 
 		$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare(
-				"SELECT * FROM {$table} WHERE 1=1{$where} ORDER BY timestamp {$order} LIMIT %d OFFSET %d", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				"SELECT * FROM {$table} WHERE 1=1{$where} ORDER BY {$sort_col} {$order} LIMIT %d OFFSET %d", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 				$per_page,
 				$offset
 			)

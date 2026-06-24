@@ -22,11 +22,11 @@ use WP_Error;
 class Interceptor {
 
 	/**
-	 * Request headers and body stashed before the request fires, keyed by fingerprint.
+	 * Request headers, body, and start time stashed before the request fires, keyed by fingerprint.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @var array<string, array{headers: mixed, body: mixed}>
+	 * @var array<string, array{headers: mixed, body: mixed, start: float}>
 	 */
 	private static array $pending = array();
 
@@ -59,6 +59,7 @@ class Interceptor {
 		self::$pending[ $key ] = array(
 			'headers' => $args['headers'] ?? array(),
 			'body'    => $args['body'] ?? '',
+			'start'   => microtime( true ),
 		);
 
 		return $args;
@@ -89,6 +90,7 @@ class Interceptor {
 		$pending = self::$pending[ $key ] ?? array();
 		unset( self::$pending[ $key ] );
 
+		$duration      = isset( $pending['start'] ) ? (int) round( ( microtime( true ) - $pending['start'] ) * 1000 ) : null;
 		$response_code = null;
 		$response_size = null;
 
@@ -105,6 +107,7 @@ class Interceptor {
 				'request_body'    => $pending['body'] ?? '',
 				'response_code'   => $response_code,
 				'response_size'   => $response_size,
+				'duration'        => $duration,
 			)
 		);
 	}
