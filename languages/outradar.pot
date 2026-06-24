@@ -40,47 +40,47 @@ msgstr ""
 msgid "https://github.com/ernilambar"
 msgstr ""
 
-#: app/Admin/Admin.php:54
+#: app/Admin/Admin.php:55
 msgctxt "page title"
 msgid "OutRadar"
 msgstr ""
 
-#: app/Admin/Admin.php:55
+#: app/Admin/Admin.php:56
 msgctxt "menu title"
 msgid "OutRadar"
 msgstr ""
 
-#: app/Admin/Admin.php:62
+#: app/Admin/Admin.php:63
 msgid "Log"
 msgstr ""
 
-#: app/Admin/Admin.php:63
+#: app/Admin/Admin.php:64
 msgid "Dashboard"
 msgstr ""
 
-#: app/Admin/Admin.php:64
+#: app/Admin/Admin.php:65
 msgid "Settings"
 msgstr ""
 
-#: app/Admin/Admin.php:99
+#: app/Admin/Admin.php:102
 #: app/Admin/Pages/Settings_Page.php:168
 msgid "Permanently delete all logs. This cannot be undone."
 msgstr ""
 
-#: app/Admin/Admin.php:100
+#: app/Admin/Admin.php:103
 msgid "Delete selected entries?"
 msgstr ""
 
 #: app/Admin/Exporter.php:32
 #: app/Admin/Pages/Dashboard_Page.php:32
-#: app/Admin/Pages/Log_Page.php:32
-#: app/Admin/Pages/Log_Page.php:306
+#: app/Admin/Pages/Log_Page.php:33
+#: app/Admin/Pages/Log_Page.php:275
 #: app/Admin/Pages/Settings_Page.php:32
 msgid "You do not have permission."
 msgstr ""
 
 #: app/Admin/Exporter.php:36
-#: app/Admin/Pages/Log_Page.php:310
+#: app/Admin/Pages/Log_Page.php:279
 msgid "Security check failed."
 msgstr ""
 
@@ -161,7 +161,7 @@ msgid "No data yet."
 msgstr ""
 
 #: app/Admin/Pages/Dashboard_Page.php:156
-#: app/Admin/Pages/Log_Page.php:83
+#: app/Admin/Pages/Log_Page.php:84
 msgid "Domain"
 msgstr ""
 
@@ -183,127 +183,104 @@ msgid "Sources"
 msgstr ""
 
 #: app/Admin/Pages/Dashboard_Page.php:192
-#: app/Admin/Pages/Log_Page.php:169
-#: app/Admin/Pages/Log_Page.php:255
+#: app/Admin/Pages/Log_Page.php:170
 msgid "Source"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:88
+#: app/Admin/Pages/Log_Page.php:89
 msgid "All sources"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:97
+#: app/Admin/Pages/Log_Page.php:98
 msgid "All methods"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:106
+#: app/Admin/Pages/Log_Page.php:107
 msgid "All contexts"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:117
+#: app/Admin/Pages/Log_Page.php:118
 msgid "From"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:124
+#: app/Admin/Pages/Log_Page.php:125
 msgid "To"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:128
+#: app/Admin/Pages/Log_Page.php:129
 msgid "Filter"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:129
+#: app/Admin/Pages/Log_Page.php:130
 msgid "Reset"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:138
+#: app/Admin/Pages/Log_Page.php:139
 msgid "Bulk actions"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:139
+#: app/Admin/Pages/Log_Page.php:140
 msgid "Delete"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:141
+#: app/Admin/Pages/Log_Page.php:142
 msgid "Apply"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:145
+#: app/Admin/Pages/Log_Page.php:146
 msgid "Export CSV"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:146
+#: app/Admin/Pages/Log_Page.php:147
 msgid "Export JSON"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:156
+#: app/Admin/Pages/Log_Page.php:157
 msgid "Timestamp"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:159
+#: app/Admin/Pages/Log_Page.php:160
 msgid "Time"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:166
+#: app/Admin/Pages/Log_Page.php:167
 msgid "Destination"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:167
+#: app/Admin/Pages/Log_Page.php:168
 msgid "Method"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:168
+#: app/Admin/Pages/Log_Page.php:169
 msgid "Status"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:170
+#: app/Admin/Pages/Log_Page.php:171
 msgid "Context"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:173
+#: app/Admin/Pages/Log_Page.php:174
 msgid "Duration"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:180
+#: app/Admin/Pages/Log_Page.php:181
 msgid "Flags"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:186
+#: app/Admin/Pages/Log_Page.php:187
 msgid "No requests found."
 msgstr ""
 
-#. translators: %s: human-readable time difference, e.g. "2 minutes"
-#: app/Admin/Pages/Log_Page.php:203
-#, php-format
-msgid "%s ago"
-msgstr ""
-
-#: app/Admin/Pages/Log_Page.php:243
+#: app/Admin/Pages/Log_Page.php:241
 msgid "Recurring request"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:246
+#: app/Admin/Pages/Log_Page.php:244
 msgid "Duplicate request"
 msgstr ""
 
-#: app/Admin/Pages/Log_Page.php:253
-msgid "URL"
-msgstr ""
-
-#: app/Admin/Pages/Log_Page.php:263
-msgid "Request Headers"
-msgstr ""
-
-#: app/Admin/Pages/Log_Page.php:269
-msgid "Request Body"
-msgstr ""
-
-#: app/Admin/Pages/Log_Page.php:274
-msgid "Cron Hook"
-msgstr ""
-
 #. translators: %d: number of items
-#: app/Admin/Pages/Log_Page.php:399
+#: app/Admin/Pages/Log_Page.php:368
 #, php-format
 msgid "%d item"
 msgid_plural "%d items"
@@ -388,4 +365,10 @@ msgstr ""
 
 #: app/Admin/Pages/Settings_Page.php:171
 msgid "Purge All Logs"
+msgstr ""
+
+#. translators: %s: human-readable time difference, e.g. "2 minutes"
+#: app/Utils/WP_Utils.php:32
+#, php-format
+msgid "%s ago"
 msgstr ""

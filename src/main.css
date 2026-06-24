@@ -214,43 +214,178 @@
 	white-space: nowrap;
 }
 
-.outradar-detail-row {
-	td {
-		background: #f6f7f7;
-		padding: 12px 16px;
-		max-width: 0;
+/* ── Modal ───────────────────────────────────────────────── */
+
+body.outradar-modal-open {
+	overflow: hidden;
+}
+
+#outradar-modal-overlay {
+	display: none;
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 100000;
+	align-items: center;
+	justify-content: center;
+	padding: 40px 20px;
+	overflow: hidden;
+
+	&.is-open {
+		display: flex;
 	}
 }
 
-.outradar-detail-inner {
-	p {
-		margin: 4px 0;
-		font-size: 13px;
+#outradar-modal {
+	background: #fff;
+	border-radius: 4px;
+	width: 100%;
+	max-width: 1040px;
+	max-height: calc(100dvh - 80px);
+	box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
+	display: flex;
+	flex-direction: column;
+}
+
+.outradar-modal-body {
+	padding: 16px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+	overflow-y: auto;
+	min-height: 0;
+}
+
+.outradar-modal-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 16px;
+	border-bottom: 1px solid #dcdcde;
+	gap: 12px;
+}
+
+.outradar-modal-badges {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.outradar-modal-method {
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.outradar-modal-duration {
+	font-size: 12px;
+	color: #646970;
+}
+
+.outradar-modal-close {
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: 22px;
+	line-height: 1;
+	color: #646970;
+	padding: 0 4px;
+	flex-shrink: 0;
+
+	&:hover {
+		color: #1d2327;
 	}
+}
+
+.outradar-modal-url {
+	padding: 10px 16px;
+	background: #f6f7f7;
+	border-bottom: 1px solid #dcdcde;
 
 	code {
-		word-break: break-all;
-	}
-
-	pre {
-		background: #fff;
-		border: 1px solid #dcdcde;
-		padding: 8px;
-		overflow-x: auto;
-		white-space: pre-wrap;
-		word-break: break-all;
 		font-size: 12px;
-		max-height: 200px;
-		overflow-y: auto;
-		margin: 4px 0;
+		word-break: break-all;
+		color: #1d2327;
+		user-select: all;
+	}
+}
+
+.outradar-modal-section {
+	h3 {
+		margin: 0 0 8px;
+		font-size: 11px;
+		text-transform: uppercase;
+		color: #646970;
+		letter-spacing: 0.05em;
 	}
 
-	details summary {
-		cursor: pointer;
-		font-weight: 600;
-		font-size: 13px;
-		margin: 6px 0 2px;
+	&--request {
+		grid-column: 1 / -1;
 	}
+}
+
+.outradar-modal-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 13px;
+
+	th {
+		text-align: left;
+		font-weight: 600;
+		color: #646970;
+		padding: 3px 12px 3px 0;
+		white-space: nowrap;
+		width: 1%;
+		vertical-align: top;
+	}
+
+	td {
+		padding: 3px 0;
+		word-break: break-all;
+	}
+}
+
+.outradar-modal-section--request {
+	details {
+		margin-bottom: 8px;
+
+		summary {
+			cursor: pointer;
+			font-weight: 600;
+			font-size: 13px;
+			padding: 4px 0;
+		}
+
+		pre {
+			background: #f6f7f7;
+			border: 1px solid #dcdcde;
+			padding: 8px;
+			overflow: auto;
+			white-space: pre-wrap;
+			word-break: break-all;
+			font-size: 12px;
+			max-height: 220px;
+			margin: 4px 0 0;
+		}
+	}
+
+	.f-no-request {
+		color: #646970;
+		font-size: 13px;
+		margin: 0;
+	}
+}
+
+.outradar-modal-loader {
+	padding: 32px;
+	text-align: center;
+	color: #646970;
+	font-size: 13px;
+}
+
+.outradar-dim {
+	color: #787c80;
+	font-size: 0.85em;
 }
 
 .outradar-reviewed {

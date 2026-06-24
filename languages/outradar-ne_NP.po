@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-06-24T04:58:36+00:00\n"
+"PO-Revision-Date: 2026-06-24T05:53:38+00:00\n"
 "Language: ne_NP\n"
 "X-Generator: WP-CLI 2.13.0-alpha\n"
 "X-Domain: outradar\n"
@@ -39,47 +39,47 @@ msgstr "निलाम्वर शर्मा"
 msgid "https://github.com/ernilambar"
 msgstr "https://github.com/ernilambar"
 
-#: app/Admin/Admin.php:54
+#: app/Admin/Admin.php:55
 msgctxt "page title"
 msgid "OutRadar"
 msgstr "आउटरेडार"
 
-#: app/Admin/Admin.php:55
+#: app/Admin/Admin.php:56
 msgctxt "menu title"
 msgid "OutRadar"
 msgstr "आउटरेडार"
 
-#: app/Admin/Admin.php:62
+#: app/Admin/Admin.php:63
 msgid "Log"
 msgstr "लग"
 
-#: app/Admin/Admin.php:63
+#: app/Admin/Admin.php:64
 msgid "Dashboard"
 msgstr "ड्यासबोर्ड"
 
-#: app/Admin/Admin.php:64
+#: app/Admin/Admin.php:65
 msgid "Settings"
 msgstr "सेटिङहरू"
 
-#: app/Admin/Admin.php:99
+#: app/Admin/Admin.php:102
 #: app/Admin/Pages/Settings_Page.php:168
 msgid "Permanently delete all logs. This cannot be undone."
 msgstr "सबै लगहरू स्थायी रूपले मेटाउनुहोस्। यो प्रक्रिया पूर्ववत गर्न सकिँदैन।"
 
-#: app/Admin/Admin.php:100
+#: app/Admin/Admin.php:103
 msgid "Delete selected entries?"
 msgstr "चयन गरिएका प्रविष्टिहरू मेटाउने हो?"
 
 #: app/Admin/Exporter.php:32
 #: app/Admin/Pages/Dashboard_Page.php:32
-#: app/Admin/Pages/Log_Page.php:32
-#: app/Admin/Pages/Log_Page.php:306
+#: app/Admin/Pages/Log_Page.php:33
+#: app/Admin/Pages/Log_Page.php:275
 #: app/Admin/Pages/Settings_Page.php:32
 msgid "You do not have permission."
 msgstr "तपाईँलाई  अनुमति छैन।"
 
 #: app/Admin/Exporter.php:36
-#: app/Admin/Pages/Log_Page.php:310
+#: app/Admin/Pages/Log_Page.php:279
 msgid "Security check failed."
 msgstr "सुरक्षा जाँच असफल भयो।"
 
@@ -160,7 +160,7 @@ msgid "No data yet."
 msgstr "अहिलेसम्म डाटा छैन।"
 
 #: app/Admin/Pages/Dashboard_Page.php:156
-#: app/Admin/Pages/Log_Page.php:83
+#: app/Admin/Pages/Log_Page.php:84
 msgid "Domain"
 msgstr "डोमेन"
 
@@ -182,127 +182,104 @@ msgid "Sources"
 msgstr "स्रोतहरू"
 
 #: app/Admin/Pages/Dashboard_Page.php:192
-#: app/Admin/Pages/Log_Page.php:169
-#: app/Admin/Pages/Log_Page.php:255
+#: app/Admin/Pages/Log_Page.php:170
 msgid "Source"
 msgstr "स्रोत"
 
-#: app/Admin/Pages/Log_Page.php:88
+#: app/Admin/Pages/Log_Page.php:89
 msgid "All sources"
 msgstr "सबै स्रोतहरू"
 
-#: app/Admin/Pages/Log_Page.php:97
+#: app/Admin/Pages/Log_Page.php:98
 msgid "All methods"
 msgstr "सबै विधिहरू"
 
-#: app/Admin/Pages/Log_Page.php:106
+#: app/Admin/Pages/Log_Page.php:107
 msgid "All contexts"
 msgstr "सबै सन्दर्भहरू"
 
-#: app/Admin/Pages/Log_Page.php:117
+#: app/Admin/Pages/Log_Page.php:118
 msgid "From"
 msgstr "बाट"
 
-#: app/Admin/Pages/Log_Page.php:124
+#: app/Admin/Pages/Log_Page.php:125
 msgid "To"
 msgstr "लाई"
 
-#: app/Admin/Pages/Log_Page.php:128
+#: app/Admin/Pages/Log_Page.php:129
 msgid "Filter"
 msgstr "फिल्टर गर्नुहोस्"
 
-#: app/Admin/Pages/Log_Page.php:129
+#: app/Admin/Pages/Log_Page.php:130
 msgid "Reset"
 msgstr "रिसेट गर्नुहोस्"
 
-#: app/Admin/Pages/Log_Page.php:138
+#: app/Admin/Pages/Log_Page.php:139
 msgid "Bulk actions"
 msgstr "एकमुस्ट कार्यहरू"
 
-#: app/Admin/Pages/Log_Page.php:139
+#: app/Admin/Pages/Log_Page.php:140
 msgid "Delete"
 msgstr "मेटाउनुहोस्"
 
-#: app/Admin/Pages/Log_Page.php:141
+#: app/Admin/Pages/Log_Page.php:142
 msgid "Apply"
 msgstr "लागू गर्नुहोस्"
 
-#: app/Admin/Pages/Log_Page.php:145
+#: app/Admin/Pages/Log_Page.php:146
 msgid "Export CSV"
 msgstr "CSV निर्यात गर्नुहोस्"
 
-#: app/Admin/Pages/Log_Page.php:146
+#: app/Admin/Pages/Log_Page.php:147
 msgid "Export JSON"
 msgstr "JSON निर्यात गर्नुहोस्"
 
-#: app/Admin/Pages/Log_Page.php:156
+#: app/Admin/Pages/Log_Page.php:157
 msgid "Timestamp"
 msgstr "टाइमस्ट्याम्प"
 
-#: app/Admin/Pages/Log_Page.php:159
+#: app/Admin/Pages/Log_Page.php:160
 msgid "Time"
 msgstr "समय"
 
-#: app/Admin/Pages/Log_Page.php:166
+#: app/Admin/Pages/Log_Page.php:167
 msgid "Destination"
 msgstr "गन्तव्य"
 
-#: app/Admin/Pages/Log_Page.php:167
+#: app/Admin/Pages/Log_Page.php:168
 msgid "Method"
 msgstr "विधि"
 
-#: app/Admin/Pages/Log_Page.php:168
+#: app/Admin/Pages/Log_Page.php:169
 msgid "Status"
 msgstr "स्टाटस"
 
-#: app/Admin/Pages/Log_Page.php:170
+#: app/Admin/Pages/Log_Page.php:171
 msgid "Context"
 msgstr "सन्दर्भ"
 
-#: app/Admin/Pages/Log_Page.php:173
+#: app/Admin/Pages/Log_Page.php:174
 msgid "Duration"
 msgstr "अवधि"
 
-#: app/Admin/Pages/Log_Page.php:180
+#: app/Admin/Pages/Log_Page.php:181
 msgid "Flags"
 msgstr "झण्डाहरू"
 
-#: app/Admin/Pages/Log_Page.php:186
+#: app/Admin/Pages/Log_Page.php:187
 msgid "No requests found."
 msgstr "कुनै अनुरोध फेला परेन।"
 
-#. translators: %s: human-readable time difference, e.g. "2 minutes"
-#: app/Admin/Pages/Log_Page.php:203
-#, php-format
-msgid "%s ago"
-msgstr "%s अघि"
-
-#: app/Admin/Pages/Log_Page.php:243
+#: app/Admin/Pages/Log_Page.php:241
 msgid "Recurring request"
 msgstr "आवर्ती अनुरोध"
 
-#: app/Admin/Pages/Log_Page.php:246
+#: app/Admin/Pages/Log_Page.php:244
 msgid "Duplicate request"
 msgstr "डुप्लिकेट अनुरोध"
 
-#: app/Admin/Pages/Log_Page.php:253
-msgid "URL"
-msgstr "युआरएल"
-
-#: app/Admin/Pages/Log_Page.php:263
-msgid "Request Headers"
-msgstr "अनुरोध हेडरहरू"
-
-#: app/Admin/Pages/Log_Page.php:269
-msgid "Request Body"
-msgstr "अनुरोध बडी"
-
-#: app/Admin/Pages/Log_Page.php:274
-msgid "Cron Hook"
-msgstr "क्रोन हुक"
-
 #. translators: %d: number of items
-#: app/Admin/Pages/Log_Page.php:399
+#: app/Admin/Pages/Log_Page.php:368
 #, php-format
 msgid "%d item"
 msgid_plural "%d items"
@@ -388,3 +365,9 @@ msgstr "खतराको क्षेत्र"
 #: app/Admin/Pages/Settings_Page.php:171
 msgid "Purge All Logs"
 msgstr "सबै लगहरू मेटाउनुहोस्"
+
+#. translators: %s: human-readable time difference, e.g. "2 minutes"
+#: app/Utils/WP_Utils.php:32
+#, php-format
+msgid "%s ago"
+msgstr "%s अघि"

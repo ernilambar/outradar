@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Nilambar\OutRadar\Services\DB;
+use Nilambar\OutRadar\Utils\WP_Utils;
 
 /**
  * Renders the paginated, filterable Request Log admin page.
@@ -198,10 +199,7 @@ class Log_Page {
 							</td>
 							<td class="outradar-time-col">
 								<span class="outradar-time-ago">
-								<?php
-								/* translators: %s: human-readable time difference, e.g. "2 minutes" */
-								echo esc_html( sprintf( __( '%s ago', 'outradar' ), human_time_diff( (int) strtotime( (string) $row->timestamp ) ) ) );
-								?>
+								<?php echo esc_html( WP_Utils::format_time_ago( (int) strtotime( (string) $row->timestamp ) ) ); ?>
 								</span>
 							</td>
 							<td>
@@ -245,35 +243,6 @@ class Log_Page {
 								<?php if ( ! empty( $row->duplicate_of ) ) : ?>
 									<span class="outradar-flag outradar-flag--duplicate" title="<?php esc_attr_e( 'Duplicate request', 'outradar' ); ?>">&#8645;</span>
 								<?php endif; ?>
-							</td>
-						</tr>
-						<tr class="outradar-detail-row" id="outradar-detail-<?php echo esc_attr( (string) $row->id ); ?>" style="display:none;">
-							<td colspan="10">
-								<div class="outradar-detail-inner">
-									<p><strong><?php esc_html_e( 'URL', 'outradar' ); ?>:</strong> <code><?php echo esc_html( (string) $row->url ); ?></code></p>
-									<p>
-										<strong><?php esc_html_e( 'Source', 'outradar' ); ?>:</strong>
-										<?php echo esc_html( (string) $row->source_file ); ?>
-										<?php if ( ! empty( $row->source_line ) ) : ?>
-											<?php echo esc_html( sprintf( ':%d', (int) $row->source_line ) ); ?>
-										<?php endif; ?>
-									</p>
-									<?php if ( ! empty( $row->request_headers ) ) : ?>
-									<details>
-										<summary><?php esc_html_e( 'Request Headers', 'outradar' ); ?></summary>
-										<pre><?php echo esc_html( (string) $row->request_headers ); ?></pre>
-									</details>
-									<?php endif; ?>
-									<?php if ( ! empty( $row->request_body ) ) : ?>
-									<details>
-										<summary><?php esc_html_e( 'Request Body', 'outradar' ); ?></summary>
-										<pre><?php echo esc_html( (string) $row->request_body ); ?></pre>
-									</details>
-									<?php endif; ?>
-									<?php if ( ! empty( $row->cron_hook ) ) : ?>
-									<p><strong><?php esc_html_e( 'Cron Hook', 'outradar' ); ?>:</strong> <code><?php echo esc_html( (string) $row->cron_hook ); ?></code></p>
-									<?php endif; ?>
-								</div>
 							</td>
 						</tr>
 						<?php endforeach; ?>
