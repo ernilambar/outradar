@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-06-24T05:53:38+00:00\n"
+"PO-Revision-Date: 2026-06-24T06:41:02+00:00\n"
 "Language: ne_NP\n"
 "X-Generator: WP-CLI 2.13.0-alpha\n"
 "X-Domain: outradar\n"
@@ -24,8 +24,7 @@ msgid "https://github.com/ernilambar/outradar"
 msgstr "https://github.com/ernilambar/outradar"
 
 #. Description of the plugin
-#: outradar.php:5
-#: app/Admin/Pages/Settings_Page.php:91
+#: outradar.php:5 app/Admin/Pages/Settings_Page.php:91
 msgid "Log outbound HTTP requests."
 msgstr "बाहिर जाने HTTP अनुरोधहरू लग गर्नुहोस्।"
 
@@ -61,8 +60,7 @@ msgstr "ड्यासबोर्ड"
 msgid "Settings"
 msgstr "सेटिङहरू"
 
-#: app/Admin/Admin.php:102
-#: app/Admin/Pages/Settings_Page.php:168
+#: app/Admin/Admin.php:102 app/Admin/Pages/Settings_Page.php:168
 msgid "Permanently delete all logs. This cannot be undone."
 msgstr "सबै लगहरू स्थायी रूपले मेटाउनुहोस्। यो प्रक्रिया पूर्ववत गर्न सकिँदैन।"
 
@@ -70,21 +68,95 @@ msgstr "सबै लगहरू स्थायी रूपले मेट�
 msgid "Delete selected entries?"
 msgstr "चयन गरिएका प्रविष्टिहरू मेटाउने हो?"
 
-#: app/Admin/Exporter.php:32
-#: app/Admin/Pages/Dashboard_Page.php:32
-#: app/Admin/Pages/Log_Page.php:33
-#: app/Admin/Pages/Log_Page.php:275
+#: app/Admin/Admin.php:107
+msgid "Close"
+msgstr "बन्द गर्नुहोस्"
+
+#: app/Admin/Admin.php:108
+msgid "General"
+msgstr "साधारण"
+
+#: app/Admin/Admin.php:109 app/Admin/Pages/Log_Page.php:157
+msgid "Timestamp"
+msgstr "टाइमस्ट्याम्प"
+
+#: app/Admin/Admin.php:110 app/Admin/Pages/Dashboard_Page.php:156
+#: app/Admin/Pages/Log_Page.php:84
+msgid "Domain"
+msgstr "डोमेन"
+
+#: app/Admin/Admin.php:111
+msgid "Response Size"
+msgstr "प्रतिक्रिया साइज"
+
+#: app/Admin/Admin.php:112
+msgid "Origin"
+msgstr "मूल"
+
+#: app/Admin/Admin.php:113 app/Admin/Pages/Dashboard_Page.php:192
+#: app/Admin/Pages/Log_Page.php:170
+msgid "Source"
+msgstr "स्रोत"
+
+#: app/Admin/Admin.php:114
+msgid "File"
+msgstr "फाइल"
+
+#: app/Admin/Admin.php:115
+msgid "Page"
+msgstr "पृष्ठ"
+
+#: app/Admin/Admin.php:116
+msgid "Cron Hook"
+msgstr "क्रोन हुक"
+
+#: app/Admin/Admin.php:117
+msgid "Duplicate"
+msgstr "प्रतिलिपि"
+
+#: app/Admin/Admin.php:118
+msgid "Request"
+msgstr "अनुरोध"
+
+#: app/Admin/Admin.php:119
+msgid "Headers"
+msgstr "हेडरहरू"
+
+#: app/Admin/Admin.php:120
+msgid "Body"
+msgstr "बडी"
+
+#: app/Admin/Admin.php:121
+msgid "Pretty"
+msgstr "सुन्दर"
+
+#: app/Admin/Admin.php:122
+msgid "Raw"
+msgstr "कच्चा"
+
+#: app/Admin/Admin.php:123
+msgid "Copy"
+msgstr "कपी गर्नुहोस्"
+
+#: app/Admin/Admin.php:124
+msgid "Loading…"
+msgstr "लोड हुँदै..."
+
+#: app/Admin/Admin.php:125
+msgid "Failed to load."
+msgstr "लोड गर्न असफल भयो।"
+
+#: app/Admin/Exporter.php:32 app/Admin/Pages/Dashboard_Page.php:32
+#: app/Admin/Pages/Log_Page.php:33 app/Admin/Pages/Log_Page.php:275
 #: app/Admin/Pages/Settings_Page.php:32
 msgid "You do not have permission."
 msgstr "तपाईँलाई  अनुमति छैन।"
 
-#: app/Admin/Exporter.php:36
-#: app/Admin/Pages/Log_Page.php:279
+#: app/Admin/Exporter.php:36 app/Admin/Pages/Log_Page.php:279
 msgid "Security check failed."
 msgstr "सुरक्षा जाँच असफल भयो।"
 
-#: app/Admin/Pages/Dashboard_Page.php:46
-#: app/Admin/Pages/Dashboard_Page.php:193
+#: app/Admin/Pages/Dashboard_Page.php:46 app/Admin/Pages/Dashboard_Page.php:193
 msgid "Total Requests"
 msgstr "कुल अनुरोधहरू"
 
@@ -93,12 +165,9 @@ msgid "Today"
 msgstr "आज"
 
 #. translators: %d: number of days
-#: app/Admin/Pages/Dashboard_Page.php:57
-#: app/Admin/Pages/Dashboard_Page.php:128
-#: app/Admin/Pages/Dashboard_Page.php:134
-#: app/Admin/Pages/Settings_Page.php:103
-#: app/Admin/Pages/Settings_Page.php:105
-#: app/Admin/Pages/Settings_Page.php:107
+#: app/Admin/Pages/Dashboard_Page.php:57 app/Admin/Pages/Dashboard_Page.php:128
+#: app/Admin/Pages/Dashboard_Page.php:134 app/Admin/Pages/Settings_Page.php:103
+#: app/Admin/Pages/Settings_Page.php:105 app/Admin/Pages/Settings_Page.php:107
 #, php-format
 msgid "%d day"
 msgid_plural "%d days"
@@ -113,8 +182,7 @@ msgstr "हालसम्म"
 msgid "Overview"
 msgstr "परिदृश्य"
 
-#: app/Admin/Pages/Dashboard_Page.php:72
-#: app/Admin/Pages/Dashboard_Page.php:194
+#: app/Admin/Pages/Dashboard_Page.php:72 app/Admin/Pages/Dashboard_Page.php:194
 msgid "Unique Domains"
 msgstr "अद्वितीय डोमेनहरू"
 
@@ -122,23 +190,19 @@ msgstr "अद्वितीय डोमेनहरू"
 msgid "By Context"
 msgstr "सन्दर्भद्वारा"
 
-#: app/Admin/Pages/Dashboard_Page.php:83
-#: app/Admin/Pages/Dashboard_Page.php:141
+#: app/Admin/Pages/Dashboard_Page.php:83 app/Admin/Pages/Dashboard_Page.php:141
 msgid "Frontend"
 msgstr "फ्रन्टइन्ड"
 
-#: app/Admin/Pages/Dashboard_Page.php:87
-#: app/Admin/Pages/Dashboard_Page.php:142
+#: app/Admin/Pages/Dashboard_Page.php:87 app/Admin/Pages/Dashboard_Page.php:142
 msgid "Admin"
 msgstr "एडमिन"
 
-#: app/Admin/Pages/Dashboard_Page.php:91
-#: app/Admin/Pages/Dashboard_Page.php:140
+#: app/Admin/Pages/Dashboard_Page.php:91 app/Admin/Pages/Dashboard_Page.php:140
 msgid "Cron"
 msgstr "क्रोन"
 
-#: app/Admin/Pages/Dashboard_Page.php:95
-#: app/Admin/Pages/Dashboard_Page.php:143
+#: app/Admin/Pages/Dashboard_Page.php:95 app/Admin/Pages/Dashboard_Page.php:143
 msgid "CLI"
 msgstr "सिएलआई"
 
@@ -159,11 +223,6 @@ msgstr "डोमेनहरू"
 msgid "No data yet."
 msgstr "अहिलेसम्म डाटा छैन।"
 
-#: app/Admin/Pages/Dashboard_Page.php:156
-#: app/Admin/Pages/Log_Page.php:84
-msgid "Domain"
-msgstr "डोमेन"
-
 #: app/Admin/Pages/Dashboard_Page.php:157
 msgid "First Seen"
 msgstr "पहिलो पटक देखिएको"
@@ -180,11 +239,6 @@ msgstr "अनुरोधहरू"
 #: app/Admin/Pages/Dashboard_Page.php:184
 msgid "Sources"
 msgstr "स्रोतहरू"
-
-#: app/Admin/Pages/Dashboard_Page.php:192
-#: app/Admin/Pages/Log_Page.php:170
-msgid "Source"
-msgstr "स्रोत"
 
 #: app/Admin/Pages/Log_Page.php:89
 msgid "All sources"
@@ -233,10 +287,6 @@ msgstr "CSV निर्यात गर्नुहोस्"
 #: app/Admin/Pages/Log_Page.php:147
 msgid "Export JSON"
 msgstr "JSON निर्यात गर्नुहोस्"
-
-#: app/Admin/Pages/Log_Page.php:157
-msgid "Timestamp"
-msgstr "टाइमस्ट्याम्प"
 
 #: app/Admin/Pages/Log_Page.php:160
 msgid "Time"
