@@ -43,24 +43,33 @@ class Log_Page {
 		$per_page    = 50;
 		$total_pages = (int) ceil( $total / $per_page );
 
-		$next_order     = 'desc' === $filters['order'] ? 'asc' : 'desc';
-		$sort_base      = array_filter(
+		$next_order = 'desc' === $filters['order'] ? 'asc' : 'desc';
+		$sort_base  = array_filter(
 			$filters,
-			static fn( $k ) => 'order' !== $k,
+			static fn( $k ) => ! in_array( $k, array( 'order', 'sort' ), true ),
 			ARRAY_FILTER_USE_KEY
 		);
-		$sort_base      = array_filter( $sort_base, static fn( $v ) => '' !== $v && false !== $v );
-		$sort_url       = add_query_arg(
-			array_merge(
-				$sort_base,
-				array(
-					'page'  => 'outradar',
-					'order' => $next_order,
-				)
-			),
-			admin_url( 'admin.php' )
-		);
-		$time_col_class = 'sorted ' . $filters['order'];
+		$sort_base  = array_filter( $sort_base, static fn( $v ) => '' !== $v && false !== $v );
+
+		$make_sort_url = static function ( string $col ) use ( $sort_base, $filters, $next_order ): string {
+			$same_col  = $filters['sort'] === $col;
+			$col_order = $same_col ? $next_order : 'desc';
+			return add_query_arg(
+				array_merge(
+					$sort_base,
+					array(
+						'page'  => 'outradar',
+						'sort'  => $col,
+						'order' => $col_order,
+					)
+				),
+				admin_url( 'admin.php' )
+			);
+		};
+
+		$col_class = static function ( string $col ) use ( $filters ): string {
+			return $filters['sort'] === $col ? 'sorted ' . $filters['order'] : 'sortable desc';
+		};
 		?>
 		<div class="wrap outradar-wrap">
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
@@ -145,8 +154,8 @@ class Log_Page {
 						<tr>
 							<td class="manage-column column-cb check-column"><input type="checkbox" id="outradar-select-all" /></td>
 							<th><?php esc_html_e( 'Timestamp', 'outradar' ); ?></th>
-							<th class="<?php echo esc_attr( $time_col_class ); ?>">
-								<a href="<?php echo esc_url( $sort_url ); ?>">
+							<th class="<?php echo esc_attr( $col_class( 'timestamp' ) ); ?>">
+								<a href="<?php echo esc_url( $make_sort_url( 'timestamp' ) ); ?>">
 									<span><?php esc_html_e( 'Time', 'outradar' ); ?></span>
 									<span class="sorting-indicators">
 										<span class="sorting-indicator asc" aria-hidden="true"></span>
@@ -159,13 +168,22 @@ class Log_Page {
 							<th><?php esc_html_e( 'Status', 'outradar' ); ?></th>
 							<th><?php esc_html_e( 'Source', 'outradar' ); ?></th>
 							<th><?php esc_html_e( 'Context', 'outradar' ); ?></th>
+							<th class="<?php echo esc_attr( $col_class( 'duration' ) ); ?>">
+								<a href="<?php echo esc_url( $make_sort_url( 'duration' ) ); ?>">
+									<span><?php esc_html_e( 'Duration', 'outradar' ); ?></span>
+									<span class="sorting-indicators">
+										<span class="sorting-indicator asc" aria-hidden="true"></span>
+										<span class="sorting-indicator desc" aria-hidden="true"></span>
+									</span>
+								</a>
+							</th>
 							<th><?php esc_html_e( 'Flags', 'outradar' ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php if ( empty( $rows ) ) : ?>
 						<tr>
-							<td colspan="9"><?php esc_html_e( 'No requests found.', 'outradar' ); ?></td>
+							<td colspan="10"><?php esc_html_e( 'No requests found.', 'outradar' ); ?></td>
 						</tr>
 						<?php else : ?>
 							<?php foreach ( $rows as $row ) : ?>
@@ -213,6 +231,13 @@ class Log_Page {
 								<?php endif; ?>
 							</td>
 							<td><span class="outradar-context outradar-context--<?php echo esc_attr( (string) $row->context ); ?>"><?php echo esc_html( (string) $row->context ); ?></span></td>
+							<td class="outradar-duration-col">
+								<?php if ( null !== $row->duration ) : ?>
+									<?php echo esc_html( round( (int) $row->duration / 1000, 2 ) . 's' ); ?>
+								<?php else : ?>
+									&mdash;
+								<?php endif; ?>
+							</td>
 							<td>
 								<?php if ( ! empty( $row->is_recurring ) ) : ?>
 									<span class="outradar-flag outradar-flag--recurring" title="<?php esc_attr_e( 'Recurring request', 'outradar' ); ?>">&#8635;</span>
@@ -223,7 +248,7 @@ class Log_Page {
 							</td>
 						</tr>
 						<tr class="outradar-detail-row" id="outradar-detail-<?php echo esc_attr( (string) $row->id ); ?>" style="display:none;">
-							<td colspan="9">
+							<td colspan="10">
 								<div class="outradar-detail-inner">
 									<p><strong><?php esc_html_e( 'URL', 'outradar' ); ?>:</strong> <code><?php echo esc_html( (string) $row->url ); ?></code></p>
 									<p>
@@ -309,6 +334,7 @@ class Log_Page {
 	 */
 	private static function get_filters(): array {
 		// phpcs:disable WordPress.Security.NonceVerification.Recommended
+		$sort_raw = isset( $_GET['sort'] ) ? sanitize_key( $_GET['sort'] ) : 'timestamp';
 		return array(
 			'domain'    => isset( $_GET['domain'] ) ? sanitize_text_field( wp_unslash( $_GET['domain'] ) ) : '',
 			'plugin'    => isset( $_GET['plugin'] ) ? sanitize_text_field( wp_unslash( $_GET['plugin'] ) ) : '',
@@ -317,6 +343,7 @@ class Log_Page {
 			'date_from' => isset( $_GET['date_from'] ) ? sanitize_text_field( wp_unslash( $_GET['date_from'] ) ) : '',
 			'date_to'   => isset( $_GET['date_to'] ) ? sanitize_text_field( wp_unslash( $_GET['date_to'] ) ) : '',
 			'order'     => isset( $_GET['order'] ) && 'asc' === strtolower( sanitize_key( $_GET['order'] ) ) ? 'asc' : 'desc',
+			'sort'      => in_array( $sort_raw, array( 'timestamp', 'duration' ), true ) ? $sort_raw : 'timestamp',
 		);
 		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 	}

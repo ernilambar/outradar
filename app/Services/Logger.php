@@ -67,6 +67,7 @@ class Logger {
 				'request_body'     => self::redact_body( $request_body ),
 				'response_code'    => $request['response_code'] ?? null,
 				'response_size'    => $request['response_size'] ?? null,
+				'duration'         => $request['duration'] ?? null,
 				'source_plugin'    => $source['source_plugin'],
 				'source_file'      => $source['source_file'],
 				'source_line'      => $source['source_line'],
