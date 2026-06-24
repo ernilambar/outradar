@@ -93,17 +93,40 @@ class Admin {
 			true
 		);
 
-		wp_localize_script(
+		wp_add_inline_script(
 			'outradar-admin',
-			'outradarData',
-			array(
-				'ajaxUrl'       => admin_url( 'admin-ajax.php' ),
-				'nonce'         => wp_create_nonce( 'outradar_get_row' ),
-				'confirmPurge'  => __( 'Permanently delete all logs. This cannot be undone.', 'outradar' ),
-				'confirmDelete' => __( 'Delete selected entries?', 'outradar' ),
-				'chartData7'    => Dashboard_Page::get_chart_data( 7 ),
-				'chartData30'   => Dashboard_Page::get_chart_data( 30 ),
-			)
+			'var outradarData = ' . wp_json_encode(
+				array(
+					'ajaxUrl'       => admin_url( 'admin-ajax.php' ),
+					'nonce'         => wp_create_nonce( 'outradar_get_row' ),
+					'confirmPurge'  => __( 'Permanently delete all logs. This cannot be undone.', 'outradar' ),
+					'confirmDelete' => __( 'Delete selected entries?', 'outradar' ),
+					'chartData7'    => Dashboard_Page::get_chart_data( 7 ),
+					'chartData30'   => Dashboard_Page::get_chart_data( 30 ),
+					'i18n'          => array(
+						'close'        => __( 'Close', 'outradar' ),
+						'general'      => __( 'General', 'outradar' ),
+						'timestamp'    => __( 'Timestamp', 'outradar' ),
+						'domain'       => __( 'Domain', 'outradar' ),
+						'responseSize' => __( 'Response Size', 'outradar' ),
+						'origin'       => __( 'Origin', 'outradar' ),
+						'source'       => __( 'Source', 'outradar' ),
+						'file'         => __( 'File', 'outradar' ),
+						'pagePath'     => __( 'Page', 'outradar' ),
+						'cronHook'     => __( 'Cron Hook', 'outradar' ),
+						'duplicateOf'  => __( 'Duplicate', 'outradar' ),
+						'request'      => __( 'Request', 'outradar' ),
+						'headers'      => __( 'Headers', 'outradar' ),
+						'body'         => __( 'Body', 'outradar' ),
+						'pretty'       => __( 'Pretty', 'outradar' ),
+						'raw'          => __( 'Raw', 'outradar' ),
+						'copy'         => __( 'Copy', 'outradar' ),
+						'loading'      => __( 'Loading…', 'outradar' ),
+						'loadFailed'   => __( 'Failed to load.', 'outradar' ),
+					),
+				)
+			) . ';',
+			'before'
 		);
 	}
 }

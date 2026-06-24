@@ -354,6 +354,8 @@ body.outradar-modal-open {
 			font-weight: 600;
 			font-size: 13px;
 			padding: 4px 0;
+			display: flex;
+			align-items: center;
 		}
 
 		pre {
@@ -373,6 +375,78 @@ body.outradar-modal-open {
 		color: #646970;
 		font-size: 13px;
 		margin: 0;
+	}
+}
+
+.outradar-content-actions {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin-left: auto;
+	padding-left: 8px;
+}
+
+.outradar-toggle {
+	display: inline-flex;
+	border: 1px solid #c3c4c7;
+	border-radius: 3px;
+	overflow: hidden;
+	line-height: 1;
+
+	&[hidden] {
+		display: none;
+	}
+}
+
+.outradar-toggle-btn {
+	background: #fff;
+	border: none;
+	border-right: 1px solid #c3c4c7;
+	padding: 2px 7px;
+	font-size: 11px;
+	cursor: pointer;
+	color: #646970;
+
+	&:last-child {
+		border-right: none;
+	}
+
+	&.is-active {
+		background: #2271b1;
+		color: #fff;
+	}
+
+	&:not(.is-active):hover {
+		background: #f0f0f1;
+	}
+}
+
+.outradar-copy-btn {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0 2px;
+	color: #646970;
+	line-height: 1;
+	display: flex;
+	align-items: center;
+
+	&[hidden] {
+		display: none;
+	}
+
+	.dashicons {
+		font-size: 16px;
+		width: 16px;
+		height: 16px;
+	}
+
+	&:hover {
+		color: #2271b1;
+	}
+
+	&.is-copied {
+		color: #00a32a;
 	}
 }
 

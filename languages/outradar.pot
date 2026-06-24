@@ -71,6 +71,87 @@ msgstr ""
 msgid "Delete selected entries?"
 msgstr ""
 
+#: app/Admin/Admin.php:107
+msgid "Close"
+msgstr ""
+
+#: app/Admin/Admin.php:108
+msgid "General"
+msgstr ""
+
+#: app/Admin/Admin.php:109
+#: app/Admin/Pages/Log_Page.php:157
+msgid "Timestamp"
+msgstr ""
+
+#: app/Admin/Admin.php:110
+#: app/Admin/Pages/Dashboard_Page.php:156
+#: app/Admin/Pages/Log_Page.php:84
+msgid "Domain"
+msgstr ""
+
+#: app/Admin/Admin.php:111
+msgid "Response Size"
+msgstr ""
+
+#: app/Admin/Admin.php:112
+msgid "Origin"
+msgstr ""
+
+#: app/Admin/Admin.php:113
+#: app/Admin/Pages/Dashboard_Page.php:192
+#: app/Admin/Pages/Log_Page.php:170
+msgid "Source"
+msgstr ""
+
+#: app/Admin/Admin.php:114
+msgid "File"
+msgstr ""
+
+#: app/Admin/Admin.php:115
+msgid "Page"
+msgstr ""
+
+#: app/Admin/Admin.php:116
+msgid "Cron Hook"
+msgstr ""
+
+#: app/Admin/Admin.php:117
+msgid "Duplicate"
+msgstr ""
+
+#: app/Admin/Admin.php:118
+msgid "Request"
+msgstr ""
+
+#: app/Admin/Admin.php:119
+msgid "Headers"
+msgstr ""
+
+#: app/Admin/Admin.php:120
+msgid "Body"
+msgstr ""
+
+#: app/Admin/Admin.php:121
+msgid "Pretty"
+msgstr ""
+
+#: app/Admin/Admin.php:122
+msgid "Raw"
+msgstr ""
+
+#: app/Admin/Admin.php:123
+msgid "Copy"
+msgstr ""
+
+#: app/Admin/Admin.php:124
+msgid "Loading…"
+msgstr ""
+
+#: app/Admin/Admin.php:125
+msgid "Failed to load."
+msgstr ""
+
 #: app/Admin/Exporter.php:32
 #: app/Admin/Pages/Dashboard_Page.php:32
 #: app/Admin/Pages/Log_Page.php:33
@@ -160,11 +241,6 @@ msgstr ""
 msgid "No data yet."
 msgstr ""
 
-#: app/Admin/Pages/Dashboard_Page.php:156
-#: app/Admin/Pages/Log_Page.php:84
-msgid "Domain"
-msgstr ""
-
 #: app/Admin/Pages/Dashboard_Page.php:157
 msgid "First Seen"
 msgstr ""
@@ -180,11 +256,6 @@ msgstr ""
 #: app/Admin/Pages/Dashboard_Page.php:160
 #: app/Admin/Pages/Dashboard_Page.php:184
 msgid "Sources"
-msgstr ""
-
-#: app/Admin/Pages/Dashboard_Page.php:192
-#: app/Admin/Pages/Log_Page.php:170
-msgid "Source"
 msgstr ""
 
 #: app/Admin/Pages/Log_Page.php:89
@@ -233,10 +304,6 @@ msgstr ""
 
 #: app/Admin/Pages/Log_Page.php:147
 msgid "Export JSON"
-msgstr ""
-
-#: app/Admin/Pages/Log_Page.php:157
-msgid "Timestamp"
 msgstr ""
 
 #: app/Admin/Pages/Log_Page.php:160
