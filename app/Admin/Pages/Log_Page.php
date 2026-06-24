@@ -42,6 +42,25 @@ class Log_Page {
 
 		$per_page    = 50;
 		$total_pages = (int) ceil( $total / $per_page );
+
+		$next_order     = 'desc' === $filters['order'] ? 'asc' : 'desc';
+		$sort_base      = array_filter(
+			$filters,
+			static fn( $k ) => 'order' !== $k,
+			ARRAY_FILTER_USE_KEY
+		);
+		$sort_base      = array_filter( $sort_base, static fn( $v ) => '' !== $v && false !== $v );
+		$sort_url       = add_query_arg(
+			array_merge(
+				$sort_base,
+				array(
+					'page'  => 'outradar',
+					'order' => $next_order,
+				)
+			),
+			admin_url( 'admin.php' )
+		);
+		$time_col_class = 'sorted ' . $filters['order'];
 		?>
 		<div class="wrap outradar-wrap">
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
@@ -126,7 +145,16 @@ class Log_Page {
 						<tr>
 							<td class="manage-column column-cb check-column"><input type="checkbox" id="outradar-select-all" /></td>
 							<th><?php esc_html_e( 'Timestamp', 'outradar' ); ?></th>
-							<th><?php esc_html_e( 'Domain', 'outradar' ); ?></th>
+							<th class="<?php echo esc_attr( $time_col_class ); ?>">
+								<a href="<?php echo esc_url( $sort_url ); ?>">
+									<span><?php esc_html_e( 'Time', 'outradar' ); ?></span>
+									<span class="sorting-indicators">
+										<span class="sorting-indicator asc" aria-hidden="true"></span>
+										<span class="sorting-indicator desc" aria-hidden="true"></span>
+									</span>
+								</a>
+							</th>
+							<th><?php esc_html_e( 'Destination', 'outradar' ); ?></th>
 							<th><?php esc_html_e( 'Method', 'outradar' ); ?></th>
 							<th><?php esc_html_e( 'Status', 'outradar' ); ?></th>
 							<th><?php esc_html_e( 'Source', 'outradar' ); ?></th>
@@ -137,7 +165,7 @@ class Log_Page {
 					<tbody>
 						<?php if ( empty( $rows ) ) : ?>
 						<tr>
-							<td colspan="8"><?php esc_html_e( 'No requests found.', 'outradar' ); ?></td>
+							<td colspan="9"><?php esc_html_e( 'No requests found.', 'outradar' ); ?></td>
 						</tr>
 						<?php else : ?>
 							<?php foreach ( $rows as $row ) : ?>
@@ -149,16 +177,22 @@ class Log_Page {
 								<button type="button" class="outradar-row-toggle button-link" data-id="<?php echo esc_attr( (string) $row->id ); ?>">
 									<?php echo esc_html( (string) $row->timestamp ); ?>
 								</button>
+							</td>
+							<td class="outradar-time-col">
 								<span class="outradar-time-ago">
 								<?php
 								/* translators: %s: human-readable time difference, e.g. "2 minutes" */
-								echo '(' . esc_html( sprintf( __( '%s ago', 'outradar' ), human_time_diff( (int) strtotime( (string) $row->timestamp ) ) ) ) . ')';
+								echo esc_html( sprintf( __( '%s ago', 'outradar' ), human_time_diff( (int) strtotime( (string) $row->timestamp ) ) ) );
 								?>
 								</span>
 							</td>
 							<td>
+								<?php
+								$parsed        = wp_parse_url( (string) $row->url );
+								$endpoint_path = ( $parsed['host'] ?? (string) $row->domain ) . ( $parsed['path'] ?? '' );
+								?>
 								<a href="<?php echo esc_url( admin_url( 'admin.php?page=outradar&domain=' . rawurlencode( (string) $row->domain ) ) ); ?>">
-									<?php echo esc_html( (string) $row->domain ); ?>
+									<?php echo esc_html( $endpoint_path ); ?>
 								</a>
 							</td>
 							<td><code><?php echo esc_html( (string) $row->method ); ?></code></td>
@@ -189,7 +223,7 @@ class Log_Page {
 							</td>
 						</tr>
 						<tr class="outradar-detail-row" id="outradar-detail-<?php echo esc_attr( (string) $row->id ); ?>" style="display:none;">
-							<td colspan="8">
+							<td colspan="9">
 								<div class="outradar-detail-inner">
 									<p><strong><?php esc_html_e( 'URL', 'outradar' ); ?>:</strong> <code><?php echo esc_html( (string) $row->url ); ?></code></p>
 									<p>
@@ -282,6 +316,7 @@ class Log_Page {
 			'context'   => isset( $_GET['context'] ) ? sanitize_text_field( wp_unslash( $_GET['context'] ) ) : '',
 			'date_from' => isset( $_GET['date_from'] ) ? sanitize_text_field( wp_unslash( $_GET['date_from'] ) ) : '',
 			'date_to'   => isset( $_GET['date_to'] ) ? sanitize_text_field( wp_unslash( $_GET['date_to'] ) ) : '',
+			'order'     => isset( $_GET['order'] ) && 'asc' === strtolower( sanitize_key( $_GET['order'] ) ) ? 'asc' : 'desc',
 		);
 		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 	}

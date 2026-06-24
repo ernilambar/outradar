@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-06-23T15:35:30+00:00\n"
+"PO-Revision-Date: 2026-06-24T04:37:59+00:00\n"
 "Language: ne_NP\n"
 "X-Generator: WP-CLI 2.13.0-alpha\n"
 "X-Domain: outradar\n"
@@ -73,13 +73,13 @@ msgstr "चयन गरिएका प्रविष्टिहरू मे
 #: app/Admin/Exporter.php:32
 #: app/Admin/Pages/Dashboard_Page.php:32
 #: app/Admin/Pages/Log_Page.php:32
-#: app/Admin/Pages/Log_Page.php:247
+#: app/Admin/Pages/Log_Page.php:281
 #: app/Admin/Pages/Settings_Page.php:32
 msgid "You do not have permission."
 msgstr "तपाईँलाई  अनुमति छैन।"
 
 #: app/Admin/Exporter.php:36
-#: app/Admin/Pages/Log_Page.php:251
+#: app/Admin/Pages/Log_Page.php:285
 msgid "Security check failed."
 msgstr "सुरक्षा जाँच असफल भयो।"
 
@@ -160,8 +160,7 @@ msgid "No data yet."
 msgstr "अहिलेसम्म डाटा छैन।"
 
 #: app/Admin/Pages/Dashboard_Page.php:156
-#: app/Admin/Pages/Log_Page.php:55
-#: app/Admin/Pages/Log_Page.php:129
+#: app/Admin/Pages/Log_Page.php:74
 msgid "Domain"
 msgstr "डोमेन"
 
@@ -183,115 +182,123 @@ msgid "Sources"
 msgstr "स्रोतहरू"
 
 #: app/Admin/Pages/Dashboard_Page.php:192
-#: app/Admin/Pages/Log_Page.php:132
-#: app/Admin/Pages/Log_Page.php:196
+#: app/Admin/Pages/Log_Page.php:160
+#: app/Admin/Pages/Log_Page.php:230
 msgid "Source"
 msgstr "स्रोत"
 
-#: app/Admin/Pages/Log_Page.php:60
+#: app/Admin/Pages/Log_Page.php:79
 msgid "All sources"
 msgstr "सबै स्रोतहरू"
 
-#: app/Admin/Pages/Log_Page.php:69
+#: app/Admin/Pages/Log_Page.php:88
 msgid "All methods"
 msgstr "सबै विधिहरू"
 
-#: app/Admin/Pages/Log_Page.php:78
+#: app/Admin/Pages/Log_Page.php:97
 msgid "All contexts"
 msgstr "सबै सन्दर्भहरू"
 
-#: app/Admin/Pages/Log_Page.php:89
+#: app/Admin/Pages/Log_Page.php:108
 msgid "From"
 msgstr "बाट"
 
-#: app/Admin/Pages/Log_Page.php:96
+#: app/Admin/Pages/Log_Page.php:115
 msgid "To"
 msgstr "लाई"
 
-#: app/Admin/Pages/Log_Page.php:100
+#: app/Admin/Pages/Log_Page.php:119
 msgid "Filter"
 msgstr "फिल्टर गर्नुहोस्"
 
-#: app/Admin/Pages/Log_Page.php:101
+#: app/Admin/Pages/Log_Page.php:120
 msgid "Reset"
 msgstr "रिसेट गर्नुहोस्"
 
-#: app/Admin/Pages/Log_Page.php:110
+#: app/Admin/Pages/Log_Page.php:129
 msgid "Bulk actions"
 msgstr "एकमुस्ट कार्यहरू"
 
-#: app/Admin/Pages/Log_Page.php:111
+#: app/Admin/Pages/Log_Page.php:130
 msgid "Delete"
 msgstr "मेटाउनुहोस्"
 
-#: app/Admin/Pages/Log_Page.php:113
+#: app/Admin/Pages/Log_Page.php:132
 msgid "Apply"
 msgstr "लागू गर्नुहोस्"
 
-#: app/Admin/Pages/Log_Page.php:117
+#: app/Admin/Pages/Log_Page.php:136
 msgid "Export CSV"
 msgstr "CSV निर्यात गर्नुहोस्"
 
-#: app/Admin/Pages/Log_Page.php:118
+#: app/Admin/Pages/Log_Page.php:137
 msgid "Export JSON"
 msgstr "JSON निर्यात गर्नुहोस्"
 
-#: app/Admin/Pages/Log_Page.php:128
+#: app/Admin/Pages/Log_Page.php:147
 msgid "Timestamp"
 msgstr "टाइमस्ट्याम्प"
 
-#: app/Admin/Pages/Log_Page.php:130
+#: app/Admin/Pages/Log_Page.php:150
+msgid "Time"
+msgstr ""
+
+#: app/Admin/Pages/Log_Page.php:157
+msgid "Destination"
+msgstr ""
+
+#: app/Admin/Pages/Log_Page.php:158
 msgid "Method"
 msgstr "विधि"
 
-#: app/Admin/Pages/Log_Page.php:131
+#: app/Admin/Pages/Log_Page.php:159
 msgid "Status"
 msgstr "स्टाटस"
 
-#: app/Admin/Pages/Log_Page.php:133
+#: app/Admin/Pages/Log_Page.php:161
 msgid "Context"
 msgstr "सन्दर्भ"
 
-#: app/Admin/Pages/Log_Page.php:134
+#: app/Admin/Pages/Log_Page.php:162
 msgid "Flags"
 msgstr "झण्डाहरू"
 
-#: app/Admin/Pages/Log_Page.php:140
+#: app/Admin/Pages/Log_Page.php:168
 msgid "No requests found."
 msgstr "कुनै अनुरोध फेला परेन।"
 
 #. translators: %s: human-readable time difference, e.g. "2 minutes"
-#: app/Admin/Pages/Log_Page.php:155
+#: app/Admin/Pages/Log_Page.php:185
 #, php-format
 msgid "%s ago"
 msgstr "%s अघि"
 
-#: app/Admin/Pages/Log_Page.php:184
+#: app/Admin/Pages/Log_Page.php:218
 msgid "Recurring request"
 msgstr "आवर्ती अनुरोध"
 
-#: app/Admin/Pages/Log_Page.php:187
+#: app/Admin/Pages/Log_Page.php:221
 msgid "Duplicate request"
 msgstr "डुप्लिकेट अनुरोध"
 
-#: app/Admin/Pages/Log_Page.php:194
+#: app/Admin/Pages/Log_Page.php:228
 msgid "URL"
 msgstr "युआरएल"
 
-#: app/Admin/Pages/Log_Page.php:204
+#: app/Admin/Pages/Log_Page.php:238
 msgid "Request Headers"
 msgstr "अनुरोध हेडरहरू"
 
-#: app/Admin/Pages/Log_Page.php:210
+#: app/Admin/Pages/Log_Page.php:244
 msgid "Request Body"
 msgstr "अनुरोध बडी"
 
-#: app/Admin/Pages/Log_Page.php:215
+#: app/Admin/Pages/Log_Page.php:249
 msgid "Cron Hook"
 msgstr "क्रोन हुक"
 
 #. translators: %d: number of items
-#: app/Admin/Pages/Log_Page.php:337
+#: app/Admin/Pages/Log_Page.php:372
 #, php-format
 msgid "%d item"
 msgid_plural "%d items"
