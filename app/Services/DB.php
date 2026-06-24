@@ -341,10 +341,11 @@ class DB {
 		$table  = $wpdb->prefix . OUTRADAR_TABLE;
 		$where  = self::build_where( $filters );
 		$offset = ( max( 1, $page ) - 1 ) * $per_page;
+		$order  = isset( $filters['order'] ) && 'asc' === $filters['order'] ? 'ASC' : 'DESC';
 
 		$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$wpdb->prepare(
-				"SELECT * FROM {$table} WHERE 1=1{$where} ORDER BY timestamp DESC LIMIT %d OFFSET %d", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				"SELECT * FROM {$table} WHERE 1=1{$where} ORDER BY timestamp {$order} LIMIT %d OFFSET %d", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 				$per_page,
 				$offset
 			)
