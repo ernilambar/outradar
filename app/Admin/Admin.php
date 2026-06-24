@@ -40,6 +40,7 @@ class Admin {
 		add_action( 'admin_menu', array( $this, 'register_menu' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 		add_action( 'admin_post_outradar_export', array( Exporter::class, 'handle' ) );
+		add_action( 'wp_ajax_outradar_get_row', array( Ajax::class, 'get_row' ) );
 	}
 
 	/**
@@ -96,6 +97,8 @@ class Admin {
 			'outradar-admin',
 			'outradarData',
 			array(
+				'ajaxUrl'       => admin_url( 'admin-ajax.php' ),
+				'nonce'         => wp_create_nonce( 'outradar_get_row' ),
 				'confirmPurge'  => __( 'Permanently delete all logs. This cannot be undone.', 'outradar' ),
 				'confirmDelete' => __( 'Delete selected entries?', 'outradar' ),
 				'chartData7'    => Dashboard_Page::get_chart_data( 7 ),
