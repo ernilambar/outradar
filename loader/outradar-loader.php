@@ -8,6 +8,10 @@
  * @package Nilambar\OutRadar
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $outradar_main = WP_PLUGIN_DIR . '/outradar/outradar.php';
 
 if ( file_exists( $outradar_main ) ) {
