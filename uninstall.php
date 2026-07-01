@@ -5,7 +5,7 @@
  * @package Nilambar\OutRadar
  */
 
-use Nilambar\OutRadar\Core\DB;
+use Nilambar\OutRadar\Services\DB;
 
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;

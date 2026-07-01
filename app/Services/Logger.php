@@ -122,31 +122,46 @@ class Logger {
 			return $body;
 		}
 
-		$decoded = json_decode( $body, true );
-		if ( ! is_array( $decoded ) ) {
-			return $body;
-		}
-
 		$sensitive = array( 'password', 'secret', 'api_key', 'apikey', 'token', 'access_token', 'client_secret' );
-		$changed   = false;
 
-		array_walk_recursive(
-			$decoded,
-			static function ( &$v, $k ) use ( $sensitive, &$changed ) {
-				if ( in_array( strtolower( (string) $k ), $sensitive, true ) ) {
-					$v       = '[redacted]';
-					$changed = true;
+		$decoded = json_decode( $body, true );
+		if ( is_array( $decoded ) ) {
+			$changed = false;
+			array_walk_recursive(
+				$decoded,
+				static function ( &$v, $k ) use ( $sensitive, &$changed ) {
+					if ( in_array( strtolower( (string) $k ), $sensitive, true ) ) {
+						$v       = '[redacted]';
+						$changed = true;
+					}
 				}
+			);
+			if ( ! $changed ) {
+				return $body;
 			}
-		);
-
-		if ( ! $changed ) {
-			return $body;
+			$encoded = wp_json_encode( $decoded );
+			return false !== $encoded ? $encoded : $body;
 		}
 
-		$encoded = wp_json_encode( $decoded );
+		// Try form-encoded (application/x-www-form-urlencoded).
+		if ( false !== strpos( $body, '=' ) ) {
+			parse_str( $body, $params );
+			if ( ! empty( $params ) ) {
+				$changed = false;
+				array_walk_recursive(
+					$params,
+					static function ( &$v, $k ) use ( $sensitive, &$changed ) {
+						if ( in_array( strtolower( (string) $k ), $sensitive, true ) ) {
+							$v       = '[redacted]';
+							$changed = true;
+						}
+					}
+				);
+				return $changed ? http_build_query( $params ) : $body;
+			}
+		}
 
-		return false !== $encoded ? $encoded : $body;
+		return $body;
 	}
 
 	/**

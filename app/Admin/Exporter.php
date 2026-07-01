@@ -103,13 +103,25 @@ class Exporter {
 		foreach ( $rows as $row ) {
 			$line = array();
 			foreach ( $columns as $col ) {
-				$line[] = $row->$col ?? '';
+				$line[] = self::csv_escape( (string) ( $row->$col ?? '' ) );
 			}
 			fputcsv( $out, $line, ',', '"', '\\' );
 		}
 
 		fclose( $out ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 		exit;
+	}
+
+	/**
+	 * Prefix formula-trigger characters to prevent CSV injection.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $v Cell value.
+	 * @return string Safe cell value.
+	 */
+	private static function csv_escape( string $v ): string {
+		return ( '' !== $v && false !== strpos( "=+-@\t\r", $v[0] ) ) ? "'" . $v : $v;
 	}
 
 	/**

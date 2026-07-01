@@ -7,6 +7,10 @@
 
 namespace Nilambar\OutRadar\Services;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use stdClass;
 
 /**
