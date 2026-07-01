@@ -7,6 +7,10 @@
 
 namespace Nilambar\OutRadar\Services;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Attributes an HTTP request to its source plugin, theme, or WordPress core via stack trace.
  *
