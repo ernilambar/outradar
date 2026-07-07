@@ -28,6 +28,7 @@ class Tracer {
 	public static function get_source(): array {
 		$frames = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
 
+		$abspath        = wp_normalize_path( ABSPATH );
 		$plugins_dir    = wp_normalize_path( WP_PLUGIN_DIR );
 		$mu_plugins_dir = wp_normalize_path( WPMU_PLUGIN_DIR );
 		$themes_dir     = wp_normalize_path( get_theme_root() );
@@ -51,7 +52,7 @@ class Tracer {
 			if ( '' !== $plugin ) {
 				return array(
 					'source_plugin' => $plugin,
-					'source_file'   => $file,
+					'source_file'   => self::relativize( $file, $abspath ),
 					'source_line'   => $frame['line'] ?? 0,
 				);
 			}
@@ -60,7 +61,7 @@ class Tracer {
 			if ( '' !== $theme ) {
 				return array(
 					'source_plugin' => '[Theme] ' . $theme,
-					'source_file'   => $file,
+					'source_file'   => self::relativize( $file, $abspath ),
 					'source_line'   => $frame['line'] ?? 0,
 				);
 			}
@@ -73,7 +74,7 @@ class Tracer {
 		if ( null !== $first_core_frame ) {
 			return array(
 				'source_plugin' => '[WordPress Core]',
-				'source_file'   => wp_normalize_path( $first_core_frame['file'] ),
+				'source_file'   => self::relativize( wp_normalize_path( $first_core_frame['file'] ), $abspath ),
 				'source_line'   => $first_core_frame['line'] ?? 0,
 			);
 		}
@@ -83,6 +84,26 @@ class Tracer {
 			'source_file'   => '',
 			'source_line'   => 0,
 		);
+	}
+
+	/**
+	 * Strip the ABSPATH prefix from an absolute file path.
+	 *
+	 * Falls back to the original path when stripping is not possible (e.g. symlink
+	 * mismatch between ABSPATH and the path returned by debug_backtrace).
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $file    Normalized absolute file path.
+	 * @param string $abspath Normalized ABSPATH (with trailing slash).
+	 * @return string Path relative to WordPress root, or original on fallback.
+	 */
+	private static function relativize( string $file, string $abspath ): string {
+		if ( str_starts_with( $file, $abspath ) ) {
+			return substr( $file, strlen( $abspath ) );
+		}
+
+		return $file;
 	}
 
 	/**
