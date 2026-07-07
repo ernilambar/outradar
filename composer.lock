@@ -163,16 +163,16 @@
         },
         {
             "name": "ernilambar/coding-standard",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ernilambar/coding-standard.git",
-                "reference": "26b6aab97fb4567003e8cd13b1eebe190f6e7898"
+                "reference": "955816dfbf71af17405200bfdbd4f1570fcfb393"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ernilambar/coding-standard/zipball/26b6aab97fb4567003e8cd13b1eebe190f6e7898",
-                "reference": "26b6aab97fb4567003e8cd13b1eebe190f6e7898",
+                "url": "https://api.github.com/repos/ernilambar/coding-standard/zipball/955816dfbf71af17405200bfdbd4f1570fcfb393",
+                "reference": "955816dfbf71af17405200bfdbd4f1570fcfb393",
                 "shasum": ""
             },
             "require": {
@@ -208,9 +208,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ernilambar/coding-standard/issues",
-                "source": "https://github.com/ernilambar/coding-standard/tree/1.0.3"
+                "source": "https://github.com/ernilambar/coding-standard/tree/1.0.4"
             },
-            "time": "2026-06-07T08:21:45+00:00"
+            "time": "2026-07-02T12:53:09+00:00"
         },
         {
             "name": "gettext/gettext",
@@ -1177,12 +1177,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/wp-cli.git",
-                "reference": "fc140030b5c1a47020812b74e2b8d767d7242725"
+                "reference": "c05ad1c1a67358baa9f50d554757f5f7fe21945f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/wp-cli/zipball/fc140030b5c1a47020812b74e2b8d767d7242725",
-                "reference": "fc140030b5c1a47020812b74e2b8d767d7242725",
+                "url": "https://api.github.com/repos/wp-cli/wp-cli/zipball/c05ad1c1a67358baa9f50d554757f5f7fe21945f",
+                "reference": "c05ad1c1a67358baa9f50d554757f5f7fe21945f",
                 "shasum": ""
             },
             "require": {
@@ -1197,6 +1197,7 @@
                 "wp-cli/db-command": "^2",
                 "wp-cli/entity-command": "^2",
                 "wp-cli/extension-command": "^2",
+                "wp-cli/language-command": "^2",
                 "wp-cli/package-command": "^2",
                 "wp-cli/wp-cli-tests": "^5"
             },
@@ -1253,7 +1254,7 @@
                 "issues": "https://github.com/wp-cli/wp-cli/issues",
                 "source": "https://github.com/wp-cli/wp-cli"
             },
-            "time": "2026-06-18T15:36:01+00:00"
+            "time": "2026-07-06T11:06:44+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",

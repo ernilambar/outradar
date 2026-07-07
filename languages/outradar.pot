@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: OutRadar 1.0.0\n"
+"Project-Id-Version: OutRadar 1.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/outradar\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr ""
 
 #. Author URI of the plugin
 #: outradar.php:8
-msgid "https://github.com/ernilambar"
+msgid "https://nilambar.net/"
 msgstr ""
 
 #: app/Admin/Admin.php:55

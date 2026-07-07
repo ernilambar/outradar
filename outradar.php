@@ -1,16 +1,16 @@
 <?php
 /**
- * Plugin Name:       OutRadar
+ * Plugin Name: OutRadar
  * Plugin URI: https://github.com/ernilambar/outradar
- * Description:       Log outbound HTTP requests.
- * Version: 1.0.0
- * Author:            Nilambar Sharma
- * Author URI:        https://github.com/ernilambar
- * License:           GPL-2.0-or-later
- * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       outradar
- * Domain Path:       /languages
- * Requires PHP:      7.4
+ * Description: Log outbound HTTP requests.
+ * Version: 1.0.1
+ * Author: Nilambar Sharma
+ * Author URI: https://nilambar.net/
+ * License: GPL-2.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: outradar
+ * Domain Path: /languages
+ * Requires PHP: 7.4
  * Requires at least: 6.9
  *
  * @package Nilambar\OutRadar
@@ -28,7 +28,7 @@ if ( defined( 'OUTRADAR_LOADED' ) ) {
 }
 define( 'OUTRADAR_LOADED', true );
 
-define( 'OUTRADAR_VERSION', '1.0.0' );
+define( 'OUTRADAR_VERSION', '1.0.1' );
 define( 'OUTRADAR_DIR', plugin_dir_path( __FILE__ ) );
 define( 'OUTRADAR_URL', plugin_dir_url( __FILE__ ) );
 define( 'OUTRADAR_BASE_FILENAME', plugin_basename( __FILE__ ) );

@@ -1,6 +1,6 @@
 {
 	"name": "outradar",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Log outbound HTTP requests.",
 	"keywords": [
 		"wordpress",

@@ -3,7 +3,7 @@ Contributors: nilambar
 Tags: http, logging, requests, monitoring, debug
 Requires at least: 6.9
 Tested up to: 7.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires PHP: 7.4
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -31,7 +31,18 @@ OutRadar hooks into WordPress's HTTP layer and records every outbound request â€
 3. Navigate to **OutRadar** in the admin menu to view the request log.
 4. Configure retention and exclusions under **OutRadar â†’ Settings**.
 
+== Screenshots ==
+
+1. Log table
+2. Dashboard
+2. Settings
+
 == Changelog ==
 
-= 1.0.0 =
+= 1.0.1 - 07 Jul 2026 =
+* Fixed special characters on export
+* Fixed source file path
+* Fixed uninstall failure
+
+= 1.0.0 - 30 Jun 2026 =
 * Initial release.
