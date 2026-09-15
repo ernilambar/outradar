@@ -2,7 +2,9 @@ import { qs, setText, dim, copyToClipboard } from './utils.js';
 
 function t( key ) {
 	return (
-		( window.outradarData && window.outradarData.i18n && window.outradarData.i18n[ key ] ) ||
+		( window.outradarData &&
+			window.outradarData.i18n &&
+			window.outradarData.i18n[ key ] ) ||
 		key
 	);
 }
@@ -167,16 +169,24 @@ function setContentBlock( modal, raw, wrapSel, preSel, toggleSel, copySel ) {
 	if ( prettyStr !== null ) {
 		toggle.hidden = false;
 		pre.textContent = prettyStr;
-		toggle.querySelectorAll( '.outradar-toggle-btn' ).forEach( function ( btn ) {
-			btn.classList.toggle( 'is-active', 'pretty' === btn.dataset.mode );
-			btn.onclick = function ( e ) {
-				e.stopPropagation();
-				toggle.querySelectorAll( '.outradar-toggle-btn' ).forEach( function ( b ) {
-					b.classList.toggle( 'is-active', b === btn );
-				} );
-				pre.textContent = 'pretty' === btn.dataset.mode ? prettyStr : raw;
-			};
-		} );
+		toggle
+			.querySelectorAll( '.outradar-toggle-btn' )
+			.forEach( function ( btn ) {
+				btn.classList.toggle(
+					'is-active',
+					'pretty' === btn.dataset.mode
+				);
+				btn.onclick = function ( e ) {
+					e.stopPropagation();
+					toggle
+						.querySelectorAll( '.outradar-toggle-btn' )
+						.forEach( function ( b ) {
+							b.classList.toggle( 'is-active', b === btn );
+						} );
+					pre.textContent =
+						'pretty' === btn.dataset.mode ? prettyStr : raw;
+				};
+			} );
 	} else {
 		toggle.hidden = true;
 		pre.textContent = raw;
@@ -206,15 +216,16 @@ function populateModal( modal, row ) {
 		( isNaN( code )
 			? ''
 			: code >= 400
-			? 'outradar-status-error'
-			: code >= 300
-			? 'outradar-status-redirect'
-			: 'outradar-status-ok' );
+				? 'outradar-status-error'
+				: code >= 300
+					? 'outradar-status-redirect'
+					: 'outradar-status-ok' );
 
 	const ctxEl = qs( modal, '.outradar-modal-context' );
 	ctxEl.textContent = row.context || '';
 	ctxEl.className =
-		'outradar-modal-context outradar-context outradar-context--' + ( row.context || '' );
+		'outradar-modal-context outradar-context outradar-context--' +
+		( row.context || '' );
 
 	const ms = parseInt( row.duration, 10 );
 	qs( modal, '.outradar-modal-duration' ).textContent = ms
@@ -285,7 +296,9 @@ function populateModal( modal, row ) {
 		'.f-body-toggle',
 		'.f-body-copy'
 	);
-	qs( modal, '.f-no-request' ).hidden = !! ( row.request_headers || row.request_body );
+	qs( modal, '.f-no-request' ).hidden = !! (
+		row.request_headers || row.request_body
+	);
 }
 
 export function initModal() {
@@ -298,9 +311,12 @@ export function initModal() {
 	const loader = qs( modal, '.outradar-modal-loader' );
 	const modalBody = qs( modal, '.outradar-modal-body' );
 
-	qs( modal, '.outradar-modal-close' ).addEventListener( 'click', function () {
-		closeModal( overlay );
-	} );
+	qs( modal, '.outradar-modal-close' ).addEventListener(
+		'click',
+		function () {
+			closeModal( overlay );
+		}
+	);
 
 	overlay.addEventListener( 'click', function ( e ) {
 		if ( e.target === overlay ) {
@@ -314,36 +330,41 @@ export function initModal() {
 		}
 	} );
 
-	document.querySelectorAll( '.outradar-row-toggle' ).forEach( function ( btn ) {
-		btn.addEventListener( 'click', function () {
-			const id = btn.getAttribute( 'data-id' );
-			if ( ! id || ! window.outradarData ) {
-				return;
-			}
+	document
+		.querySelectorAll( '.outradar-row-toggle' )
+		.forEach( function ( btn ) {
+			btn.addEventListener( 'click', function () {
+				const id = btn.getAttribute( 'data-id' );
+				if ( ! id || ! window.outradarData ) {
+					return;
+				}
 
-			modalBody.hidden = true;
-			loader.hidden = false;
-			openModal( overlay );
+				modalBody.hidden = true;
+				loader.hidden = false;
+				openModal( overlay );
 
-			const fd = new FormData();
-			fd.append( 'action', 'outradar_get_row' );
-			fd.append( 'id', id );
-			fd.append( 'nonce', window.outradarData.nonce );
+				const fd = new FormData();
+				fd.append( 'action', 'outradar_get_row' );
+				fd.append( 'id', id );
+				fd.append( 'nonce', window.outradarData.nonce );
 
-			fetch( window.outradarData.ajaxUrl, { method: 'POST', body: fd } )
-				.then( function ( r ) {
-					return r.json();
+				fetch( window.outradarData.ajaxUrl, {
+					method: 'POST',
+					body: fd,
 				} )
-				.then( function ( data ) {
-					if ( data.success ) {
-						populateModal( modal, data.data );
-						loader.hidden = true;
-						modalBody.hidden = false;
-					}
-				} )
-				.catch( function () {
-					loader.textContent = t( 'loadFailed' );
-				} );
+					.then( function ( r ) {
+						return r.json();
+					} )
+					.then( function ( data ) {
+						if ( data.success ) {
+							populateModal( modal, data.data );
+							loader.hidden = true;
+							modalBody.hidden = false;
+						}
+					} )
+					.catch( function () {
+						loader.textContent = t( 'loadFailed' );
+					} );
+			} );
 		} );
-	} );
 }

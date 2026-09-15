@@ -61,7 +61,11 @@ function drawStackedChart( canvas, data ) {
 		ctx.font = '11px sans-serif';
 		ctx.textAlign = 'right';
 		ctx.textBaseline = 'middle';
-		ctx.fillText( String( Math.round( ( g / 4 ) * max ) ), padLeft - 6, gy );
+		ctx.fillText(
+			String( Math.round( ( g / 4 ) * max ) ),
+			padLeft - 6,
+			gy
+		);
 	}
 
 	const showTotals = labels.length <= 14;
@@ -98,7 +102,8 @@ function drawStackedChart( canvas, data ) {
 
 		if ( i % labelStep === 0 ) {
 			const parts = label ? label.split( '-' ) : [];
-			const labelText = parts.length === 3 ? parts[ 1 ] + '/' + parts[ 2 ] : label;
+			const labelText =
+				parts.length === 3 ? parts[ 1 ] + '/' + parts[ 2 ] : label;
 			ctx.fillStyle = '#646970';
 			ctx.font = '11px sans-serif';
 			ctx.textAlign = 'center';
@@ -123,16 +128,20 @@ export function initChart() {
 		drawStackedChart( canvas, datasets[ 7 ] );
 	}
 
-	document.querySelectorAll( '.outradar-range-btn' ).forEach( function ( btn ) {
-		btn.addEventListener( 'click', function () {
-			document.querySelectorAll( '.outradar-range-btn' ).forEach( function ( b ) {
-				b.classList.remove( 'active' );
+	document
+		.querySelectorAll( '.outradar-range-btn' )
+		.forEach( function ( btn ) {
+			btn.addEventListener( 'click', function () {
+				document
+					.querySelectorAll( '.outradar-range-btn' )
+					.forEach( function ( b ) {
+						b.classList.remove( 'active' );
+					} );
+				btn.classList.add( 'active' );
+				const data = datasets[ btn.getAttribute( 'data-range' ) ];
+				if ( data ) {
+					drawStackedChart( canvas, data );
+				}
 			} );
-			btn.classList.add( 'active' );
-			const data = datasets[ btn.getAttribute( 'data-range' ) ];
-			if ( data ) {
-				drawStackedChart( canvas, data );
-			}
 		} );
-	} );
 }
