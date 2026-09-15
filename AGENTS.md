@@ -17,7 +17,7 @@ composer install
 pnpm run build          # Build JS/CSS assets via Vite (output: build/)
 composer run lint       # PHP syntax check + PHPCS (WordPress standards)
 composer run format     # Auto-fix PHP via PHPCBF
-pnpm run format         # Auto-fix JS/CSS/JSON via Prettier
+pnpm run format         # Prettier format (all files)
 pnpm run ready          # Build assets + install production vendor
 ```
 
@@ -29,6 +29,7 @@ pnpm run ready          # Build assets + install production vendor
 - **Text domain**: All strings use `'outradar'`. Generate POT with `composer run pot`.
 - **Security**: Escape all output (`esc_html`, `esc_attr`, `esc_url_raw`), sanitize all input, use nonces for AJAX/admin actions. Never trust user data.
 - **Database**: Use `$wpdb` with `$wpdb->prepare()` for all queries. Table name via `$wpdb->prefix . OUTRADAR_TABLE`.
+- **Formatting**: Prettier uses the unmodified `@wordpress/prettier-config`, wired via the `prettier` key in `package.json`. Don't add a custom Prettier config file.
 
 ## Quality Gate
 
