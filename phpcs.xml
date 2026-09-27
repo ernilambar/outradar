@@ -26,12 +26,8 @@
 	<!-- PHP version check. -->
 	<config name="testVersion" value="7.4-"/>
 
-	<!-- Loads the PHP Compatibility ruleset. -->
-	<rule ref="PHPCompatibility">
-		<exclude name="PHPCompatibility.FunctionUse.NewFunctions.str_containsFound"/>
-		<exclude name="PHPCompatibility.FunctionUse.NewFunctions.str_starts_withFound"/>
-		<exclude name="PHPCompatibility.FunctionUse.NewFunctions.str_ends_withFound"/>
-	</rule>
+	<!-- Loads the PHPCompatibilityWP ruleset. -->
+	<rule ref="PHPCompatibilityWP"/>
 
 	<rule ref="NilambarCodingStandard"/>
 
